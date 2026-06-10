@@ -15,15 +15,18 @@
 
 ## About
 
-B.Tech Computer Science & AI at NSUT Delhi (7th semester). Engaged in the study and experimental application of machine learning, system architectures, and edge computing. Primary directive is continuous capability expansion through iterative building and algorithmic problem solving.
+B.Tech Computer Science & Artifical Intelligence (CSAI) student. Engaged in the study, experimental application of machine learning, system architectures, and edge computing and exploring new tech. Primary directive is continuous capability expansion through iterative building and algorithmic problem solving.
 
-Current areas of investigation: multi-agent architectures, RAG pipelines, and TinyML concepts.
-Algorithmic training: LeetCode (targeting Knight 2100+) and Codeforces (targeting Expert 1600+).
-
+<!--
+// Current areas of investigation: multi-agent architectures, RAG pipelines, and TinyML concepts.
+// Algorithmic training: LeetCode (targeting Knight 2100+) and Codeforces (targeting Expert 1600+).
+-->
 ---
 
 ## Stack
 
+<div align="center">
+  
 **Languages**<br>
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
@@ -49,7 +52,7 @@ Algorithmic training: LeetCode (targeting Knight 2100+) and Codeforces (targetin
 ![Gradio](https://img.shields.io/badge/Gradio-F97316?style=flat-square&logo=gradio&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
 
----
+</div>
 
 ## Experimental Implementations
 
