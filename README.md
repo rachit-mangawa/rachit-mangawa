@@ -84,3 +84,7 @@ Analysis of zero-shot intent classification capabilities. Constructed a pipeline
 <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=IDKHowToCodeFR&layout=compact&theme=tokyonight&hide_border=true&langs_count=6" />
 
 </div>
+
+
+
+<img src="/github-metrics.svg" alt="Metrics" width="100%">
