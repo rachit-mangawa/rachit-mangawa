@@ -1,7 +1,8 @@
 <div align="center">
-  <img src="http://readme-typing-svg.herokuapp.com?font=Honk&size=100&duration=750&pause=4000&color=F7F7F7&center=true&vCenter=true&width=1000&height=100&lines=Rachit+Mangawa;CSAI+Undergrad;AI+%26+ML+Explorer" alt="Rachit Mangawa" />
+  <img src="http://readme-typing-svg.herokuapp.com?font=Honk&size=100&duration=750&pause=4000&color=F7F7F7&center=true&vCenter=true&width=1000&height=100&lines=Rachit+Mangawa;CSAI+Undergrad;AI+%26+ML+Explorer" alt="Rachit Mangawa" />  
+<!--   <img src="http://readme-typing-svg.herokuapp.com?font=Oi&size=50&duration=1&pause=4000000&color=F7F7F7&center=true&vCenter=true&width=1000&height=50&lines=I+really+don't+know+how+to+code" alt="IDKHowToCodeFR" />  
 </div>
-
+-->
 <div align="center">
 
 [![LeetCode](https://img.shields.io/badge/LeetCode-black?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/IDKHowToCodeFR)
@@ -47,7 +48,16 @@ B.Tech Computer Science & Artifical Intelligence (CSAI) student. Engaged in the 
 
 
 <div align="center">
-  <img src="http://readme-typing-svg.herokuapp.com?font=Black+Ops+One&size=50&duration=1&pause=400000&color=F7F7F7&center=true&vCenter=true&width=1000&height=50&lines=TECH+STACK" alt="Tech Stack" />
+  <!-- 
+  Black+Ops+One
+  Agu+Display
+  Sankofa+Display
+  Rubik+Doodle+Shadow
+  Nabla
+  Rubik+Glitch
+  Stick
+  -->
+  <img src="http://readme-typing-svg.herokuapp.com?font=Black+Ops+One&size=50&duration=1&pause=400000&color=F7F7F7&center=true&vCenter=true&width=1000&height=50&lines=TECH‎+STACK" alt="Tech Stack" />
 </div>
 
 <p align="center">
