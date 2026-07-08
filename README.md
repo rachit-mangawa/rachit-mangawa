@@ -62,7 +62,7 @@ B.Tech Computer Science & Artifical Intelligence (CSAI) student. Engaged in the 
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,cpp,kotlin,r,bash,vim,powershell,md,latex,pytorch,tensorflow,sklearn,opencv,bots,fastapi,mysql,redis,supabase,git,github,githubactions,docker,npm,vercel,netlify,vscode,pycharm,robloxstudio&perline=14" />
+    <img src="https://go-skill-icons.vercel.app/api/icons?i=androidstudio,bash,cpp,discord,discordbots,docker,fastapi,git,gitbash,github,githubactions,gradio,huggingface,json,jupyter,kaggle,kotlin,kubernetes,langchain,latex,linux,luau,markdown,matplotlib,mcp,mermaid,mysql,n8n,netlify,npm,numpy,ollama,opencv,pandas,pkl,powershell,pydantic,pygame,pytest,python,pytorch,r,redis,regex,robloxstudio,scikitlearn,streamlit,supabase,tensorflow,terminal,vercel,vscode,wsl,yaml&perline=18" />
   </a>
 </p>
 
