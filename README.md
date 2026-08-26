@@ -11,8 +11,8 @@
 [![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-black?style=for-the-badge&logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/rachit-mangawa/)
 [![Email](https://img.shields.io/badge/Gmail-black?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mangawa.rachit701@gmail.com)
 [![Discord](https://img.shields.io/badge/discord-black?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1411813601542410290)
-[![Alt GitHub](https://img.shields.io/badge/alt_github-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/i-win-again)
-
+<!--[![Alt GitHub](https://img.shields.io/badge/alt_github-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/i-win-again)
+-->
 </div>
 
 <!--
