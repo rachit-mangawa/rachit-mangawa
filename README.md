@@ -6,7 +6,7 @@
 <div align="center">
 
 [![LeetCode](https://img.shields.io/badge/LeetCode-black?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/IDKHowToCodeFR)
-[![Codeforces](https://img.shields.io/badge/Codeforces-black?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/i-win-again)
+[![Codeforces](https://img.shields.io/badge/Codeforces-black?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/i_win_again)
 [![Kaggle](https://img.shields.io/badge/kaggle-black?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/rachitmangawa)  
 [![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-black?style=for-the-badge&logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/rachit-mangawa/)
 [![Email](https://img.shields.io/badge/Gmail-black?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mangawa.rachit701@gmail.com)
