@@ -1,0 +1,125 @@
+\documentclass[10pt,article]{article}
+\usepackage[letterpaper,margin=0.4in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{palatino}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\definecolor{mygrey}{gray}{0.82}
+\definecolor{cfpupil}{RGB}{0,140,0}
+\usepackage{hyperref}
+\hypersetup{hidelinks, colorlinks=true, urlcolor=blue}
+
+\setlength{\tabcolsep}{0in}
+\renewcommand{\labelitemii}{$\circ$}
+\pagestyle{empty}
+
+\setlist[itemize]{leftmargin=20pt, labelsep=4pt, itemsep=2pt, topsep=2pt, parsep=1pt, partopsep=2pt}
+
+\newcommand{\resheading}[1]{{\small \colorbox{mygrey}{\begin{minipage}{\textwidth}\textbf{#1 \vphantom{p\^{E}}}\end{minipage}}}}
+
+\begin{document}
+\noindent
+\begin{minipage}{0.15\linewidth}
+    \includegraphics[height=0.7in]{NSUT_logo.png}
+\end{minipage}
+\begin{minipage}{0.82\linewidth}
+    \centering
+    {\Large\bfseries Rachit Mangawa}\\[1pt]
+    +91 9328692611 |
+    \href{mailto:rachit.mangawa.ug23@nsut.ac.in}{rachit.mangawa.ug23@nsut.ac.in} |
+    \href{https://www.linkedin.com/in/rachit-mangawa/}{LinkedIn} |
+    \href{https://github.com/IDKHowToCodeFR}{GitHub}
+\end{minipage}
+
+\vspace{6pt}
+\setlength{\tabcolsep}{18pt}
+
+\noindent
+\resheading{\textbf{EDUCATION}}
+\vspace{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll@{}}
+\textbf{Course} & \textbf{Board / University} & \textbf{Year} & \textbf{CGPA / \%} \\
+\toprule
+B.Tech (CSAI) & Netaji Subhas University of Technology & 2023 - Present & 7.34 \\
+CBSE (Class XII) & SR.D. International School & 2022 - 2023 & 88.20 \\
+CBSE (Class X) & Swami Keshwanand Convent School & 2020 - 2021 & 90.40 \\
+\end{tabular*}
+
+\vspace{3pt}
+\noindent
+\resheading{\textbf{WORK EXPERIENCE}}
+\begin{itemize}[leftmargin=*]\small
+\item \textbf{Unique Identification Authority of India (UIDAI) | Software Developer Intern}\hfill \textit{June 2026 - September 2026}
+
+\vspace{2pt}
+\textit{\textbf{Project 1: Offline OCR + LLM Grievance Processing System}}
+\begin{itemize}[noitemsep, leftmargin=*]\footnotesize
+\item Built fully \textbf{offline} grievance-letter pipeline for scanned PDFs in \textbf{12 languages}: \textbf{OpenCV} preprocessing (Otsu, deskew, CLAHE) $\rightarrow$ \textbf{Tesseract} OCR $\rightarrow$ \textbf{Ollama} (gemma3:4b) $\rightarrow$ schema-strict \textbf{JSON}.
+\item Optimized for \textbf{8GB CPU-only} hardware: disk-streamed uploads, LLM \textbf{boundary detection} to split multi-letter bundles, degraded-page flagging, and malformed-output fallback; \textbf{1--2 min/letter}.
+\item Shipped \textbf{HTML/JS review UI} with side-by-side scan and summary, \textbf{confidence scores}, and urgency/type filters for officer triage.
+\end{itemize}
+
+\vspace{2pt}
+\textit{\textbf{Project 2: Contact Center Operations \& Analytics Platform}}
+\begin{itemize}[noitemsep, leftmargin=*]\footnotesize
+\item Built \textbf{Dash + FastAPI + Pandas} platform unifying \textbf{4 data sources} (CCF, CDR, UniMate, APR) across \textbf{2 vendors}, replacing manual \textbf{Excel} reporting; auto-computes \textbf{SL, AHT, avg hold} against \textbf{85\% / 240s / 20s} targets with cross-filtering, heatmaps, agent quadrant, and \textbf{180-day} range.
+\item Designed \textbf{async ETL} with \textbf{WebSocket} progress and stateless parsers: ingests \textbf{50MB / 100K+ row} workbooks in \textbf{5--15s} via \textbf{1,000-row} batches and \textbf{idempotent upserts}; \textbf{APScheduler} 3-min auto-ingest on \textbf{SQLite WAL}.
+\item Secured with \textbf{JWT RBAC}, \textbf{tenant isolation}, \textbf{X-Forwarded-For} audit logs, \textbf{bcrypt} lazy rehash, 30-min inactivity logout, and 90-day log pruning; architected for \textbf{1,000+ users}.
+\end{itemize}
+\end{itemize}
+
+\noindent
+\resheading{\textbf{ACHIEVEMENTS}}
+\begin{itemize}[noitemsep, leftmargin=*]
+\item \textbf{\textcolor{cfpupil}{Pupil}} on \href{https://codeforces.com/profile/i_win_again}{Codeforces} (max rating \textbf{1336}); 
+\item \textbf{Knight} on \href{https://leetcode.com/u/idkhowtocodefr/}{LeetCode} (max rating \textbf{1982}, top \textbf{2.91\%});
+\item \textbf{Global Rank 316} of 38,291 (top \textbf{0.83\%}) -- \href{https://leetcode.com/contest/biweekly-contest-190/}{LeetCode Biweekly Contest 190}.
+\item \textbf{Open Source:} Debugged a numerical edge case in \textbf{TensorFlow}'s autodiff - tf.math.bessel\_i1's gradient was hardcoded to return \textbf{1.0} at $x{=}0$, a removable singularity where the correct limit is \textbf{0.5}; fixed the imputed value in math\_grad.py and added regression tests in special\_math\_ops\_test.py covering bessel\_i1 and bessel\_i1e. \textbf{Merged} - \href{https://github.com/tensorflow/tensorflow/issues/120578}{Issue \#120578}, \href{https://github.com/tensorflow/tensorflow/pull/120944}{PR \#120944}.
+\end{itemize}
+
+\noindent
+\resheading{\textbf{PROJECTS}}
+\begin{itemize}[leftmargin=*]\small
+\item \textbf{HeartFlow OS} | \href{https://github.com/IDKHowToCodeFR/HEARTFLOW_OS}{GitHub} $|$ \href{https://idkhowtocodefr.github.io/HEARTFLOW_OS}{Live Demo} \hfill \textit{Feb 2026 -- April 2026} \\
+\textit{\footnotesize TypeScript $|$ Next.js $|$ Python $|$ FastAPI $|$ WebSockets $|$ Scikit-Learn $|$ SHAP $|$ C/C++ $|$ Docker $|$ PyTest}
+\begin{itemize}[noitemsep, leftmargin=*]\small
+\item Built \textbf{AST transpiler} compiling \textbf{Scikit-Learn} models into zero-dependency, \textbf{malloc-free C headers} for \textbf{ESP32 / Cortex-M} deployment.
+\item Engineered \textbf{INT8 quantization} engine, cutting microcontroller flash footprint by \textbf{$\sim$75\%}.
+\item Automated \textbf{MLOps} pipeline for soft-voting ensemble with \textbf{SHAP} explainability, test-set \textbf{F1} gating, and automatic rollback on regression.
+\item Built \textbf{FastAPI} backend streaming real-time \textbf{WebSocket} telemetry to fault-tolerant \textbf{Next.js} dashboard with auto-reconnect.
+\item Verified C++/Python model-output parity with cross-language \textbf{PyTest} suite; containerized full stack with \textbf{Docker Compose}.
+\end{itemize}
+
+\vspace{2pt}
+\item \textbf{Semantic Comment Analyzer: Intent-Driven NLP Platform} | \href{https://github.com/IDKHowToCodeFR/Semantic-Comment-Analyze}{GitHub} \hfill \textit{Oct 2025 -- Dec 2025} \\
+\textit{\footnotesize Python 3.13 $|$ FastAPI $|$ Sentence-Transformers $|$ Scikit-Learn $|$ Hugging Face Transformers $|$ RoBERTa $|$ Pandas $|$ PyTest}
+\begin{itemize}[noitemsep, leftmargin=*]\footnotesize
+\item Built \textbf{FastAPI} NLP service (POST /api/analyze) returning \textbf{intent, confidence, sentiment, entities, urgency, tone, recommended action} as one JSON.
+\item Replaced slow zero-shot classification with \textbf{all-MiniLM-L6-v2} embeddings + \textbf{Logistic Regression / SVM} head, serving \textbf{thousands of requests/sec} with \textbf{dynamic intent labels}.
+\item Built \textbf{occlusion explainability}: masks each word, re-runs classifier, and measures confidence delta for \textbf{word-level intent attribution}.
+\item Integrated \textbf{sentiment} (HF pipeline, \textbf{RoBERTa} fine-tune script), \textbf{NER} (ORG, LOC, PER), and rule-based \textbf{business-heuristics} layer for urgency, tone, and routing.
+\item Runs \textbf{fully local} (training + inference, no cloud) on \textbf{4GB+ RAM}; Pandas CSV batch handler and \textbf{PyTest} suite.
+\end{itemize}
+\end{itemize}
+
+\noindent
+\resheading{\textbf{SKILLS}}
+\begin{itemize}[noitemsep, leftmargin=*]\small
+\item \textbf{Languages:} C++, Python, TypeScript, SQL, Bash
+\item \textbf{Backend:} FastAPI, REST APIs, WebSockets, JWT/RBAC, SQLite, APScheduler, Next.js
+\item \textbf{AI / ML:} PyTorch, Hugging Face Transformers, Sentence-Transformers, Scikit-Learn, SHAP, OpenCV, Tesseract, Ollama, RAG
+\item \textbf{Data / Visualization:} Pandas, NumPy, Plotly Dash
+\item \textbf{Developer Tools:} Git, GitHub Actions, Docker, PyTest, Linux
+\end{itemize}
+
+\vspace{3pt}
+\noindent
+\resheading{\textbf{RELATED COURSEWORK}}\par
+\vspace{3pt}
+\noindent{\small Machine Learning, Artificial Intelligence (AI), Computer Vision, Natural Language Processing (NLP), Operating Systems (OS), Computer Networks, Data Structures, Database Management System (DBMS)}
+\end{document}

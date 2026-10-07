@@ -1,0 +1,16 @@
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS generated files
+Thumbs.db
+
+# Any other generic stuff
+node_modules/
+dist/
+.env
