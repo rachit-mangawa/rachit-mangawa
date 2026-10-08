@@ -6,15 +6,21 @@ export default function Experience() {
   useReveal();
 
   return (
-    <main className="relative z-10 w-full min-h-screen pt-32 pb-32 px-6 md:px-12 max-w-5xl mx-auto">
-      <div className="reveal mb-20">
-        <h1 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">Experience</h1>
-        <p className="text-xl text-white/60 leading-relaxed max-w-2xl font-light">
-          A deeper look into the systems I've built, the impact they've had, and the engineering challenges overcome.
-        </p>
-      </div>
+    <main className="relative z-10 w-full overflow-hidden min-h-screen">
+      {/* Intro section */}
+      <section className="relative pt-40 pb-20 px-6 md:px-12 w-full max-w-7xl mx-auto">
+        <div className="reveal">
+          <h1 className="text-5xl md:text-8xl font-medium tracking-tighter text-white mb-8">
+            Experience <br/><span className="text-white/40">& Impact</span>
+          </h1>
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl font-light leading-relaxed">
+            A deeper look into the systems I've built, the impact they've had, and the engineering challenges overcome.
+          </p>
+        </div>
+      </section>
 
-      <div className="flex flex-col gap-24 border-l border-white/10 ml-[24px] md:ml-[28px]">
+      <section className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-32">
+        <div className="flex flex-col gap-24 border-l border-white/10 ml-6 md:ml-7">
         
         {/* UIDAI */}
         <div className="relative pl-8 md:pl-12 reveal reveal-delay-1">
@@ -23,12 +29,18 @@ export default function Experience() {
             <img src={aadhaarLogo} alt="UIDAI" className="object-contain w-full h-full p-2 md:p-3" />
           </div>
           
-          <div className="mb-8 pt-1 md:pt-2">
+          <div className="mb-6 pt-1 md:pt-2">
             <h2 className="text-2xl md:text-3xl font-medium text-white mb-3">Unique Identification Authority of India (UIDAI / Aadhaar)</h2>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <h3 className="text-xl text-white/70 font-medium">Software Developer Intern</h3>
-              <span className="text-xs tracking-[0.2em] uppercase text-white/40 font-bold flex-shrink-0 bg-white/5 px-4 py-2 rounded-full border border-white/10">Jun 2026 — Sep 2026</span>
+              <span className="text-xs tracking-[0.2em] uppercase text-white/40 font-bold shrink-0 bg-white/5 px-4 py-2 rounded-full border border-white/10">Jun 2026 — Sep 2026</span>
             </div>
+          </div>
+
+          <div className="flex flex-wrap gap-3 mb-10">
+            {['Python', 'FastAPI', 'Ollama', 'Plotly Dash', 'Pandas', 'WebSockets', 'SQLite WAL', 'OpenCV', 'Tesseract'].map(tag => (
+              <span key={tag} className="text-xs text-white/70 px-4 py-2 rounded-full bg-white/5 border border-white/10 tracking-widest font-medium">{tag}</span>
+            ))}
           </div>
           
           <div className="flex flex-col gap-12">
@@ -78,15 +90,10 @@ export default function Experience() {
             </div>
 
           </div>
-
-          <div className="flex flex-wrap gap-3 mt-8">
-            {['Python', 'FastAPI', 'Ollama', 'Plotly Dash', 'Pandas', 'WebSockets', 'SQLite WAL', 'OpenCV', 'Tesseract'].map(tag => (
-              <span key={tag} className="text-xs text-white/70 px-4 py-2 rounded-full bg-white/5 border border-white/10 tracking-[0.1em] font-medium">{tag}</span>
-            ))}
-          </div>
         </div>
 
-      </div>
+        </div>
+      </section>
     </main>
   );
 }

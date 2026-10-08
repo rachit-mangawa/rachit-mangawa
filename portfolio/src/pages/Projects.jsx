@@ -1,110 +1,113 @@
-import React, { useRef, useEffect } from 'react';
-import { PremiumCard, MagneticButton, useReveal, TranspilerVisual } from '../components/UI';
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { PremiumCard, MagneticButton, useReveal, TranspilerVisual, SemanticAnalyzerVisual } from '../components/UI';
 
 export default function Projects() {
-  const wrap = useRef(null);
-  const track = useRef(null);
+  useReveal();
+  const location = useLocation();
 
   useEffect(() => {
-    if (!wrap.current || !track.current) return;
-    
-    let mm = gsap.matchMedia();
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
-    // Only run GSAP horizontal scroll on desktop screens with no reduced motion preference
-    mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-      const distance = track.current.scrollWidth - window.innerWidth;
-      gsap.to(track.current, {
-        x: -distance,
-        ease: "none",
-        scrollTrigger: {
-          trigger: wrap.current,
-          start: "top top",
-          end: () => `+=${distance}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-    });
-
-    return () => mm.revert();
-  }, []);
+  const projects = [
+    {
+      id: "heartflow",
+      title: "HeartFlow OS",
+      description: "Distributed Edge AI platform bridging high-level Python MLOps and resource-constrained embedded systems.",
+      deepDive: [
+        <>Engineered a <span className="text-white font-medium pb-px border-b border-emerald-500/40">fault-tolerant telemetry dashboard</span> for live cardiovascular monitoring via WebSockets.</>,
+        <>Built an automated MLOps pipeline for seamless <span className="text-white font-medium pb-px border-b border-emerald-500/40">background retraining and hot-swapping</span> without interrupting active inference.</>,
+        <>Implemented an exporter that transpiles Scikit-Learn soft-voting ensembles into highly optimized, <span className="text-white font-medium pb-px border-b border-emerald-500/40">zero-dependency C++ code</span> tailored for microcontrollers (ESP32).</>
+      ],
+      tech: ['Next.js 16', 'React 19', 'FastAPI', 'Python 3.10', 'PlatformIO', 'WebSockets'],
+      repo: "https://github.com/IDKHowToCodeFR/HEARTFLOW_OS",
+      live: "https://idkhowtocodefr.github.io/HEARTFLOW_OS/",
+      visualContent: <TranspilerVisual />
+    },
+    {
+      id: "semantic",
+      title: "Semantic Analyzer",
+      description: "High-performance NLP pipeline for the semantic analysis of customer feedback and support tickets.",
+      deepDive: [
+        <>Replaced slow zero-shot classification with <span className="text-white font-medium pb-px border-b border-blue-500/40">all-MiniLM embeddings</span> and an <span className="text-white font-medium pb-px border-b border-blue-500/40">SVM classification head</span>, handling thousands of requests per second.</>,
+        <>Developed a custom <span className="text-white font-medium pb-px border-b border-blue-500/40">occlusion explainability algorithm</span> to calculate exact word-level contributions for intent attribution.</>,
+        <>Deployed a high-performance decoupled <span className="text-white font-medium pb-px border-b border-blue-500/40">FastAPI REST interface</span> layered with business heuristic evaluation.</>
+      ],
+      tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face', 'Scikit-Learn'],
+      repo: "https://github.com/IDKHowToCodeFR/Semantic-Comment-Analyze",
+      visualContent: <SemanticAnalyzerVisual />
+    }
+  ];
 
   return (
-    <main className="relative z-10 w-full min-h-[100dvh] bg-[#020202]">
-      {/* Intro section that scrolls normally before we pin */}
-      <section className="h-screen flex flex-col justify-center px-4 md:px-12 w-full max-w-[1400px] mx-auto overflow-hidden">
-        <h1 className="text-[15vw] leading-[0.8] font-semibold tracking-tighter text-white whitespace-nowrap -ml-[1vw]">
-          SELECTED<br/><span className="opacity-40">WORK</span>
-        </h1>
-        <p className="mt-8 text-xl text-white/50 max-w-md">
-          Scroll down to explore the architecture.
-        </p>
+    <main className="relative z-10 w-full overflow-hidden">
+      {/* Intro section */}
+      <section className="relative pt-40 pb-20 px-6 md:px-12 w-full max-w-7xl mx-auto">
+        <div className="reveal">
+          <h1 className="text-5xl md:text-8xl font-medium tracking-tighter text-white mb-8">
+            Architecture <br/><span className="text-white/40">& Code</span>
+          </h1>
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl font-light leading-relaxed">
+            A deep dive into the systems, compilers, and intelligent pipelines I've built. Scroll down to explore the technical decisions and architecture behind each project.
+          </p>
+        </div>
       </section>
 
-      {/* The horizontal scroll section (native CSS scroll on mobile, pinned GSAP on desktop) */}
-      <section ref={wrap} className="relative overflow-x-auto md:overflow-hidden snap-x snap-mandatory bg-[#020202]">
-        <div ref={track} className="flex min-h-[100dvh] items-center px-6 md:px-32 py-16 md:py-0 gap-8 md:gap-32 w-max">
-          
-          {/* Project 1 */}
-          <div className="w-[85vw] md:w-[65vw] max-w-5xl shrink-0 snap-center">
-            <PremiumCard>
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-4xl md:text-6xl font-medium tracking-tight mb-6">HeartFlow OS</h3>
-                  <p className="text-white/70 text-xl leading-relaxed mb-8">
-                    AST transpiler compiling Scikit-Learn models into zero-dependency, malloc-free C headers for ESP32/Cortex-M deployment. Engineered INT8 quantization engine, cutting microcontroller flash footprint by ~75%.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-12">
-                    {['TypeScript', 'FastAPI', 'C/C++', 'WebSockets', 'PyTest'].map(tag => (
-                      <span key={tag} className="px-4 py-2 text-sm tracking-wider uppercase bg-white/5 border border-white/10 rounded-full text-white/60">{tag}</span>
-                    ))}
+      {/* Projects Container */}
+      <section className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-40">
+        <div className="flex flex-col gap-32 md:gap-48">
+          {projects.map((project, idx) => {
+            const isEven = idx % 2 === 1; // 0-indexed, so idx 1 is the 2nd project (even)
+            return (
+            <div key={project.id} id={project.id} className="w-full reveal">
+              <PremiumCard className="w-full">
+                <div className={`flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center`}>
+                  
+                  {/* Left/Text Column */}
+                  <div className="w-full lg:w-1/2 flex flex-col items-start">
+                    <span className="text-emerald-400 font-mono text-sm mb-4 block tracking-wider">0{idx + 1} // {project.id.toUpperCase()}</span>
+                    <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">{project.title}</h2>
+                    
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.tech.map(tag => (
+                        <span key={tag} className="px-3 py-1.5 text-[10px] md:text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="space-y-4 text-base md:text-lg text-white/60 font-light leading-relaxed mb-10">
+                      {project.deepDive.map((paragraph, pIdx) => (
+                        <p key={pIdx}>{paragraph}</p>
+                      ))}
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-4">
+                      <MagneticButton href={project.repo}>View Source Code</MagneticButton>
+                      {project.live && (
+                        <MagneticButton href={project.live}>View Live</MagneticButton>
+                      )}
+                    </div>
                   </div>
-                  <MagneticButton href="https://github.com/IDKHowToCodeFR/HEARTFLOW_OS">View Source Code</MagneticButton>
-                </div>
-                <div className="flex items-center justify-center relative w-full h-full min-h-[300px]">
-                  <TranspilerVisual />
-                </div>
-              </div>
-            </PremiumCard>
-          </div>
 
-          {/* Project 2 */}
-          <div className="w-[85vw] md:w-[65vw] max-w-5xl shrink-0 snap-center">
-            <PremiumCard>
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="bg-[#050505] rounded-2xl aspect-square flex items-center justify-center border border-white/10 p-8 overflow-hidden relative group order-2 lg:order-1">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  <div className="grid grid-cols-4 gap-4 opacity-50 group-hover:opacity-100 transition-opacity duration-700">
-                    {Array.from({length: 16}).map((_, i) => (
-                      <div key={i} className="w-4 h-4 bg-white/20 rounded-sm animate-pulse" style={{ animationDelay: `${i * 100}ms` }}></div>
-                    ))}
+                  {/* Right/Visual Column */}
+                  <div className="w-full lg:w-1/2 flex items-center justify-center">
+                    {project.visualContent}
                   </div>
+
                 </div>
-                <div className="order-1 lg:order-2">
-                  <h3 className="text-4xl md:text-6xl font-medium tracking-tight mb-6">Semantic Analyzer</h3>
-                  <p className="text-white/70 text-xl leading-relaxed mb-8">
-                    Intent-driven NLP platform. Replaced slow zero-shot classification with all-MiniLM embeddings + SVM head serving thousands of requests/sec. Built occlusion explainability for word-level intent attribution.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-12">
-                    {['Python 3.13', 'FastAPI', 'Transformers', 'RoBERTa'].map(tag => (
-                      <span key={tag} className="px-4 py-2 text-sm tracking-wider uppercase bg-white/5 border border-white/10 rounded-full text-white/60">{tag}</span>
-                    ))}
-                  </div>
-                  <MagneticButton href="https://github.com/IDKHowToCodeFR/Semantic-Comment-Analyze">View Source Code</MagneticButton>
-                </div>
-              </div>
-            </PremiumCard>
-          </div>
-          
-          {/* End cap */}
-          <div className="w-[80vw] md:w-[40vw] shrink-0 snap-center flex flex-col items-center justify-center h-full">
-            <h2 className="text-[12vw] leading-none font-semibold tracking-tighter text-white/10">FIN.</h2>
-          </div>
+              </PremiumCard>
+            </div>
+          )})}
         </div>
       </section>
     </main>

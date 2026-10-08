@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="http://readme-typing-svg.herokuapp.com?font=Honk&size=100&duration=750&pause=4000&color=F7F7F7&center=true&vCenter=true&width=1000&height=100&lines=Rachit+Mangawa;CSAI+Undergrad;AI+%26+ML+Explorer" alt="Rachit Mangawa" />  
+  <img src="http://readme-typing-svg.herokuapp.com?font=Honk&size=100&duration=0.2&pause=40000&color=F7F7F7&center=true&vCenter=true&width=1000&height=100&lines=Rachit+Mangawa" alt="Rachit Mangawa" />  
 <!--   <img src="http://readme-typing-svg.herokuapp.com?font=Oi&size=50&duration=1&pause=4000000&color=F7F7F7&center=true&vCenter=true&width=1000&height=50&lines=I+really+don't+know+how+to+code" alt="IDKHowToCodeFR" />  
 </div>
 -->
@@ -10,8 +10,9 @@
 [![Kaggle](https://img.shields.io/badge/kaggle-black?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/rachitmangawa)  
 [![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-black?style=for-the-badge&logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/rachit-mangawa/)
 [![Email](https://img.shields.io/badge/Gmail-black?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mangawa.rachit701@gmail.com)
-[![Discord](https://img.shields.io/badge/discord-black?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1411813601542410290)
-<!--[![Alt GitHub](https://img.shields.io/badge/alt_github-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/i-win-again)
+[![Hugging Face](https://img.shields.io/badge/Hugging_Face-black?style=for-the-badge&logo=hugging-face&logoColor=white)](https://huggingface.co/IDKHowToCodeFr)
+<!--[![Discord](https://img.shields.io/badge/discord-black?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1411813601542410290)
+[![Alt GitHub](https://img.shields.io/badge/alt_github-black?style=for-the-badge&logo=github&logoColor=white)](https://github.com/i-win-again)
 -->
 </div>
 
@@ -57,7 +58,7 @@ B.Tech Computer Science & Artifical Intelligence (CSAI) student. Engaged in the 
   Rubik+Glitch
   Stick
   -->
-  <img src="http://readme-typing-svg.herokuapp.com?font=Black+Ops+One&size=50&duration=1&pause=400000&color=F7F7F7&center=true&vCenter=true&width=1000&height=50&lines=TECH‎+STACK" alt="Tech Stack" />
+  <img src="http://readme-typing-svg.herokuapp.com?font=VT323&size=70&duration=1&pause=400000&color=F7F7F7&center=true&vCenter=true& width=1000&height=70&lines=TECH‎+STACK" alt="Tech Stack" />
 </div>
 
 <p align="center">

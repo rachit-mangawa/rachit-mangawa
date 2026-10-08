@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PremiumCard, useReveal, TranspilerVisual, MagneticButton } from '../components/UI';
+import { useReveal, PremiumCard } from '../components/UI';
 import { GithubLogo, LinkedinLogo, EnvelopeSimple } from "@phosphor-icons/react";
 import aadhaarLogo from '../assets/aadhaar-logo.png';
 
@@ -11,37 +11,43 @@ export default function Home() {
     <main className="relative z-10 w-full overflow-hidden">
 
       {/* Stacked Hero Section */}
-      <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-350 mx-auto px-6 md:px-12 pt-32 pb-16">
+      <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
 
-        <div className="reveal w-full max-w-5xl">
-          <h1 className="text-[16vw] md:text-[10vw] leading-[0.8] font-medium tracking-tighter text-white mb-12">
-            Rachit Mangawa
-          </h1>
-        </div>
+        {/* 2-Column Split: Name & Bio Left, Tech Stack Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 w-full reveal">
+          
+          {/* Left Column (Name + Bio) */}
+          <div className="lg:col-span-8 flex flex-col justify-start">
+            <h1 className="text-[14vw] md:text-[9vw] leading-[0.9] font-medium tracking-tighter text-white mb-8 pb-2">
+              Rachit<br />Mangawa<span className="text-white/20">.</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left">
+              Systems engineer architecting <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">high-concurrency distributed backends</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">edge AI platforms</span>.
+              <br /><br />
+              Writing C++ and Python to ship complex RAG pipelines, agentic workflows, and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">hardware-accelerated telemetry systems</span> that turn raw research into production.
+            </p>
+          </div>
 
-        <div className="reveal reveal-delay-1 w-full max-w-6xl mb-4">
-          <p className="text-lg md:text-xl lg:text-2xl font-light text-white/60 leading-[1.6] tracking-tight w-full text-left">
-            Systems engineer architecting <span className="text-white">high-concurrency distributed backends</span> and <span className="text-white">edge AI platforms</span>. Writing C++ and Python to ship complex <span className="text-white">RAG pipelines</span>, <span className="text-white">agentic LLM workflows</span>, and <span className="text-white">hardware-accelerated telemetry systems</span> that turn raw research into production.
-          </p>
-        </div>
-
-        <div className="mt-10 reveal reveal-delay-2 w-full max-w-6xl">
-          {/* Minimalist Tech Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 w-full">
+          {/* Tech Stack Stack (Right Column) */}
+          <div className="lg:col-span-4 flex flex-col gap-3">
             {[
-              { label: "Backend Architecture", tech: "Python, FastAPI, C/C++", span: 1 },
-              { label: "Agentic AI", tech: "Ollama, Hugging Face, LLMs", span: 1 },
-              { label: "Data Pipelines", tech: "SQLite WAL, Vector DBs, RAG", span: 1 },
-              { label: "Frontend Systems", tech: "React, TypeScript, GSAP", span: 1 },
-              { label: "Core Infrastructure & Security", tech: "Docker, Cloudflare, Linux, AWS, Git Actions", span: 2 },
-              { label: "Real-time Machine Learning Systems", tech: "WebSockets, gRPC, Redis, TensorFlow, PyTorch", span: 2 }
+              { label: "Backend Engineering", tech: "Python, FastAPI, C/C++" },
+              { label: "Agentic AI & MCP", tech: "LangChain, Ollama, Hugging Face" },
+              { label: "Machine Learning", tech: "PyTorch, TensorFlow, Scikit-Learn" },
+              { label: "Data Pipelines", tech: "Pandas, SQLite WAL, Vector DBs" },
+              { label: "Real-time & Infra", tech: "WebSockets, Redis, Docker" },
             ].map((item, idx) => (
-              <div key={idx} className={`flex flex-col p-5 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors duration-300 ${item.span === 2 ? 'col-span-2' : 'col-span-1'}`}>
-                <span className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-bold mb-2">{item.label}</span>
-                <span className="text-white/90 text-sm font-medium">{item.tech}</span>
+              <div key={idx} className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300">
+                <div className="flex flex-col">
+                  <span className="text-white/40 text-[9px] uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
+                  <span className="text-white/90 text-sm md:text-base font-medium transition-transform duration-300 group-hover:translate-x-1">{item.tech}</span>
+                </div>
+                <svg className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-white/50" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </div>
             ))}
           </div>
+
         </div>
 
       </section>
@@ -90,32 +96,49 @@ export default function Home() {
       </section>
 
       {/* Featured Project Section */}
-      <section className="mb-32 w-full max-w-350 mx-auto px-6 md:px-12">
-        <div className="flex items-end justify-between mb-12 reveal">
+      <section className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex items-end justify-between mb-16 reveal">
           <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white">Featured Work</h2>
           <Link to="/projects" className="text-sm font-medium tracking-widest uppercase text-white/50 hover:text-white transition-colors pb-2">View All &rarr;</Link>
         </div>
 
-        <div className="reveal reveal-delay-1">
-          <PremiumCard>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-3xl md:text-5xl font-medium tracking-tight mb-6">HeartFlow OS</h3>
-                <p className="text-white/70 text-lg leading-relaxed mb-8">
-                  AST transpiler compiling Scikit-Learn models into zero-dependency, malloc-free C headers for ESP32/Cortex-M deployment. Engineered INT8 quantization engine, cutting microcontroller flash footprint by ~75%.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-10">
-                  {['TypeScript', 'FastAPI', 'C/C++', 'WebSockets'].map(tag => (
-                    <span key={tag} className="px-4 py-2 text-xs tracking-wider uppercase bg-white/5 border border-white/10 rounded-full text-white/60">{tag}</span>
-                  ))}
-                </div>
-                <MagneticButton href="/projects" isInternal>View Architecture</MagneticButton>
+        <div className="ml-6 md:ml-7 border-l border-white/10 flex flex-col gap-8 md:gap-12">
+          {[
+            {
+              title: "HeartFlow OS",
+              description: "Distributed Edge AI platform bridging high-level Python MLOps and resource-constrained embedded systems.",
+              tech: ['Next.js', 'React', 'FastAPI', 'Python', 'WebSockets'],
+              link: "/projects#heartflow"
+            },
+            {
+              title: "Semantic Analyzer",
+              description: "High-performance NLP pipeline for the semantic analysis of customer feedback and support tickets.",
+              tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face'],
+              link: "/projects#semantic"
+            }
+          ].map((project, idx) => (
+            <Link to={project.link} key={idx} className="group relative reveal block hover:bg-white/2 p-6 -ml-6 pl-12 md:pl-14 rounded-2xl transition-colors duration-300">
+              {/* Timeline Node */}
+              <div className="absolute left-6 top-10 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border-2 border-[#050505] group-hover:bg-white group-hover:scale-150 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300"></div>
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                <h3 className="text-xl md:text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-1 flex items-center gap-2">
+                  {project.title}
+                  <svg className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
+                </h3>
               </div>
-              <div className="flex items-center justify-center relative w-full h-full min-h-75">
-                <TranspilerVisual />
+              
+              <p className="text-base md:text-lg text-white/60 font-light mb-6 max-w-4xl">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map(tag => (
+                  <span key={tag} className="px-3 py-1.5 text-[10px] md:text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 group-hover:border-white/20 transition-colors duration-300 font-medium">{tag}</span>
+                ))}
               </div>
-            </div>
-          </PremiumCard>
+            </Link>
+          ))}
         </div>
       </section>
 
