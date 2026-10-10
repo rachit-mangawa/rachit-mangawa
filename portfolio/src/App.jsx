@@ -6,7 +6,6 @@ import Experience from './pages/Experience';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
 import Footer from './components/Footer';
-import './index.css';
 
 function ScrollToTop() {
   const { pathname } = useLocation();

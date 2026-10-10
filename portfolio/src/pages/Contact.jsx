@@ -14,19 +14,19 @@ export default function Contact() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 reveal reveal-delay-1">
-        <a href="mailto:rachit.mangawa.ug23@nsut.ac.in" className="group p-8 rounded-[2rem] bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02]">
+        <a href="mailto:rachit.mangawa.ug23@nsut.ac.in" className="group p-8 rounded-4xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02]">
           <h3 className="text-xl font-medium mb-2">Email</h3>
           <p className="text-white/50 group-hover:text-white transition-colors">rachit.mangawa.ug23@nsut.ac.in</p>
         </a>
-        <a href="https://www.linkedin.com/in/rachit-mangawa/" target="_blank" rel="noreferrer" className="group p-8 rounded-[2rem] bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02]">
+        <a href="https://www.linkedin.com/in/rachit-mangawa/" target="_blank" rel="noreferrer" className="group p-8 rounded-4xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02]">
           <h3 className="text-xl font-medium mb-2">LinkedIn</h3>
           <p className="text-white/50 group-hover:text-white transition-colors">Connect with me</p>
         </a>
-        <a href="https://github.com/IDKHowToCodeFR" target="_blank" rel="noreferrer" className="group p-8 rounded-[2rem] bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02]">
+        <a href="https://github.com/IDKHowToCodeFR" target="_blank" rel="noreferrer" className="group p-8 rounded-4xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02]">
           <h3 className="text-xl font-medium mb-2">GitHub</h3>
           <p className="text-white/50 group-hover:text-white transition-colors">View my repositories</p>
         </a>
-        <div className="p-8 rounded-[2rem] bg-white/5 ring-1 ring-white/10">
+        <div className="p-8 rounded-4xl bg-white/5 ring-1 ring-white/10">
           <h3 className="text-xl font-medium mb-2">Location</h3>
           <p className="text-white/50">NSUT, New Delhi, India</p>
         </div>

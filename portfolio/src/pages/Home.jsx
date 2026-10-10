@@ -15,13 +15,13 @@ export default function Home() {
 
         {/* 2-Column Split: Name & Bio Left, Tech Stack Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 w-full reveal">
-          
+
           {/* Left Column (Name + Bio) */}
           <div className="lg:col-span-8 flex flex-col justify-start">
             <h1 className="text-[14vw] md:text-[9vw] leading-[0.9] font-medium tracking-tighter text-white mb-8 pb-2">
               Rachit<br />Mangawa<span className="text-white/20">.</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left">
               Systems engineer architecting <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">high-concurrency distributed backends</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">edge AI platforms</span>.
               <br /><br />
@@ -43,7 +43,7 @@ export default function Home() {
                   <span className="text-white/40 text-[9px] uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
                   <span className="text-white/90 text-sm md:text-base font-medium transition-transform duration-300 group-hover:translate-x-1">{item.tech}</span>
                 </div>
-                <svg className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-white/50" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                {/* <svg className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-white/50" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> */}
               </div>
             ))}
           </div>
@@ -78,10 +78,10 @@ export default function Home() {
 
             <div className="text-lg md:text-xl text-white/60 leading-[1.6] font-light max-w-4xl flex flex-col gap-4">
               <p>
-                Engineered a 100% air-gapped, high-concurrency ETL pipeline replacing legacy workflows for over 1,000 users.
+                Built a fully air-gapped ETL pipeline now used by 1,000+ staff, replacing manual Excel-based processing.
               </p>
               <p>
-                Integrated local vision and language models (Ollama/gemma3) for strict boundary detection and JSON extraction, eliminating hallucinations across 9 regional languages.
+                Integrated local vision and language models (Ollama/gemma3) for boundary detection and structured JSON extraction across 9 regional languages.
               </p>
             </div>
 
@@ -106,13 +106,13 @@ export default function Home() {
           {[
             {
               title: "HeartFlow OS",
-              description: "Distributed Edge AI platform bridging high-level Python MLOps and resource-constrained embedded systems.",
+              description: "ML platform that exports Python models to optimized C++ for microcontrollers, with a live telemetry dashboard.",
               tech: ['Next.js', 'React', 'FastAPI', 'Python', 'WebSockets'],
               link: "/projects#heartflow"
             },
             {
               title: "Semantic Analyzer",
-              description: "High-performance NLP pipeline for the semantic analysis of customer feedback and support tickets.",
+              description: "NLP pipeline that classifies customer feedback and support tickets using sentence embeddings and SVM.",
               tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face'],
               link: "/projects#semantic"
             }
@@ -120,18 +120,18 @@ export default function Home() {
             <Link to={project.link} key={idx} className="group relative reveal block hover:bg-white/2 p-6 -ml-6 pl-12 md:pl-14 rounded-2xl transition-colors duration-300">
               {/* Timeline Node */}
               <div className="absolute left-6 top-10 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border-2 border-[#050505] group-hover:bg-white group-hover:scale-150 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300"></div>
-              
+
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
                 <h3 className="text-xl md:text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-1 flex items-center gap-2">
                   {project.title}
                   <svg className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                 </h3>
               </div>
-              
+
               <p className="text-base md:text-lg text-white/60 font-light mb-6 max-w-4xl">
                 {project.description}
               </p>
-              
+
               <div className="flex flex-wrap gap-2">
                 {project.tech.map(tag => (
                   <span key={tag} className="px-3 py-1.5 text-[10px] md:text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 group-hover:border-white/20 transition-colors duration-300 font-medium">{tag}</span>

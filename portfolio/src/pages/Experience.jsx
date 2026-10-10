@@ -14,7 +14,7 @@ export default function Experience() {
             Experience <br/><span className="text-white/40">& Impact</span>
           </h1>
           <p className="text-lg md:text-xl text-white/60 max-w-2xl font-light leading-relaxed">
-            A deeper look into the systems I've built, the impact they've had, and the engineering challenges overcome.
+            What I built, what it replaced, and what shipped.
           </p>
         </div>
       </section>

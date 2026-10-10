@@ -22,7 +22,7 @@ export default function Projects() {
     {
       id: "heartflow",
       title: "HeartFlow OS",
-      description: "Distributed Edge AI platform bridging high-level Python MLOps and resource-constrained embedded systems.",
+      description: "ML platform that exports Python models to optimized C++ for microcontrollers, with a live telemetry dashboard.",
       deepDive: [
         <>Engineered a <span className="text-white font-medium pb-px border-b border-emerald-500/40">fault-tolerant telemetry dashboard</span> for live cardiovascular monitoring via WebSockets.</>,
         <>Built an automated MLOps pipeline for seamless <span className="text-white font-medium pb-px border-b border-emerald-500/40">background retraining and hot-swapping</span> without interrupting active inference.</>,
@@ -36,11 +36,11 @@ export default function Projects() {
     {
       id: "semantic",
       title: "Semantic Analyzer",
-      description: "High-performance NLP pipeline for the semantic analysis of customer feedback and support tickets.",
+      description: "NLP pipeline that classifies customer feedback and support tickets using sentence embeddings and SVM.",
       deepDive: [
         <>Replaced slow zero-shot classification with <span className="text-white font-medium pb-px border-b border-blue-500/40">all-MiniLM embeddings</span> and an <span className="text-white font-medium pb-px border-b border-blue-500/40">SVM classification head</span>, handling thousands of requests per second.</>,
         <>Developed a custom <span className="text-white font-medium pb-px border-b border-blue-500/40">occlusion explainability algorithm</span> to calculate exact word-level contributions for intent attribution.</>,
-        <>Deployed a high-performance decoupled <span className="text-white font-medium pb-px border-b border-blue-500/40">FastAPI REST interface</span> layered with business heuristic evaluation.</>
+        <>Deployed a <span className="text-white font-medium pb-px border-b border-blue-500/40">FastAPI REST endpoint</span> with scoring heuristics for production routing.</>
       ],
       tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face', 'Scikit-Learn'],
       repo: "https://github.com/IDKHowToCodeFR/Semantic-Comment-Analyze",
@@ -57,7 +57,7 @@ export default function Projects() {
             Architecture <br/><span className="text-white/40">& Code</span>
           </h1>
           <p className="text-lg md:text-xl text-white/60 max-w-2xl font-light leading-relaxed">
-            A deep dive into the systems, compilers, and intelligent pipelines I've built. Scroll down to explore the technical decisions and architecture behind each project.
+            The systems and tools I've built, and the decisions behind them.
           </p>
         </div>
       </section>
