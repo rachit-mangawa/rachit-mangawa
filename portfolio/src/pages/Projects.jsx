@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { PremiumCard, MagneticButton, useReveal, TranspilerVisual, SemanticAnalyzerVisual } from '../components/UI';
+import { PremiumCard, MagneticButton } from '../components/UI';
+import useReveal from '../hooks/useReveal';
+import { PORTFOLIO_CONTENT } from '../content';
 
 export default function Projects() {
   useReveal();
   const location = useLocation();
+  const data = PORTFOLIO_CONTENT;
 
   useEffect(() => {
     if (location.hash) {
@@ -18,47 +21,50 @@ export default function Projects() {
     }
   }, [location]);
 
-  const projects = [
-    {
-      id: "heartflow",
-      title: "HeartFlow OS",
-      description: "ML platform that exports Python models to optimized C++ for microcontrollers, with a live telemetry dashboard.",
-      deepDive: [
-        <>Engineered a <span className="text-white font-medium pb-px border-b border-emerald-500/40">fault-tolerant telemetry dashboard</span> for live cardiovascular monitoring via WebSockets.</>,
-        <>Built an automated MLOps pipeline for seamless <span className="text-white font-medium pb-px border-b border-emerald-500/40">background retraining and hot-swapping</span> without interrupting active inference.</>,
-        <>Implemented an exporter that transpiles Scikit-Learn soft-voting ensembles into highly optimized, <span className="text-white font-medium pb-px border-b border-emerald-500/40">zero-dependency C++ code</span> tailored for microcontrollers (ESP32).</>
-      ],
-      tech: ['Next.js 16', 'React 19', 'FastAPI', 'Python 3.10', 'PlatformIO', 'WebSockets'],
-      repo: "https://github.com/IDKHowToCodeFR/HEARTFLOW_OS",
-      live: "https://idkhowtocodefr.github.io/HEARTFLOW_OS/",
-      visualContent: <TranspilerVisual />
-    },
-    {
-      id: "semantic",
-      title: "Semantic Analyzer",
-      description: "NLP pipeline that classifies customer feedback and support tickets using sentence embeddings and SVM.",
-      deepDive: [
-        <>Replaced slow zero-shot classification with <span className="text-white font-medium pb-px border-b border-blue-500/40">all-MiniLM embeddings</span> and an <span className="text-white font-medium pb-px border-b border-blue-500/40">SVM classification head</span>, handling thousands of requests per second.</>,
-        <>Developed a custom <span className="text-white font-medium pb-px border-b border-blue-500/40">occlusion explainability algorithm</span> to calculate exact word-level contributions for intent attribution.</>,
-        <>Deployed a <span className="text-white font-medium pb-px border-b border-blue-500/40">FastAPI REST endpoint</span> with scoring heuristics for production routing.</>
-      ],
-      tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face', 'Scikit-Learn'],
-      repo: "https://github.com/IDKHowToCodeFR/Semantic-Comment-Analyze",
-      visualContent: <SemanticAnalyzerVisual />
-    }
-  ];
-
+  const projects = data.projects;
   return (
     <main className="relative z-10 w-full overflow-hidden">
-      {/* Intro section */}
-      <section className="relative pt-40 pb-20 px-6 md:px-12 w-full max-w-7xl mx-auto">
-        <div className="reveal">
-          <h1 className="text-5xl md:text-8xl font-medium tracking-tighter text-white mb-8">
-            Architecture <br/><span className="text-white/40">& Code</span>
-          </h1>
-          <p className="text-lg md:text-xl text-white/60 max-w-2xl font-light leading-relaxed">
-            The systems and tools I've built, and the decisions behind them.
-          </p>
+      {/* Hero Section - Centered 2-Column Split matching Dashboard */}
+      <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 w-full reveal">
+
+          {/* Left Column (Headline + Architecture Overview) */}
+          <div className="lg:col-span-8 flex flex-col justify-start">
+            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.96] font-normal tracking-tight text-white mb-8 pb-2">
+              Architecture
+              <span className="block mt-1.5 md:mt-2.5 italic">
+                & Code<span className="text-white/40 not-italic">.</span>
+              </span>
+            </h1>
+
+            <div className="reveal reveal-delay-1 text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left space-y-4">
+              <p>
+                Bridging machine learning and hardware through <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">bare-metal compilers</span>, interpretable semantic analyzers, and upstream mathematical patches.
+              </p>
+              <p>
+                From transpiling soft-voting ensemble trees into pure C++ for <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">microcontroller registers</span>, to debugging Bessel function singularities inside the <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">TensorFlow Core autodiff engine</span>.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Column (Architecture & Tooling Specs) */}
+          <div className="lg:col-span-4 flex flex-col gap-3">
+            {[
+              { label: "Hardware Transpiler", value: "HeartFlow OS (C++17 / FreeRTOS)" },
+              { label: "Target Microcontroller", value: "ESP32 Bare-Metal Registers" },
+              { label: "Semantic Pipeline", value: "MiniLM Embeddings + SVM Head" },
+              { label: "Feature Attribution", value: "Custom Occlusion Algorithm" },
+              { label: "Upstream Core Patch", value: "TensorFlow Autodiff Singularity" },
+            ].map((item, idx) => (
+              <div key={idx} className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300 reveal" style={{ animationDelay: `${idx * 50 + 200}ms` }}>
+                <div className="flex flex-col">
+                  <span className="text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
+                  <span className="text-white/90 text-sm md:text-base font-medium transition-transform duration-300 group-hover:translate-x-1">{item.value}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -74,12 +80,12 @@ export default function Projects() {
                   
                   {/* Left/Text Column */}
                   <div className="w-full lg:w-1/2 flex flex-col items-start">
-                    <span className="text-emerald-400 font-mono text-sm mb-4 block tracking-wider">0{idx + 1} // {project.id.toUpperCase()}</span>
-                    <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">{project.title}</h2>
+                    <span className="text-emerald-400 font-mono text-xs uppercase tracking-[0.2em] mb-4 block">Project 0{idx + 1}</span>
+                    <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">{project.title}</h2>
                     
                     <div className="flex flex-wrap gap-2 mb-8">
                       {project.tech.map(tag => (
-                        <span key={tag} className="px-3 py-1.5 text-[10px] md:text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 font-medium">
+                        <span key={tag} className="px-3 py-1.5 text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 font-medium">
                           {tag}
                         </span>
                       ))}

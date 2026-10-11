@@ -28,6 +28,17 @@ jobs:
         working-directory: ./portfolio
         run: npm ci
 
+      - name: Compile LaTeX Document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          working_directory: portfolio
+
+      - name: Move PDF to Public folder
+        run: |
+          mkdir -p portfolio/public
+          mv portfolio/resume.pdf portfolio/public/resume.pdf
+
       - name: Build Vite App
         working-directory: ./portfolio
         run: npm run build

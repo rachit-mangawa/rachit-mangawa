@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useReveal, PremiumCard } from '../components/UI';
-import { GithubLogo, LinkedinLogo, EnvelopeSimple } from "@phosphor-icons/react";
+import { SectionLink } from '../components/UI';
+import useReveal from '../hooks/useReveal';
+import { Info, GitPullRequest } from "@phosphor-icons/react";
 import aadhaarLogo from '../assets/aadhaar-logo.png';
+import { PORTFOLIO_CONTENT } from '../content';
 
 export default function Home() {
   useReveal();
+  const data = PORTFOLIO_CONTENT;
 
   return (
     <main className="relative z-10 w-full overflow-hidden">
@@ -18,32 +21,25 @@ export default function Home() {
 
           {/* Left Column (Name + Bio) */}
           <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="text-[14vw] md:text-[9vw] leading-[0.9] font-medium tracking-tighter text-white mb-8 pb-2">
-              Rachit<br />Mangawa<span className="text-white/20">.</span>
+            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.88] font-normal tracking-tight text-white mb-8 pb-2">
+              {data.personal.name.split(' ')[0]}<br />
+              <span className="italic">{data.personal.name.split(' ')[1]}</span>
+              <span className="text-white/40 not-italic">.</span>
             </h1>
 
-            <p className="text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left">
-              Systems engineer architecting <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">high-concurrency distributed backends</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">edge AI platforms</span>.
-              <br /><br />
-              Writing C++ and Python to ship complex RAG pipelines, agentic workflows, and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1">hardware-accelerated telemetry systems</span> that turn raw research into production.
-            </p>
+            <div className="reveal reveal-delay-1 text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left">
+              {data.bio.content}
+            </div>
           </div>
 
           {/* Tech Stack Stack (Right Column) */}
           <div className="lg:col-span-4 flex flex-col gap-3">
-            {[
-              { label: "Backend Engineering", tech: "Python, FastAPI, C/C++" },
-              { label: "Agentic AI & MCP", tech: "LangChain, Ollama, Hugging Face" },
-              { label: "Machine Learning", tech: "PyTorch, TensorFlow, Scikit-Learn" },
-              { label: "Data Pipelines", tech: "Pandas, SQLite WAL, Vector DBs" },
-              { label: "Real-time & Infra", tech: "WebSockets, Redis, Docker" },
-            ].map((item, idx) => (
-              <div key={idx} className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300">
+            {data.techStack.map((item, idx) => (
+              <div key={idx} className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300 reveal" style={{ animationDelay: `${idx * 50 + 200}ms` }}>
                 <div className="flex flex-col">
-                  <span className="text-white/40 text-[9px] uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
+                  <span className="text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
                   <span className="text-white/90 text-sm md:text-base font-medium transition-transform duration-300 group-hover:translate-x-1">{item.tech}</span>
                 </div>
-                {/* <svg className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-white/50" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> */}
               </div>
             ))}
           </div>
@@ -55,8 +51,8 @@ export default function Home() {
       {/* Experience Section */}
       <section id="experience" className="mt-16 mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-end justify-between mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white">Experience</h2>
-          <Link to="/experience" className="text-sm font-medium tracking-widest uppercase text-white/50 hover:text-white transition-colors pb-2">View All &rarr;</Link>
+          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Experience</h2>
+          <SectionLink to="/experience">View All</SectionLink>
         </div>
 
         <div className="ml-6 md:ml-7 border-l border-white/10 flex flex-col gap-24">
@@ -69,24 +65,21 @@ export default function Home() {
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl md:text-2xl font-medium text-white mb-3">Unique Identification Authority of India (UIDAI / Aadhaar)</h3>
+              <h3 className="text-xl md:text-2xl font-medium text-white mb-3">{data.internships[0].company}</h3>
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <h4 className="text-xl text-white/70 font-medium">Software Developer Intern</h4>
-                <span className="text-xs tracking-[0.2em] uppercase text-white/40 font-bold shrink-0 bg-white/5 px-4 py-2 rounded-full border border-white/10">Jun 2026 — Sep 2026</span>
+                <h4 className="text-xl text-white/70 font-medium">{data.internships[0].role}</h4>
+                <span className="text-xs tracking-[0.2em] uppercase text-white/50 font-bold shrink-0 bg-white/5 px-4 py-2 rounded-full border border-white/10">{data.internships[0].date}</span>
               </div>
             </div>
 
             <div className="text-lg md:text-xl text-white/60 leading-[1.6] font-light max-w-4xl flex flex-col gap-4">
-              <p>
-                Built a fully air-gapped ETL pipeline now used by 1,000+ staff, replacing manual Excel-based processing.
-              </p>
-              <p>
-                Integrated local vision and language models (Ollama/gemma3) for boundary detection and structured JSON extraction across 9 regional languages.
-              </p>
+              {data.internships[0].shortPoints.map((point, idx) => (
+                <p key={idx}>{point}</p>
+              ))}
             </div>
 
             <div className="flex flex-wrap gap-3 mt-8">
-              {['Python', 'FastAPI', 'Ollama', 'Plotly Dash', 'Pandas / NumPy', 'WebSockets', 'SQLite WAL'].map(tag => (
+              {data.internships[0].tags.slice(0, 7).map(tag => (
                 <span key={tag} className="text-xs text-white/70 px-4 py-2 rounded-full bg-white/5 border border-white/10 tracking-widest font-medium">{tag}</span>
               ))}
             </div>
@@ -98,15 +91,15 @@ export default function Home() {
       {/* Featured Project Section */}
       <section className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-end justify-between mb-16 reveal">
-          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-white">Featured Work</h2>
-          <Link to="/projects" className="text-sm font-medium tracking-widest uppercase text-white/50 hover:text-white transition-colors pb-2">View All &rarr;</Link>
+          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Featured Work</h2>
+          <SectionLink to="/projects">View All</SectionLink>
         </div>
 
         <div className="ml-6 md:ml-7 border-l border-white/10 flex flex-col gap-8 md:gap-12">
           {[
             {
               title: "HeartFlow OS",
-              description: "ML platform that exports Python models to optimized C++ for microcontrollers, with a live telemetry dashboard.",
+              description: "ML platform exporting trained Python models to optimized C++ for microcontrollers, with a real-time monitoring dashboard.",
               tech: ['Next.js', 'React', 'FastAPI', 'Python', 'WebSockets'],
               link: "/projects#heartflow"
             },
@@ -117,12 +110,12 @@ export default function Home() {
               link: "/projects#semantic"
             }
           ].map((project, idx) => (
-            <Link to={project.link} key={idx} className="group relative reveal block hover:bg-white/2 p-6 -ml-6 pl-12 md:pl-14 rounded-2xl transition-colors duration-300">
+            <Link to={project.link} key={idx} className="group relative reveal block hover:bg-white/2 p-6 -ml-6 pl-12 md:pl-14 rounded-2xl transition-[color,background-color,transform] duration-300 active:scale-[0.99] active:duration-150">
               {/* Timeline Node */}
               <div className="absolute left-6 top-10 -translate-x-1/2 w-3 h-3 rounded-full bg-white/20 border-2 border-[#050505] group-hover:bg-white group-hover:scale-150 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300"></div>
 
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
-                <h3 className="text-xl md:text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-1 flex items-center gap-2">
+                <h3 className="font-serif text-xl md:text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-1 flex items-center gap-2">
                   {project.title}
                   <svg className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                 </h3>
@@ -134,7 +127,7 @@ export default function Home() {
 
               <div className="flex flex-wrap gap-2">
                 {project.tech.map(tag => (
-                  <span key={tag} className="px-3 py-1.5 text-[10px] md:text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 group-hover:border-white/20 transition-colors duration-300 font-medium">{tag}</span>
+                  <span key={tag} className="px-3 py-1.5 text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 group-hover:border-white/20 transition-colors duration-300 font-medium">{tag}</span>
                 ))}
               </div>
             </Link>
@@ -144,87 +137,84 @@ export default function Home() {
 
       {/* Achievements Section */}
       <section className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-16 reveal text-white">Achievements</h2>
+        <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-16 reveal text-white">Achievements</h2>
 
         <div className="grid md:grid-cols-2 gap-8 reveal reveal-delay-1">
           {/* Competitive Programming */}
-          <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
-            <h3 className="text-xl font-medium text-white mb-6">Competitive Programming</h3>
+          <div className="p-6 md:p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
+            <h3 className="font-serif text-xl font-medium text-white mb-6">Competitive Programming</h3>
             <ul className="flex flex-col gap-4 text-white/60 font-light">
               <li className="flex justify-between items-center border-b border-white/5 pb-4">
                 <div>
                   <div className="text-white/90 font-medium mb-1">
                     Codeforces <span className="text-white/30 font-light mx-1">:</span> <span className="text-green-400">Pupil</span>
                   </div>
-                  <a href="https://codeforces.com/profile/i_win_again" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-[10px] uppercase tracking-widest font-bold text-white/40 hover:text-white transition-colors">
+                  <a href="https://codeforces.com/profile/i_win_again" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     @i_win_again <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                   </a>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs uppercase tracking-widest text-white/40 block mb-1">Max Rating</span>
-                  <span className="block text-emerald-400 font-medium">1336</span>
+                  <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Max Rating</span>
+                  <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.codeforces.rating}</span>
                 </div>
               </li>
               <li className="flex justify-between items-center border-b border-white/5 pb-4">
                 <div>
                   <div className="text-white/90 font-medium mb-1">
-                    LeetCode <span className="text-white/30 font-light mx-1">:</span> Knight
+                    LeetCode <span className="text-white/30 font-light mx-1">:</span> {data.ratings.leetcode.rank}
                   </div>
-                  <a href="https://leetcode.com/u/idkhowtocodefr/" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-[10px] uppercase tracking-widest font-bold text-white/40 hover:text-white transition-colors">
+                  <a href="https://leetcode.com/u/idkhowtocodefr/" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     @idkhowtocodefr <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                   </a>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs uppercase tracking-widest text-white/40 block mb-1">Max Rating</span>
-                  <span className="block text-emerald-400 font-medium">1982</span>
+                  <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Max Rating</span>
+                  <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.leetcode.rating}</span>
                 </div>
               </li>
               <li className="flex justify-between items-center">
                 <div>
                   <div className="text-white/90 font-medium mb-1">
-                    LeetCode Biweekly 190
+                    LeetCode {data.ratings.leetcode.contest}
                   </div>
-                  <a href="https://leetcode.com/contest/biweekly-contest-190/" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-[10px] uppercase tracking-widest font-bold text-white/40 hover:text-white transition-colors">
+                  <a href="https://leetcode.com/contest/biweekly-contest-190/" target="_blank" rel="noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     Contest Page <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                   </a>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs uppercase tracking-widest text-white/40 block mb-1">Global Rank</span>
-                  <span className="block text-emerald-400 font-medium">316 <span className="text-white/40 text-[10px]">/ 38,291</span></span>
-                  <span className="block text-emerald-400/80 text-[10px] uppercase tracking-widest mt-1">Top 0.83%</span>
+                  <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Global Rank</span>
+                  <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.leetcode.globalRank} <span className="text-white/50 text-xs">/ {data.ratings.leetcode.totalParticipants.toLocaleString()}</span></span>
+                  <span className="block text-emerald-400/80 text-xs uppercase tracking-widest mt-1 font-mono tabular-nums">Top {data.ratings.leetcode.topPercent}%</span>
                 </div>
               </li>
             </ul>
           </div>
 
           {/* Open Source */}
-          <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
-            <h3 className="text-xl font-medium text-white mb-6">Open Source</h3>
+          <div className="p-6 md:p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
+            <h3 className="font-serif text-xl font-medium text-white mb-6">Open Source</h3>
             <div className="flex flex-col gap-4 text-white/60 font-light">
               <div>
                 <div className="flex flex-wrap items-center gap-3 mb-5">
-                  <span className="text-white/90 font-medium text-lg">TensorFlow Core</span>
-                  <div className="flex gap-2">
-                    <a href="https://github.com/tensorflow/tensorflow/issues/120578" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest font-bold bg-white/5 px-2 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-colors border border-white/10">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
-                      Issue #120578
+                  <span className="text-white/90 font-medium text-lg">{data.openSource.project}</span>
+                  <div className="flex gap-2 mt-2 md:mt-0">
+                    <a href={data.openSource.issueUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold bg-white/5 px-2 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-all duration-150 ease-out active:scale-[0.97] border border-white/10">
+                      <Info weight="bold" size={12} />
+                      Issue #{data.openSource.issueNumber}
                     </a>
-                    <a href="https://github.com/tensorflow/tensorflow/pull/120944" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[9px] uppercase tracking-widest font-bold bg-purple-500/10 px-2 py-1 rounded-md text-purple-400 hover:bg-purple-500/20 hover:text-purple-300 transition-colors border border-purple-500/20">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="18" r="3" /><circle cx="6" cy="6" r="3" /><path d="M13 6h3a2 2 0 0 1 2 2v7" /><line x1="6" y1="9" x2="6" y2="21" /></svg>
+                    <a href={data.openSource.prUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold bg-purple-500/10 px-2 py-1 rounded-md text-purple-400 hover:bg-purple-500/20 hover:text-purple-300 transition-all duration-150 ease-out active:scale-[0.97] border border-purple-500/20">
+                      <GitPullRequest weight="bold" size={12} />
                       Merged PR
                     </a>
                   </div>
                 </div>
                 <p className="text-sm leading-relaxed mb-6">
-                  Discovered and debugged a critical numerical edge case in TensorFlow's autodiff engine.
-                  The gradient for <code className="bg-black/40 px-1.5 py-0.5 rounded text-white/80 border border-white/10 font-mono text-xs">tf.math.bessel_i1</code> was hardcoded to return <code className="text-red-400 font-mono text-xs">1.0</code> at <code className="font-mono text-xs">x=0</code> - a removable singularity where the correct limit is mathematically <code className="text-emerald-400 font-mono text-xs">0.5</code>.
-                  <br /><br />
-                  Fixed the imputed gradient value deep inside the C++/Python <code className="font-mono text-white/70 text-xs">math_grad.py</code> layer and wrote comprehensive regression tests to prevent future silent NaN/Inf downstream errors in model training.
+                  {data.openSource.content}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-[10px] text-white/70 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 tracking-widest uppercase font-bold">Python</span>
-                  <span className="text-[10px] text-white/70 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 tracking-widest uppercase font-bold">C++</span>
-                  <span className="text-[10px] text-white/70 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 tracking-widest uppercase font-bold">Calculus</span>
+                  {data.openSource.tags.map(tag => (
+                    <span key={tag} className="text-xs text-white/70 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 tracking-widest uppercase font-bold">{tag}</span>
+                  ))}
                 </div>
               </div>
             </div>
