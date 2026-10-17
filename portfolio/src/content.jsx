@@ -8,8 +8,8 @@ export const PORTFOLIO_CONTENT = {
     email: "rachit.mangawa.ug23@nsut.ac.in",
     linkedin: "https://www.linkedin.com/in/rachit-mangawa/",
     linkedinHandle: "rachit-mangawa",
-    github: "https://github.com/IDKHowToCodeFR",
-    githubHandle: "IDKHowToCodeFR",
+    github: "https://github.com/rachit-mangawa",
+    githubHandle: "rachit-mangawa",
     kaggle: "https://www.kaggle.com/rachitmangawa",
     kaggleHandle: "rachitmangawa",
     huggingface: "https://huggingface.co/IDKHowToCodeFr",
@@ -108,8 +108,8 @@ export const PORTFOLIO_CONTENT = {
         <React.Fragment key="2">Built an MLOps pipeline for <span className="text-white font-medium pb-px border-b border-emerald-500/40">background retraining and model hot-swapping</span> without inference downtime.</React.Fragment>,
         <React.Fragment key="3">Wrote an exporter that transpiles Scikit-Learn soft-voting ensembles into <span className="text-white font-medium pb-px border-b border-emerald-500/40">zero-dependency C++</span> for ESP32 microcontrollers.</React.Fragment>
       ],
-      repo: "https://github.com/IDKHowToCodeFR/HEARTFLOW_OS",
-      live: "https://idkhowtocodefr.github.io/HEARTFLOW_OS/",
+      repo: "https://github.com/rachit-mangawa/HEARTFLOW_OS",
+      live: "https://rachit-mangawa.github.io/HEARTFLOW_OS/",
       visualContent: <TranspilerVisual />
     },
     {
@@ -122,7 +122,7 @@ export const PORTFOLIO_CONTENT = {
         <React.Fragment key="2">Developed a custom <span className="text-white font-medium pb-px border-b border-blue-500/40">occlusion explainability algorithm</span> to calculate exact word-level contributions for intent attribution.</React.Fragment>,
         <React.Fragment key="3">Deployed a <span className="text-white font-medium pb-px border-b border-blue-500/40">FastAPI REST endpoint</span> with scoring heuristics for production routing.</React.Fragment>
       ],
-      repo: "https://github.com/IDKHowToCodeFR/Semantic-Comment-Analyze",
+      repo: "https://github.com/rachit-mangawa/Semantic-Comment-Analyze",
       live: null,
       visualContent: <SemanticAnalyzerVisual />
     }
