@@ -18,7 +18,7 @@ jobs:
           template: classic
           base: header, activity, community, repositories
           repositories_forks: no
-          # repositories_skipped: tensorflow, BTP
+          repositories_skipped: tensorflow
           config_timezone: Asia/Calcutta
           config_display: large
           config_octicon: yes
