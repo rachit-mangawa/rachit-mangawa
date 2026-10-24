@@ -40,12 +40,12 @@ jobs:
           plugin_languages_threshold: 0%
           plugin_languages_details: bytes-size, percentage
 
-          # Coding Habits (Active hours & day distribution)
-          plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_days: 14
-          plugin_habits_charts: yes
-          plugin_habits_facts: no
+          # # Coding Habits (Active hours & day distribution)
+          # plugin_habits: yes
+          # plugin_habits_from: 200
+          # plugin_habits_days: 14
+          # plugin_habits_charts: yes
+          # plugin_habits_facts: no
 
           # Lines of code (Injected into base header)
           plugin_lines: yes
