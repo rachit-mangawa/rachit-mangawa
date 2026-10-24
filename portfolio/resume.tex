@@ -12,7 +12,18 @@
 \definecolor{mygrey}{gray}{0.82}
 \definecolor{cfpupil}{RGB}{0,140,0}
 \usepackage{hyperref}
-\hypersetup{hidelinks, colorlinks=true, urlcolor=blue}
+\hypersetup{
+    hidelinks,
+    colorlinks=true,
+    urlcolor=blue,
+    pdftitle={Rachit Mangawa - Resume},
+    pdfauthor={Rachit Mangawa},
+    pdfsubject={Software Engineer Resume},
+    pdfkeywords={Python, C++, TypeScript, FastAPI, Next.js, Machine Learning, NLP, Computer Vision, MLOps}
+}
+
+\input{glyphtounicode}
+\pdfgentounicode=1
 
 \setlength{\tabcolsep}{0in}
 \renewcommand{\labelitemii}{$\circ$}
@@ -20,106 +31,109 @@
 
 \setlist[itemize]{leftmargin=20pt, labelsep=4pt, itemsep=2pt, topsep=2pt, parsep=1pt, partopsep=2pt}
 
-\newcommand{\resheading}[1]{{\small \colorbox{mygrey}{\begin{minipage}{\textwidth}\textbf{#1 \vphantom{p\^{E}}}\end{minipage}}}}
+\newcommand{\resheading}[1]{{\small \colorbox{mygrey}{\begin{minipage}{\dimexpr\textwidth-2\fboxsep\relax}\textbf{#1 \vphantom{p\^{E}}}\end{minipage}}}}
 
 \begin{document}
 \noindent
 \begin{minipage}{0.15\linewidth}
-    \includegraphics[height=0.7in]{src/assets/NSUT_logo.png}
+    \includegraphics[height=0.7in]{assets/NSUT_logo.png}
 \end{minipage}
 \begin{minipage}{0.82\linewidth}
     \centering
-    {\Large\bfseries Rachit Mangawa}\\[1pt]
-    +91 9328692611 |
+    {\huge\bfseries Rachit Mangawa}\\[3pt]
+    {\small +91 9328692611 |
     \href{mailto:rachit.mangawa.ug23@nsut.ac.in}{rachit.mangawa.ug23@nsut.ac.in} |
     \href{https://www.linkedin.com/in/rachit-mangawa/}{LinkedIn} |
-    \href{https://github.com/rachit-mangawa}{GitHub}
+    \href{https://github.com/rachit-mangawa}{GitHub} | 
+    \href{https://rachit-mangawa.github.io/rachit-mangawa/}{Portfolio}}
 \end{minipage}
 
-\vspace{6pt}
-\setlength{\tabcolsep}{18pt}
+\vspace{4pt}
 
 \noindent
-\resheading{\textbf{EDUCATION}}
-\vspace{3pt}
+\resheading{EDUCATION}
+\vspace{2pt}
+{\footnotesize
+\renewcommand{\arraystretch}{0.95}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll@{}}
 \textbf{Course} & \textbf{Board / University} & \textbf{Year} & \textbf{CGPA / \%} \\
-\toprule
-B.Tech (CSAI) & Netaji Subhas University of Technology & 2023 - Present & 7.34 \\
-CBSE (Class XII) & SR.D. International School & 2022 - 2023 & 88.20 \\
-CBSE (Class X) & Swami Keshwanand Convent School & 2020 - 2021 & 90.40 \\
+\midrule[0.4pt]
+B.Tech (CSAI) & Netaji Subhas University of Technology & 2023 - Present & \textbf{7.34} \\
+CBSE (Class XII) & SR.D. International School & 2022 - 2023 & \textbf{88.20\%} \\
+CBSE (Class X) & Swami Keshwanand Convent School & 2020 - 2021 & \textbf{90.40\%} \\
 \end{tabular*}
+}
 
 \vspace{3pt}
 \noindent
-\resheading{\textbf{WORK EXPERIENCE}}
+\resheading{WORK EXPERIENCE}
 \begin{itemize}[leftmargin=*]\small
 \item \textbf{Unique Identification Authority of India (UIDAI) | Software Developer Intern}\hfill \textit{June 2026 - September 2026}
 
 \vspace{2pt}
 \textit{\textbf{Project 1: Offline OCR + LLM Grievance Processing System}}
 \begin{itemize}[noitemsep, leftmargin=*]\footnotesize
-\item Built fully \textbf{offline} grievance-letter pipeline for scanned PDFs in \textbf{12 languages}: \textbf{OpenCV} preprocessing (Otsu, deskew, CLAHE) $\rightarrow$ \textbf{Tesseract} OCR $\rightarrow$ \textbf{Ollama} (gemma3:4b) $\rightarrow$ schema-strict \textbf{JSON}.
-\item Optimized for \textbf{8GB CPU-only} hardware: disk-streamed uploads, LLM \textbf{boundary detection} to split multi-letter bundles, degraded-page flagging, and malformed-output fallback; \textbf{1--2 min/letter}.
-\item Shipped \textbf{HTML/JS review UI} with side-by-side scan and summary, \textbf{confidence scores}, and urgency/type filters for officer triage.
+\item Built an offline \textbf{FastAPI} pipeline for \textbf{50MB} scanned PDFs across \textbf{12 languages}, running \textbf{OpenCV} (Otsu, deskew, CLAHE) into \textbf{Tesseract OCR} and \textbf{Ollama} (\texttt{gemma3:4b}, \texttt{temp=0.0}) to extract \textbf{5 entity fields} into strict JSON.
+\item Capped memory under \textbf{8GB RAM} on CPU-only machines by streaming uploads to disk, splitting multi-letter bundles via LLM boundary detection, and flagging degraded Hindi scans at \textbf{1 to 2 min/letter}.
+\item Shipped a polling \textbf{HTML/JS triage UI} that pairs original scans with extracted summaries, \textbf{confidence scores}, and urgency filters on one screen.
 \end{itemize}
 
 \vspace{2pt}
 \textit{\textbf{Project 2: Contact Center Operations \& Analytics Platform}}
 \begin{itemize}[noitemsep, leftmargin=*]\footnotesize
-\item Built \textbf{Dash + FastAPI + Pandas} platform unifying \textbf{4 data sources} (CCF, CDR, UniMate, APR) across \textbf{2 vendors}, replacing manual \textbf{Excel} reporting; auto-computes \textbf{SL, AHT, avg hold} against \textbf{85\% / 240s / 20s} targets with cross-filtering, heatmaps, agent quadrant, and \textbf{180-day} range.
-\item Designed \textbf{async ETL} with \textbf{WebSocket} progress and stateless parsers: ingests \textbf{50MB / 100K+ row} workbooks in \textbf{5--15s} via \textbf{1,000-row} batches and \textbf{idempotent upserts}; \textbf{APScheduler} 3-min auto-ingest on \textbf{SQLite WAL}.
-\item Secured with \textbf{JWT RBAC}, \textbf{tenant isolation}, \textbf{X-Forwarded-For} audit logs, \textbf{bcrypt} lazy rehash, 30-min inactivity logout, and 90-day log pruning; architected for \textbf{1,000+ users}.
+\item Unified \textbf{4 telemetry feeds} (CCF, CDR, UniMate, APR; \textbf{4.2M+ calls}) across \textbf{2 vendors} into a single-port \textbf{FastAPI + Plotly Dash} app using DNIS prefix rules, tracking \textbf{85\% SL}, \textbf{240s AHT}, and \textbf{20s hold} targets over a \textbf{180-day window}.
+\item Wrote an \textbf{async ETL} pipeline with \textbf{WebSocket} progress and vectorized \textbf{NumPy/Pandas} parsers that ingests \textbf{50MB / 100K+ row} workbooks in \textbf{5 to 15s} via \textbf{1,000-row batch upserts} (\texttt{ON CONFLICT DO UPDATE}) and \textbf{3-min APScheduler sweeps} on \textbf{SQLite WAL}.
+\item Scoped row-level data by injecting \textbf{JWT} claims into \textbf{SQLAlchemy} queries, backed by \texttt{X-Forwarded-For} audit logs, \textbf{bcrypt} lazy rehashing, \textbf{30-min} idle timeouts, and \textbf{90-day} log pruning for \textbf{1,000+ users}.
 \end{itemize}
 \end{itemize}
 
 \noindent
-\resheading{\textbf{ACHIEVEMENTS}}
-\begin{itemize}[noitemsep, leftmargin=*]
-\item \textbf{\textcolor{cfpupil}{Pupil}} on \href{https://codeforces.com/profile/i_win_again}{Codeforces} (max rating \textbf{1341}); 
-\item \textbf{Knight} on \href{https://leetcode.com/u/idkhowtocodefr/}{LeetCode} (max rating \textbf{1982}, top \textbf{2.91\%});
-\item \textbf{Global Rank 316} of 38,291 (top \textbf{0.83\%}) -- \href{https://leetcode.com/contest/biweekly-contest-190/}{LeetCode Biweekly Contest 190}.
-\item \textbf{Open Source:} Debugged a numerical edge case in \textbf{TensorFlow}'s autodiff - tf.math.bessel\_i1's gradient was hardcoded to return \textbf{1.0} at $x{=}0$, a removable singularity where the correct limit is \textbf{0.5}; fixed the imputed value in math\_grad.py and added regression tests in special\_math\_ops\_test.py covering bessel\_i1 and bessel\_i1e. \textbf{Merged} - \href{https://github.com/tensorflow/tensorflow/issues/120578}{Issue \#120578}, \href{https://github.com/tensorflow/tensorflow/pull/120944}{PR \#120944}.
-\end{itemize}
-
-\noindent
-\resheading{\textbf{PROJECTS}}
+\resheading{PROJECTS}
 \begin{itemize}[leftmargin=*]\small
-\item \textbf{HeartFlow OS} | \href{https://github.com/rachit-mangawa/HEARTFLOW_OS}{GitHub} $|$ \href{https://rachit-mangawa.github.io/HEARTFLOW_OS}{Live Demo} \hfill \textit{Feb 2026 -- April 2026} \\
-\textit{\footnotesize TypeScript $|$ Next.js $|$ Python $|$ FastAPI $|$ WebSockets $|$ Scikit-Learn $|$ SHAP $|$ C/C++ $|$ Docker $|$ PyTest}
-\begin{itemize}[noitemsep, leftmargin=*]\small
-\item Built \textbf{AST transpiler} compiling \textbf{Scikit-Learn} models into zero-dependency, \textbf{malloc-free C headers} for \textbf{ESP32 / Cortex-M} deployment.
-\item Engineered \textbf{INT8 quantization} engine, cutting microcontroller flash footprint by \textbf{$\sim$75\%}.
-\item Automated \textbf{MLOps} pipeline for soft-voting ensemble with \textbf{SHAP} explainability, test-set \textbf{F1} gating, and automatic rollback on regression.
-\item Built \textbf{FastAPI} backend streaming real-time \textbf{WebSocket} telemetry to fault-tolerant \textbf{Next.js} dashboard with auto-reconnect.
-\item Verified C++/Python model-output parity with cross-language \textbf{PyTest} suite; containerized full stack with \textbf{Docker Compose}.
+\item \textbf{HeartFlow OS} | \href{https://github.com/rachit-mangawa/HEARTFLOW_OS}{GitHub} $|$ \href{https://rachit-mangawa.github.io/HEARTFLOW_OS}{Live Demo} $|$ \href{https://huggingface.co/spaces/IDKHowToCodeFr/tinyml-backend}{HF Space} \hfill \textit{Feb 2026 - April 2026} \\
+\textit{\footnotesize C99 $|$ Python $|$ TypeScript $|$ Next.js $|$ FastAPI $|$ Scikit-Learn $|$ SHAP $|$ WebSockets $|$ Web Serial API $|$ Docker}
+\begin{itemize}[noitemsep, leftmargin=*]\footnotesize
+\item Wrote an \textbf{AST transpiler} that compiles a \textbf{5-model Scikit-Learn ensemble} (RF, MLP, SVM, LogReg, KNN) into standalone, \textbf{zero-malloc C99 headers} (\textbf{$<$512B stack}) for \textbf{ESP32-S3, Cortex-M4, and RP2040} chips.
+\item Added \textbf{INT8 quantization} to cut SRAM footprint by \textbf{76.4\%} (\textbf{34.6 KB to 8.15 KB}), hitting \textbf{18.4 $\mu$s} on-device inference (\textbf{54,340 vec/sec}, \textbf{1,902$\times$ faster} than the 35ms cloud REST baseline).
+\item Built an automated \textbf{MLOps pipeline} (\textbf{96.2\% accuracy}, \textbf{0.948 macro-F1}, \textbf{42.6\% lower variance}) that maps \textbf{40+ CSV header aliases}, computes \textbf{SHAP} attributions in \textbf{$<$15ms}, gates on holdout F1, and hot-swaps models in \textbf{0ms}.
+\item Streamed \textbf{250 Hz ECG \& PPG} packets over \textbf{Web Serial} (\textbf{115,200 baud}) to a \textbf{60 FPS Next.js} canvas with \textbf{120 $\mu$s} in-browser inference (\textbf{0 KB egress}) and \textbf{99.8\%} dataset compression across \textbf{60,000 rows} (\textbf{4.49 MB to 8.2 KB}).
+\item Verified C99 parity, zero-malloc rules, and INT8 bounds across \textbf{58 PyTest tests} (\textbf{100\% pass in 5.5s}); deployed via \textbf{Docker} on Hugging Face Spaces.
 \end{itemize}
 
 \vspace{2pt}
-\item \textbf{Semantic Comment Analyzer: Intent-Driven NLP Platform} | \href{https://github.com/rachit-mangawa/Semantic-Comment-Analyze}{GitHub} \hfill \textit{Oct 2025 -- Dec 2025} \\
+\item \textbf{Semantic Comment Analyzer: Intent-Driven NLP Platform} | \href{https://github.com/rachit-mangawa/Semantic-Comment-Analyzer}{GitHub} \hfill \textit{Oct 2025 - Dec 2025} \\
 \textit{\footnotesize Python 3.13 $|$ FastAPI $|$ Sentence-Transformers $|$ Scikit-Learn $|$ Hugging Face Transformers $|$ RoBERTa $|$ Pandas $|$ PyTest}
 \begin{itemize}[noitemsep, leftmargin=*]\footnotesize
-\item Built \textbf{FastAPI} NLP service (POST /api/analyze) returning \textbf{intent, confidence, sentiment, entities, urgency, tone, recommended action} as one JSON.
-\item Replaced slow zero-shot classification with \textbf{all-MiniLM-L6-v2} embeddings + \textbf{Logistic Regression / SVM} head, serving \textbf{thousands of requests/sec} with \textbf{dynamic intent labels}.
-\item Built \textbf{occlusion explainability}: masks each word, re-runs classifier, and measures confidence delta for \textbf{word-level intent attribution}.
-\item Integrated \textbf{sentiment} (HF pipeline, \textbf{RoBERTa} fine-tune script), \textbf{NER} (ORG, LOC, PER), and rule-based \textbf{business-heuristics} layer for urgency, tone, and routing.
-\item Runs \textbf{fully local} (training + inference, no cloud) on \textbf{4GB+ RAM}; Pandas CSV batch handler and \textbf{PyTest} suite.
+\item Built a \textbf{FastAPI} endpoint (\texttt{POST /api/analyze}) that extracts \textbf{7 outputs} (intent, confidence, sentiment, entities, urgency, tone, routing action) in one JSON response.
+\item Replaced zero-shot classification with \textbf{all-MiniLM-L6-v2} embeddings + \textbf{Logistic Regression / SVM} heads, cutting CPU latency to \textbf{$<$15ms} (\textbf{1,000+ req/sec} batch throughput) with custom intent labels.
+\item Implemented \textbf{word-level occlusion explainability} by masking single tokens and measuring the drop in classifier confidence.
+\item Combined a \textbf{RoBERTa} sentiment pipeline, \textbf{3-class NER} (ORG, LOC, PER), and rule-based heuristics to score urgency and route tickets.
+\item Packaged training and inference to run locally inside \textbf{4GB RAM} with zero cloud calls, a vectorized \textbf{Pandas} CSV batch handler, and a \textbf{PyTest} suite.
 \end{itemize}
 \end{itemize}
 
 \noindent
-\resheading{\textbf{SKILLS}}
+\resheading{ACHIEVEMENTS}
 \begin{itemize}[noitemsep, leftmargin=*]\small
-\item \textbf{Languages:} C++, Python, TypeScript, SQL, Bash
-\item \textbf{Backend:} FastAPI, REST APIs, WebSockets, JWT/RBAC, SQLite, APScheduler, Next.js
-\item \textbf{AI / ML:} PyTorch, Hugging Face Transformers, Sentence-Transformers, Scikit-Learn, SHAP, OpenCV, Tesseract, Ollama, RAG
-\item \textbf{Data / Visualization:} Pandas, NumPy, Plotly Dash
-\item \textbf{Developer Tools:} Git, GitHub Actions, Docker, PyTest, Linux
+\item \textbf{\textcolor{cfpupil}{Pupil}} on \href{https://codeforces.com/profile/i_win_again}{Codeforces} (max rating \textbf{1343}).
+\item \textbf{Knight} on \href{https://leetcode.com/u/rachit-mangawa/}{LeetCode} (max rating \textbf{1987}, \textbf{top 2.84\%}).
+\item \textbf{Global Rank 316} of \textbf{38,291} (\textbf{top 0.83\%}) in \href{https://leetcode.com/contest/biweekly-contest-190/}{LeetCode Biweekly Contest 190}.
+\item \textbf{Open Source (TensorFlow):} Fixed a numerical bug in \texttt{tf.math.bessel\_i1} autodiff where the gradient at $x{=}0$ returned \textbf{1.0} instead of the true limit \textbf{0.5}; patched \texttt{math\_grad.py} and added regression tests in \texttt{special\_math\_ops\_test.py} for \texttt{bessel\_i1} and \texttt{bessel\_i1e}. \textbf{Merged} (\href{https://github.com/tensorflow/tensorflow/issues/120578}{Issue \#120578}, \href{https://github.com/tensorflow/tensorflow/pull/120944}{PR \#120944}).
+\end{itemize}
+
+\noindent
+\resheading{SKILLS}
+\begin{itemize}[noitemsep, leftmargin=*]\small
+\item \textbf{Languages:} C/C++, Python, TypeScript, SQL, Bash
+\item \textbf{Backend:} FastAPI, Next.js, REST APIs, WebSockets, SQLAlchemy, SQLite, JWT/RBAC
+\item \textbf{Machine Learning:} PyTorch, Hugging Face Transformers, Sentence-Transformers, Scikit-Learn, SHAP, OpenCV, Tesseract, Ollama
+\item \textbf{Data \& Visualization:} Pandas, NumPy, Plotly Dash
+\item \textbf{Developer Tools:} Docker, Git, GitHub Actions, PyTest, Linux
 \end{itemize}
 
 \vspace{3pt}
 \noindent
-\resheading{\textbf{RELATED COURSEWORK}}\par
-\vspace{3pt}
-\noindent{\small Machine Learning, Artificial Intelligence (AI), Computer Vision, Natural Language Processing (NLP), Operating Systems (OS), Computer Networks, Data Structures, Database Management System (DBMS)}
+\resheading{RELATED COURSEWORK}\par
+\vspace{2pt}
+\noindent{\small Data Structures \& Algorithms, Machine Learning, Artificial Intelligence, Natural Language Processing, Computer Vision, Operating Systems, Database Management Systems (DBMS), Computer Networks}
 \end{document}
