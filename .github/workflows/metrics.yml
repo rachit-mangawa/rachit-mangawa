@@ -35,8 +35,8 @@ jobs:
           plugin_languages_analysis_timeout: 60
           plugin_languages_analysis_timeout_repositories: 15
           plugin_languages_categories: programming
-          # plugin_languages_ignored: html, css, tex, less, makefile, cmake, shell, gnuplot, jupyter notebook
-          plugin_languages_limit: 24
+          plugin_languages_ignored: html, css, tex, less, makefile, cmake, shell, gnuplot, jupyter notebook, tsx
+          plugin_languages_limit: 12
           plugin_languages_threshold: 0%
           plugin_languages_details: bytes-size, percentage
 
