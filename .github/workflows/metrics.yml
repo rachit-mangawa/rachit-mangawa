@@ -42,7 +42,7 @@ jobs:
           plugin_languages_analysis_timeout: 60
           plugin_languages_analysis_timeout_repositories: 15
           plugin_languages_categories: data, markup, programming, prose
-          plugin_languages_colors: github
+          plugin_languages_colors: rainbow
           plugin_languages_limit: 24
           # plugin_languages_ignored: html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot
           plugin_languages_indepth: no
