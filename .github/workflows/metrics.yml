@@ -31,7 +31,7 @@ jobs:
           plugin_languages: yes
           plugin_languages_colors: rainbow
           plugin_languages_sections: most-used
-          plugin_languages_indepth: no
+          plugin_languages_indepth: yes
           plugin_languages_analysis_timeout: 60
           plugin_languages_analysis_timeout_repositories: 15
           plugin_languages_categories: programming
@@ -58,7 +58,7 @@ jobs:
 
           # Notable Contributions
           plugin_notable: yes
-          plugin_notable_from: all
-          plugin_notable_skipped: mayanktyagi18122000/Gateway-Distriparks, pratistha09/Gateway-Distriparks
+          plugin_notable_from: tensorflow/tensorflow
+          # plugin_notable_skipped: mayanktyagi18122000/Gateway-Distriparks, pratistha09/Gateway-Distriparks
           plugin_notable_repositories: yes
           plugin_notable_types: commit, issue, pull_request
