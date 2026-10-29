@@ -13,7 +13,7 @@ jobs:
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           user: rachit-mangawa
-          template: terminal
+          template: classic
           base: header, activity, community, repositories
           
           # Layout & Visual Config
@@ -52,9 +52,9 @@ jobs:
           plugin_lines_sections: base
 
           # Follow-up (Open/Closed Issues & PRs)
-          plugin_followup: yes
-          plugin_followup_archived: no
-          plugin_followup_sections: repositories, user
+          # plugin_followup: yes
+          # plugin_followup_archived: no
+          # plugin_followup_sections: repositories, user
 
           # Notable Contributions
           # plugin_notable: yes
