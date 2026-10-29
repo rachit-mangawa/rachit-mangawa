@@ -18,7 +18,7 @@
 <p align="center">
   <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=python,cpp,r,kotlin,luau,bash,powershell,regex,markdown,yaml,androidstudio,vscode,robloxstudio,pygame,git,github,discord,discordbots,npm,fastapi,pydantic,pytest,streamlit,gradio&perline=4" alt="Code & Dev Tools" /></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="output/bonsai-growth.gif" width="25%" alt="my git-bonsai" />
+  <img src="output/bonsai-growth.gif" width="35%" alt="my git-bonsai" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow,pytorch,scikitlearn,numpy,pandas,matplotlib,opencv,huggingface,langchain,ollama,jupyter,kaggle,docker,kubernetes,githubactions,linux,wsl,terminal,mysql,supabase,redis,n8n,vercel,mcp&perline=4" alt="AI, Data & Ops" /></a>
 </p>
