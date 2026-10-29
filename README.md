@@ -24,4 +24,6 @@
   </a>
 </p>
 
+<img src="output/bonsai-growth.gif" width="384" alt="my git-bonsai" />
+
 <img src="./github-metrics.svg" alt="METRICS" width="100%">
