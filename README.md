@@ -16,11 +16,11 @@
   <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=TECH+STACK+%26+GIT+BONSAI" alt="Typing effect" />
 </div>
 <p align="center">
-  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=python,cpp,r,kotlin,luau,bash,powershell,regex,markdown,yaml,androidstudio,vscode,robloxstudio,pygame,git,github,discord,discordbots,npm,fastapi,pydantic,pytest,streamlit,gradio&perline=4" width="25%" alt="Code & Dev Tools" /></a>
+  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=python,cpp,r,kotlin,luau,bash,powershell,regex,markdown,yaml,androidstudio,vscode,robloxstudio,pygame,git,github,discord,discordbots,npm,fastapi,pydantic,pytest,streamlit,gradio&perline=4" width="20%" alt="Code & Dev Tools" /></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="output/bonsai.gif" width="40%" alt="my git-bonsai" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow,pytorch,scikitlearn,numpy,pandas,matplotlib,opencv,huggingface,langchain,ollama,jupyter,kaggle,docker,kubernetes,githubactions,linux,wsl,terminal,mysql,supabase,redis,n8n,vercel,mcp&perline=4" width="25%" alt="AI, Data & Ops" /></a>
+  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow,pytorch,scikitlearn,numpy,pandas,matplotlib,opencv,huggingface,langchain,ollama,jupyter,kaggle,docker,kubernetes,githubactions,linux,wsl,terminal,mysql,supabase,redis,n8n,vercel,mcp&perline=4" width="20%" alt="AI, Data & Ops" /></a>
 </p>
 
 <img src="./github-metrics.svg" alt="METRICS" width="100%">
