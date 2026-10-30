@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Honk&size=120&duration=0.1&pause=40000&color=F7F7F7&center=true&vCenter=true&width=1000&height=150&lines=Rachit+Mangawa" alt="Rachit Mangawa" /> 
+  <img src="https://readme-typing-svg.herokuapp.com?font=Honk&size=130&duration=0.1&pause=40000&color=F7F7F7&center=true&vCenter=true&width=1000&height=150&lines=Rachit+Mangawa" alt="Rachit Mangawa" /> 
   <!-- <img src="https://readme-typing-svg.herokuapp.com?font=Honk&size=100&duration=0.2&pause=40000&color=F7F7F7&center=true&vCenter=true&width=1000&height=100&lines=Mangawa" alt="Rachit Mangawa" />  -->
 </div>
 
@@ -15,7 +15,7 @@
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=70&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=TECH+STACK+%26+GIT+BONSAI" alt="Typing effect" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=50&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=TECH+STACK+%26+GIT+BONSAI" alt="Typing effect" />
 </div>
 
 <p align="center">
