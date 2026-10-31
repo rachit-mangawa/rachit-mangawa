@@ -15,15 +15,18 @@
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=TECH+STACK+%26+GIT+BONSAI" alt="Typing effect" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=TECH+STACK" alt="Tech Stack" />
 </div>
 
 <p align="center">
-  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=python,cpp,r,kotlin,luau,bash,powershell,regex,markdown,yaml,androidstudio,vscode,robloxstudio,pygame,git,github,discord,discordbots,npm,fastapi,pydantic,pytest,streamlit,gradio&perline=4" width="25%" alt="Code & Dev Tools" /></a>
-  &nbsp;
-  <img src="output/bonsai.gif" width="40%" alt="my git-bonsai" />
-  &nbsp;
-  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=tensorflow,pytorch,scikitlearn,numpy,pandas,matplotlib,opencv,huggingface,langchain,ollama,jupyter,kaggle,docker,kubernetes,githubactions,linux,wsl,terminal,mysql,supabase,redis,n8n,vercel,mcp&perline=4" width="25%" alt="AI, Data & Ops" /></a>
+  <a href="https://skillicons.dev"><img src="https://go-skill-icons.vercel.app/api/icons?i=androidstudio,bash,cpp,docker,fastapi,git,github,githubactions,gradio,huggingface,json,jupyter,kaggle,kotlin,kubernetes,langchain,linux,markdown,matplotlib,mcp,mysql,n8n,npm,numpy,ollama,opencv,pandas,pkl,powershell,pydantic,pytest,python,pytorch,redis,regex,scikitlearn,streamlit,supabase,tensorflow,yaml&perline=20" alt="Tech Stack" /></a>
 </p>
 
-<img src="./github-metrics.svg" alt="METRICS" width="100%">
+<p align="center">
+  <!-- Row 1: Titles side by side -->
+  <!-- <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=GIT+BONSAI+%26+CONTRIBUTION+GRAPH" alt="Bonsai and Contri graph" />
+  <br>
+  <!-- Row 2: Images side by side -->
+  <!-- <img src="output/bonsai.gif" alt="my git-bonsai" width="45%" height="800%" /> --> 
+  <img src="./github-metrics.svg" alt="git-metrics" width="100%" />
+</p>
