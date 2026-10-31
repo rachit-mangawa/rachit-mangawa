@@ -12,10 +12,20 @@
 [![Email](https://img.shields.io/badge/Gmail-black?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rachit.mangawa.work@gmail.com)
 [![Hugging Face](https://img.shields.io/badge/Hugging_Face-black?style=for-the-badge&logo=hugging-face&logoColor=white)](https://huggingface.co/IDKHowToCodeFr)  
 
-</div>
-
+<!-- </div>
+<div align = "center">
+ <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+  <img src="output/bonsai.png" alt="my git-bonsai" width="10%" />
+</div> -->
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=TECH+STACK" alt="Tech Stack" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=300&height=70&lines=TECH+STACK" alt="Tech Stack" />
 </div>
 
 <p align="center">
@@ -23,10 +33,5 @@
 </p>
 
 <p align="center">
-  <!-- Row 1: Titles side by side -->
-  <!-- <img src="https://readme-typing-svg.herokuapp.com?font=VT323&size=60&duration=0.1&pause=4000&color=F7F7F7&center=true&vCenter=true&width=800&height=70&lines=GIT+BONSAI+%26+CONTRIBUTION+GRAPH" alt="Bonsai and Contri graph" />
-  <br>
-  <!-- Row 2: Images side by side -->
-  <!-- <img src="output/bonsai.gif" alt="my git-bonsai" width="45%" height="800%" /> --> 
   <img src="./github-metrics.svg" alt="git-metrics" width="100%" />
 </p>
