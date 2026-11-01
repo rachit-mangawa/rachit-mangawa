@@ -15,7 +15,7 @@ export default function Resume() {
 
           {/* Left Column (Headline + Credentials Overview + Download) */}
           <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.96] font-normal tracking-tight text-white mb-8 pb-2">
+            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.92] font-normal tracking-tight text-white mb-8 pb-2">
               Curriculum
               <span className="block mt-1.5 md:mt-2.5 italic">
                 Vitae<span className="text-white/40 not-italic">.</span>
@@ -40,7 +40,7 @@ export default function Resume() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-4 bg-white text-black hover:bg-white/95 rounded-full px-8 py-4 transition-[transform,background-color] duration-300 hover:scale-[1.02] active:scale-[0.97]"
               >
-                <span className="text-sm font-bold tracking-widest uppercase">Download PDF</span>
+                <span className="text-xs font-bold tracking-[0.2em] uppercase">Download PDF</span>
                 <div className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center ml-2 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-115">
                   <DownloadSimple weight="bold" size={14} aria-hidden="true" />
                 </div>
@@ -71,6 +71,15 @@ export default function Resume() {
 
       {/* PDF Viewer Container */}
       <section className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-32">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Document Preview</h2>
+            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+              Official engineering curriculum vitae formatted for technical recruiters and hiring managers.
+            </p>
+          </div>
+        </div>
+
         {/* PDF Viewer Container - Hidden on mobile where object tags fail */}
         <div className="hidden md:block w-full h-[75vh] md:h-[90vh] bg-white/5 ring-1 ring-white/10 rounded-4xl overflow-hidden p-2 reveal reveal-delay-2">
           <div className="w-full h-full rounded-3xl overflow-hidden bg-black/50">

@@ -25,7 +25,7 @@ export default function Experience() {
 
           {/* Left Column (Headline + Impact Overview) */}
           <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.96] font-normal tracking-tight text-white mb-8 pb-2">
+            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.92] font-normal tracking-tight text-white mb-8 pb-2">
               Experience
               <span className="block mt-1.5 md:mt-2.5 italic">
                 & Impact<span className="text-white/40 not-italic">.</span>
@@ -64,6 +64,15 @@ export default function Experience() {
       </section>
 
       <section className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-32">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Professional Experience</h2>
+            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+              Production systems engineering and telemetry pipelines engineered for national infrastructure.
+            </p>
+          </div>
+        </div>
+
         <div className="flex flex-col gap-24 border-l border-white/10 ml-6 md:ml-7">
         
         {data.internships.map((internship, idx) => (
@@ -73,9 +82,9 @@ export default function Experience() {
           </div>
           
           <div className="mb-6 pt-1 md:pt-2">
-            <h2 className="font-serif text-2xl md:text-3xl font-medium text-white mb-3">{internship.company}</h2>
+            <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white mb-3">{internship.company}</h3>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <h3 className="text-xl text-white/70 font-medium">{internship.role}</h3>
+              <h4 className="text-lg md:text-xl text-white/70 font-medium">{internship.role}</h4>
               <span className="text-xs tracking-[0.2em] uppercase text-white/50 font-bold shrink-0 bg-white/5 px-4 py-2 rounded-full border border-white/10">{internship.date}</span>
             </div>
           </div>
@@ -89,14 +98,14 @@ export default function Experience() {
           <div className="flex flex-col gap-12">
             {internship.projects.map((proj, pIdx) => (
             <div key={pIdx} className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 hover:bg-white/10 transition-colors">
-              <h4 className="text-lg font-medium text-white mb-6 flex items-center gap-4">
+              <h4 className="font-serif text-xl md:text-2xl font-medium tracking-tight text-white mb-6 flex items-center gap-3">
                 <span className={`w-2 h-2 rounded-full ${DOT_COLORS[proj.color] || 'bg-emerald-400'}`}></span>
                 {proj.title}
               </h4>
-              <ul className="flex flex-col gap-4 text-white/60 font-light leading-relaxed">
+              <ul className="flex flex-col gap-4 text-sm md:text-base text-white/60 font-light leading-relaxed">
                 {proj.points.map((point, idx2) => (
                 <li key={idx2} className="flex gap-4">
-                  <span className="text-white/30 mt-1">0{idx2 + 1}</span>
+                  <span className="text-white/30 font-mono text-xs mt-1">0{idx2 + 1}</span>
                   <p>{point}</p>
                 </li>
                 ))}

@@ -156,8 +156,8 @@ export const PORTFOLIO_CONTENT = {
         { label: "COMPILED & TYPED", icon: "CppIcon" },
         { label: "SHELL & SCRIPTING", icon: "BashIcon" }
       ],
-      description: "Languages I write regularly for backend services, embedded firmware, and systems scripting.",
-      colSpan: "lg:col-span-5",
+      description: "Languages I write regularly for backend services, embedded firmware, algorithms, and systems scripting.",
+      colSpan: "lg:col-span-12",
       skills: [
         { name: "Python", detail: "3.10 - 3.13", iconName: "PythonIcon" },
         { name: "C/C++", detail: "C99 / C++17", iconName: "CppIcon" },
@@ -174,8 +174,8 @@ export const PORTFOLIO_CONTENT = {
         { label: "RAG PIPELINE", icon: "RagIcon", variant: "cyan" },
         { label: "HYBRID SEARCH", icon: "VectorSearchIcon" }
       ],
-      description: "Local inference with Ollama, hybrid vector search (FAISS + BM25), and transformer embeddings.",
-      colSpan: "lg:col-span-7",
+      description: "Local inference with Ollama, hybrid vector search (FAISS + BM25), cross-encoder reranking, and transformer embeddings.",
+      colSpan: "lg:col-span-12",
       skills: [
         { name: "LLMs (Ollama)", detail: "Local Inference", iconName: "OllamaIcon" },
         { name: "RAG Pipelines", detail: "Context Retrieval", iconName: "RagIcon" },
@@ -193,34 +193,38 @@ export const PORTFOLIO_CONTENT = {
         { label: "MODEL TRAINING", icon: "PyTorchIcon", variant: "purple" },
         { label: "EXPLAINABLE AI", icon: "ShapIcon" }
       ],
-      description: "Model training, explainability with SHAP, quantization, and document image processing.",
-      colSpan: "lg:col-span-6",
+      description: "Deep learning model training, explainability with SHAP, INT8 quantization, and document image preprocessing.",
+      colSpan: "lg:col-span-12",
       skills: [
         { name: "PyTorch", detail: "Tensors & Training", iconName: "PyTorchIcon" },
+        { name: "TensorFlow Core", detail: "Autodiff Engine", iconName: "TensorFlowIcon" },
         { name: "Scikit-Learn", detail: "Classifiers & Ensembles", iconName: "ScikitLearnIcon" },
         { name: "SHAP (Explainable AI)", detail: "Feature Attribution", iconName: "ShapIcon" },
         { name: "OpenCV", detail: "Image Preprocessing", iconName: "OpenCvIcon" },
         { name: "OCR (Tesseract)", detail: "Document Text Extraction", iconName: "OcrIcon" },
+        { name: "INT8 Quantization", detail: "Edge Model Compression", iconName: "CppIcon" },
       ]
     },
     {
       id: "backend-web",
-      category: "Backend & Web",
+      category: "Backend & Web Systems",
       categoryIcon: "BackendCategoryIcon",
       pipelineTabs: [
         { label: "ASYNC APIS", icon: "FastApiIcon", variant: "emerald" },
         { label: "WEBSOCKETS", icon: "WebSocketsIcon" }
       ],
-      description: "FastAPI backends, live WebSocket feeds, Next.js, and relational databases.",
-      colSpan: "lg:col-span-6",
+      description: "FastAPI asynchronous microservices, live WebSocket telemetry feeds, Next.js, and relational SQLite WAL databases.",
+      colSpan: "lg:col-span-12",
       skills: [
         { name: "FastAPI", detail: "Async Services", iconName: "FastApiIcon" },
         { name: "Next.js", detail: "React 19 Frontend", iconName: "NextjsIcon" },
         { name: "REST APIs", detail: "HTTP Endpoints", iconName: "RestApiIcon" },
         { name: "WebSockets", detail: "Live Data Feeds", iconName: "WebSocketsIcon" },
+        { name: "Redis", detail: "Cache & Queues", iconName: "RedisIcon" },
         { name: "SQLAlchemy", detail: "ORM & Querying", iconName: "SqlAlchemyIcon" },
         { name: "SQLite", detail: "WAL Mode", iconName: "SqliteIcon" },
         { name: "JWT & Role-Based Access (RBAC)", detail: "Auth & Permissions", iconName: "JwtRbacIcon" },
+        { name: "PlatformIO", detail: "Embedded Firmware", iconName: "PlatformIoIcon" },
       ]
     },
     {
@@ -231,7 +235,7 @@ export const PORTFOLIO_CONTENT = {
         { label: "ETL PIPELINES", icon: "EtlIcon", variant: "amber" },
         { label: "CI/CD & DOCKER", icon: "DockerIcon" }
       ],
-      description: "Batch data pipelines, testing suites, containerized services, and Linux environments.",
+      description: "Batch asynchronous data pipelines, comprehensive test suites, containerized workflows, and Linux environments.",
       colSpan: "lg:col-span-12",
       skills: [
         { name: "ETL Pipelines", detail: "Batch Processing", iconName: "EtlIcon" },

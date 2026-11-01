@@ -39,7 +39,7 @@ export default function Footer() {
               href={`mailto:${data.personal.email}`} 
               className="flex items-center gap-3 text-white transition-colors"
             >
-              <span className="text-xs md:text-sm font-bold tracking-widest uppercase">GET IN TOUCH</span>
+              <span className="text-xs md:text-sm font-bold tracking-[0.2em] uppercase">GET IN TOUCH</span>
               <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-50 group-hover:opacity-100" weight="bold" size={16} />
             </a>
 
@@ -48,21 +48,21 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-6 border-t border-white/10">
-          <div className="text-white/60 text-xs font-bold tracking-widest uppercase">
+          <div className="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">
             © {CURRENT_YEAR} {data.personal.name}
           </div>
 
           <div className="flex flex-wrap items-center gap-5 md:gap-7">
-            <a href={data.personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
+            <a href={data.personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
               <GithubLogo size={15} weight="fill" /> GITHUB
             </a>
-            <a href={data.personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
+            <a href={data.personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
               <LinkedinLogo size={15} weight="fill" /> LINKEDIN
             </a>
-            <a href={data.personal.kaggle} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
+            <a href={data.personal.kaggle} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
               <KaggleLogo size={15} /> KAGGLE
             </a>
-            <a href={data.personal.huggingface} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
+            <a href={data.personal.huggingface} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
               <HuggingFaceLogo size={15} /> HUGGING FACE
             </a>
           </div>

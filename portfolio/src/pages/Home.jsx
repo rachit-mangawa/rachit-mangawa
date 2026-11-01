@@ -37,7 +37,7 @@ export default function Home() {
 
           {/* Left Column (Name + Bio) */}
           <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.88] font-normal tracking-tight text-white mb-8 pb-2">
+            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.92] font-normal tracking-tight text-white mb-8 pb-2">
               {data.personal.name.split(' ')[0]}<br />
               <span className="italic">{data.personal.name.split(' ')[1]}</span>
               <span className="text-white/40 not-italic">.</span>
@@ -74,8 +74,13 @@ export default function Home() {
 
       {/* Experience Section */}
       <section id="experience" className="mt-16 mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-end justify-between mb-16 reveal">
-          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Experience</h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Experience</h2>
+            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+              National telemetry data pipelines and offline AI systems engineered for government infrastructure.
+            </p>
+          </div>
           <SectionLink to="/experience">View All</SectionLink>
         </div>
 
@@ -89,14 +94,14 @@ export default function Home() {
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl md:text-2xl font-medium text-white mb-3">{data.internships[0].company}</h3>
+              <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white mb-3">{data.internships[0].company}</h3>
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <h4 className="text-xl text-white/70 font-medium">{data.internships[0].role}</h4>
+                <h4 className="text-lg md:text-xl text-white/70 font-medium">{data.internships[0].role}</h4>
                 <span className="text-xs tracking-[0.2em] uppercase text-white/50 font-bold shrink-0 bg-white/5 px-4 py-2 rounded-full border border-white/10">{data.internships[0].date}</span>
               </div>
             </div>
 
-            <div className="text-lg md:text-xl text-white/60 leading-[1.6] font-light max-w-4xl flex flex-col gap-4">
+            <div className="text-base md:text-lg text-white/60 font-light leading-relaxed max-w-4xl flex flex-col gap-4">
               {data.internships[0].shortPoints.map((point, idx) => (
                 <p key={idx}>{point}</p>
               ))}
@@ -114,9 +119,14 @@ export default function Home() {
 
       {/* Featured Project Section */}
       <section id="featured" className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-end justify-between mb-12 md:mb-16 reveal">
-          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Featured Work</h2>
-          <SectionLink to="/projects">VIEW ALL</SectionLink>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Featured Work</h2>
+            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+              Embedded machine learning compilers, AST transpilations, and semantic NLP analyzers.
+            </p>
+          </div>
+          <SectionLink to="/projects">View All</SectionLink>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full">
@@ -174,13 +184,18 @@ export default function Home() {
       <SkillsSection />
 
       {/* Achievements Section */}
-      <section className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
-        <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-16 reveal text-white">Achievements</h2>
+      <section id="achievements" className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
+        <div className="mb-12 md:mb-16 reveal">
+          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Achievements</h2>
+          <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+            Competitive programming milestones, algorithmic rankings, and upstream core contributions.
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8 reveal reveal-delay-1">
           {/* Competitive Programming */}
           <div className="p-6 md:p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
-            <h3 className="font-serif text-xl font-medium text-white mb-6">Competitive Programming</h3>
+            <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white mb-6">Competitive Programming</h3>
             <ul className="flex flex-col gap-4 text-white/60 font-light">
               <li className="flex justify-between items-center border-b border-white/5 pb-4">
                 <div>
@@ -188,14 +203,14 @@ export default function Home() {
                     <CodeforcesIcon size={16} className="text-white/80 shrink-0" />
                     <span>Codeforces</span>
                     <span className="text-white/30 font-light mx-0.5">:</span>
-                    <span className="text-[#01bdb2]">{data.ratings.codeforces.rank}</span>
+                    <span className="text-[#01bdb2] font-medium">{data.ratings.codeforces.rank}</span>
                   </div>
-                  <a href={data.personal.codeforces} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
+                  <a href={data.personal.codeforces} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     @{data.personal.codeforcesHandle} <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                   </a>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Max Rating</span>
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/50 block mb-1">Max Rating</span>
                   <span className="block text-[#01bdb2] font-medium font-mono tabular-nums">{data.ratings.codeforces.rating}</span>
                 </div>
               </li>
@@ -205,14 +220,14 @@ export default function Home() {
                     <LeetCodeIcon size={16} className="text-white/80 shrink-0" />
                     <span>LeetCode</span>
                     <span className="text-white/30 font-light mx-0.5">:</span>
-                    <span>{data.ratings.leetcode.rank}</span>
+                    <span className="text-white/90 font-medium">{data.ratings.leetcode.rank}</span>
                   </div>
-                  <a href={data.personal.leetcode} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
+                  <a href={data.personal.leetcode} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     @{data.personal.leetcodeHandle} <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                   </a>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Max Rating</span>
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/50 block mb-1">Max Rating</span>
                   <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.leetcode.rating}</span>
                 </div>
               </li>
@@ -222,14 +237,14 @@ export default function Home() {
                     <LeetCodeIcon size={16} className="text-white/80 shrink-0" />
                     <span>LeetCode {data.ratings.leetcode.contest}</span>
                   </div>
-                  <a href="https://leetcode.com/contest/biweekly-contest-190/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
+                  <a href="https://leetcode.com/contest/biweekly-contest-190/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     Contest Page <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
                   </a>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Global Rank</span>
-                  <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.leetcode.globalRank} <span className="text-white/50 text-xs">/ {data.ratings.leetcode.totalParticipants.toLocaleString()}</span></span>
-                  <span className="block text-emerald-400/80 text-xs uppercase tracking-widest mt-1 font-mono tabular-nums">Top {data.ratings.leetcode.topPercent}%</span>
+                  <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/50 block mb-1">Global Rank</span>
+                  <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.leetcode.globalRank} <span className="text-white/50 text-xs font-mono">/ {data.ratings.leetcode.totalParticipants.toLocaleString()}</span></span>
+                  <span className="block text-emerald-400/80 text-xs uppercase tracking-[0.2em] mt-1 font-mono tabular-nums">Top {data.ratings.leetcode.topPercent}%</span>
                 </div>
               </li>
             </ul>
@@ -237,7 +252,7 @@ export default function Home() {
 
           {/* Open Source */}
           <div className="p-6 md:p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
-            <h3 className="font-serif text-xl font-medium text-white mb-6">Open Source</h3>
+            <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white mb-6">Open Source</h3>
             <div className="flex flex-col gap-4 text-white/60 font-light">
               <div>
                 <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -246,17 +261,17 @@ export default function Home() {
                     <span className="text-white/90 font-medium text-lg">{data.openSource.project}</span>
                   </div>
                   <div className="flex gap-2 mt-2 md:mt-0">
-                    <a href={data.openSource.issueUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold bg-white/5 px-2.5 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-all duration-150 ease-out active:scale-[0.97] border border-white/10 font-mono">
+                    <a href={data.openSource.issueUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-white/5 px-2.5 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-all duration-150 ease-out active:scale-[0.97] border border-white/10 font-mono">
                       <Info weight="bold" size={12} />
                       Issue #{data.openSource.issueNumber}
                     </a>
-                    <a href={data.openSource.prUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold bg-white/5 px-2.5 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-all duration-150 ease-out active:scale-[0.97] border border-white/10 font-mono">
+                    <a href={data.openSource.prUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold bg-white/5 px-2.5 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-all duration-150 ease-out active:scale-[0.97] border border-white/10 font-mono">
                       <GitPullRequest weight="bold" size={12} />
                       Merged PR
                     </a>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed mb-6">
+                <p className="text-sm md:text-base text-white/60 font-light leading-relaxed mb-6">
                   {data.openSource.content}
                 </p>
                 <div className="flex flex-wrap gap-2">

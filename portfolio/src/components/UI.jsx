@@ -63,7 +63,7 @@ export const SectionLink = ({ to, href, children = "View All", className = "" })
       </span>
     </>
   );
-  const classes = `group inline-flex items-center gap-2.5 pl-4 pr-2 py-1.5 rounded-full bg-white/5 hover:bg-[#F5F5F5] active:bg-white border border-white/10 hover:border-white active:border-white text-xs font-bold tracking-widest uppercase text-white/70 hover:text-black active:text-black transition-[background-color,color,border-color,transform] duration-300 hover:scale-[1.02] active:scale-[0.97] ${className}`;
+  const classes = `group inline-flex items-center gap-2.5 pl-4 pr-2 py-1.5 rounded-full bg-white/5 hover:bg-[#F5F5F5] active:bg-white border border-white/10 hover:border-white active:border-white text-xs font-bold tracking-[0.2em] uppercase text-white/70 hover:text-black active:text-black transition-[background-color,color,border-color,transform] duration-300 hover:scale-[1.02] active:scale-[0.97] ${className}`;
 
   if (isExternal) {
     return (

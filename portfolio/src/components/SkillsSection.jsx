@@ -1,83 +1,107 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SectionLink } from './UI';
-import { PORTFOLIO_CONTENT } from '../content';
-import * as Icons from './SkillIcons';
+import { ArrowUpRight, Cpu, Brain, HardDrives, ArrowsMerge } from '@phosphor-icons/react';
+import { TechTag } from './SkillIcons';
+
+const ARCHITECTURAL_PILLARS = [
+  {
+    id: "systems-edge",
+    title: "Low-Level & Edge Runtimes",
+    domain: "COMPILERS & EMBEDDED",
+    categoryIcon: Cpu,
+    description: "Compiling trained ML models into zero-dependency C99 headers for microcontrollers with INT8 quantization and AST analysis.",
+    skills: ["C/C++", "Python", "PlatformIO", "ESP32"],
+    link: "/skills#languages"
+  },
+  {
+    id: "airgapped-ai",
+    title: "Air-Gapped AI & Hybrid RAG",
+    domain: "LOCAL INFERENCE & RETRIEVAL",
+    categoryIcon: Brain,
+    description: "Offline multi-lingual OCR and grievance retrieval pipelines combining local Ollama models with dual dense-sparse vector search.",
+    skills: ["PyTorch", "Ollama", "Hugging Face", "OpenCV"],
+    link: "/skills#genai-nlp"
+  },
+  {
+    id: "backend-streaming",
+    title: "High-Throughput Backend & Streaming",
+    domain: "DISTRIBUTED & CONCURRENT APIS",
+    categoryIcon: HardDrives,
+    description: "Async API engines built for high-write concurrency, real-time bi-directional telemetry streaming, and row-level JWT claim security.",
+    skills: ["FastAPI", "WebSockets", "SQLite WAL", "Redis"],
+    link: "/skills#backend-web"
+  },
+  {
+    id: "data-verification",
+    title: "Data Engineering & Verification",
+    domain: "ETL, CI/CD & NUMERICAL CORE",
+    categoryIcon: ArrowsMerge,
+    description: "Vectorized batch processing of 100K+ row workbooks, reproducible container workflows, and upstream autodiff numerical patches.",
+    skills: ["Docker", "Linux", "PyTest", "Pandas"],
+    link: "/skills#data-infra"
+  }
+];
 
 export default function SkillsSection() {
-  const categories = PORTFOLIO_CONTENT.skills;
-
   return (
-    <section className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
-      {/* Header with View All Link to /skills */}
-      <div className="flex items-end justify-between mb-16 reveal">
-        <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Skills & Systems</h2>
-        <SectionLink to="/skills">View All</SectionLink>
+    <section id="skills" className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
+        <div className="max-w-2xl">
+          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">
+            Skills & Systems
+          </h2>
+          <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+            Core architectural disciplines across low-level runtimes, air-gapped machine intelligence, high-concurrency backends, and data infrastructure.
+          </p>
+        </div>
+        <SectionLink to="/skills">View Full Stack</SectionLink>
       </div>
 
-      {/* Timeline Overview */}
-      <div className="ml-6 md:ml-7 border-l border-white/10 flex flex-col gap-8 md:gap-12">
-        {categories.map((cat, idx) => {
-          const CategoryIcon = Icons[cat.categoryIcon] || Icons.LanguagesCategoryIcon;
+      {/* Overview Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {ARCHITECTURAL_PILLARS.map((pillar, idx) => {
+          const CategoryIcon = pillar.categoryIcon;
           return (
             <Link
-              to="/skills"
-              key={cat.id}
-              className="group relative reveal block hover:bg-white/2 p-6 -ml-6 pl-12 md:pl-14 rounded-2xl transition-[color,background-color] duration-200"
-              style={{ animationDelay: `${idx * 50 + 100}ms` }}
+              to={pillar.link}
+              key={pillar.id}
+              className="group relative flex flex-col justify-between p-6 md:p-7 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-[background-color,border-color,transform] duration-200 active:scale-[0.99] reveal"
+              style={{ animationDelay: `${idx * 80 + 100}ms` }}
             >
-              {/* Clean Timeline Node */}
-              <div className="absolute left-6 top-10 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white/20 border-2 border-[#050505] group-hover:bg-white transition-colors duration-200"></div>
-
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/70 group-hover:text-white transition-colors">
-                    <CategoryIcon size={16} />
+              <div>
+                {/* Header Row: Domain Overline + Arrow */}
+                <div className="flex items-center justify-between gap-4 mb-3">
+                  <div className="flex items-center gap-2">
+                    <CategoryIcon size={15} className="text-white/50 group-hover:text-white transition-colors" />
+                    <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/50">
+                      {pillar.domain}
+                    </span>
                   </div>
-                  <h3 className="font-serif text-xl md:text-2xl font-medium text-white transition-transform duration-200 group-hover:translate-x-1 flex items-center gap-2">
-                    {cat.category}
-                    <svg className="opacity-30 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M7 17L17 7" />
-                      <path d="M7 7h10v10" />
-                    </svg>
-                  </h3>
+                  <ArrowUpRight
+                    size={16}
+                    className="text-white/40 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0"
+                    aria-hidden="true"
+                  />
                 </div>
 
-                {cat.pipelineTabs && (
-                  <div className="flex flex-wrap items-center gap-2">
-                    {cat.pipelineTabs.slice(0, 2).map((tab, tIdx) => {
-                      const TabIcon = Icons[tab.icon] || Icons.CppIcon;
-                      return (
-                        <span
-                          key={tIdx}
-                          className="flex items-center gap-1.5 text-[10px] md:text-[11px] font-mono uppercase tracking-widest font-bold px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 group-hover:border-white/20 group-hover:text-white/80 transition-colors"
-                        >
-                          <TabIcon size={12} className="shrink-0" />
-                          <span>{tab.label}</span>
-                        </span>
-                      );
-                    })}
-                  </div>
-                )}
+                {/* Pillar Title */}
+                <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-200 mb-3">
+                  {pillar.title}
+                </h3>
+
+                {/* Concise 1-sentence description */}
+                <p className="text-white/60 text-sm md:text-base font-light leading-relaxed mb-6">
+                  {pillar.description}
+                </p>
               </div>
 
-              <p className="text-base md:text-lg text-white/60 font-light mb-5 max-w-4xl">
-                {cat.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => {
-                  const Icon = Icons[skill.iconName] || Icons.BashIcon;
-                  return (
-                    <span
-                      key={skill.name}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-wider bg-white/5 border border-white/10 rounded-full text-white/70 group-hover:border-white/20 group-hover:text-white transition-colors duration-200 font-medium"
-                    >
-                      <Icon size={14} className="text-white/60 group-hover:text-white shrink-0" />
-                      <span>{skill.name}</span>
-                    </span>
-                  );
-                })}
+              {/* Bottom Row: Inline Tech Tags */}
+              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                {pillar.skills.map((skill) => (
+                  <TechTag key={skill} name={skill} />
+                ))}
               </div>
             </Link>
           );

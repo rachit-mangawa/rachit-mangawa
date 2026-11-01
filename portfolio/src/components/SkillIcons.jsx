@@ -164,6 +164,9 @@ export function TechIcon({ name, size = 14, className = "" }) {
       return <ReactIcon size={size} className={className} />;
     case 'platformio':
       return <PlatformIoIcon size={size} className={className} />;
+    case 'esp32':
+    case 'microcontrollers':
+      return <Cpu size={size} className={className} />;
     case 'redis':
       return <RedisIcon size={size} className={className} />;
     case 'sqlalchemy':
@@ -205,9 +208,13 @@ export function TechIcon({ name, size = 14, className = "" }) {
       return <TensorFlowIcon size={size} className={className} />;
     case 'rag pipelines':
       return <RagIcon size={size} className={className} />;
+    case 'faiss + bm25':
     case 'vector search':
     case 'vector search (faiss, bm25)':
       return <VectorSearchIcon size={size} className={className} />;
+    case 'quantization':
+    case 'int8 quantization':
+      return <Cpu size={size} className={className} />;
     case 'cross-encoder reranking':
       return <RerankingIcon size={size} className={className} />;
     case 'sentence-transformers':

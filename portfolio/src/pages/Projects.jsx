@@ -31,7 +31,7 @@ export default function Projects() {
 
           {/* Left Column (Headline + Architecture Overview) */}
           <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.96] font-normal tracking-tight text-white mb-8 pb-2">
+            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.92] font-normal tracking-tight text-white mb-8 pb-2">
               Architecture
               <span className="block mt-1.5 md:mt-2.5 italic">
                 & Code<span className="text-white/40 not-italic">.</span>
@@ -71,6 +71,15 @@ export default function Projects() {
 
       {/* Projects Container */}
       <section className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-40">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Featured Architectures</h2>
+            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+              Deep-dive breakdowns of bare-metal compilers, explainable NLP classifiers, and real-time dashboards.
+            </p>
+          </div>
+        </div>
+
         <div className="flex flex-col gap-32 md:gap-48">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 1; // 0-indexed, so idx 1 is the 2nd project (even)
@@ -81,7 +90,7 @@ export default function Projects() {
                   
                   {/* Left/Text Column */}
                   <div className="w-full lg:w-1/2 flex flex-col items-start">
-                    <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">{project.title}</h2>
+                    <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white mb-6">{project.title}</h3>
                     
                     <div className="flex flex-wrap gap-2 mb-8">
                       {project.tech.map(tag => (
