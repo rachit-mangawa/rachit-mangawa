@@ -81,7 +81,6 @@ export default function Projects() {
                   
                   {/* Left/Text Column */}
                   <div className="w-full lg:w-1/2 flex flex-col items-start">
-                    <span className="text-emerald-400 font-mono text-xs uppercase tracking-[0.2em] mb-4 block">Project 0{idx + 1}</span>
                     <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">{project.title}</h2>
                     
                     <div className="flex flex-wrap gap-2 mb-8">

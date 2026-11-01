@@ -38,8 +38,8 @@ export const PORTFOLIO_CONTENT = {
   ],
   ratings: {
     codeforces: {
-      rank: "Pupil",
-      rating: 1343
+      rank: "Specialist",
+      rating: 1422
     },
     leetcode: {
       rank: "Knight",
@@ -102,6 +102,20 @@ export const PORTFOLIO_CONTENT = {
       ]
     }
   ],
+  featuredProjects: [
+    {
+      title: "HeartFlow OS",
+      description: "ML platform exporting trained Python models to optimized C++ for microcontrollers, with a real-time monitoring dashboard.",
+      tech: ['Next.js', 'React', 'FastAPI', 'Python', 'WebSockets'],
+      link: "/projects#heartflow"
+    },
+    {
+      title: "Semantic Comment Analyzer",
+      description: "NLP pipeline that classifies customer feedback and support tickets using sentence embeddings and SVM.",
+      tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face'],
+      link: "/projects#semantic"
+    }
+  ],
   projects: [
     {
       id: "heartflow",
@@ -120,7 +134,7 @@ export const PORTFOLIO_CONTENT = {
     },
     {
       id: "semantic",
-      title: "Semantic Analyzer",
+      title: "Semantic Comment Analyzer",
       description: "An NLP pipeline that classifies customer feedback and support tickets using sentence embeddings, with word-level occlusion explainability.",
       tech: ["Python", "FastAPI", "Sentence Transformers", "Hugging Face", "Scikit-Learn"],
       deepDive: [

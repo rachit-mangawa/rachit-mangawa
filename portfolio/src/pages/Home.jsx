@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SectionLink } from '../components/UI';
 import useReveal from '../hooks/useReveal';
-import { Info, GitPullRequest } from "@phosphor-icons/react";
+import { Info, GitPullRequest, ArrowUpRight } from "@phosphor-icons/react";
 import aadhaarLogo from '../assets/aadhaar-logo.png';
 import { PORTFOLIO_CONTENT } from '../content';
 import SkillsSection from '../components/SkillsSection';
@@ -113,14 +113,14 @@ export default function Home() {
       </section>
 
       {/* Featured Project Section */}
-      <section className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex items-end justify-between mb-16 reveal">
+      <section id="featured" className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex items-end justify-between mb-12 md:mb-16 reveal">
           <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Featured Work</h2>
-          <SectionLink to="/projects">View All</SectionLink>
+          <SectionLink to="/projects">VIEW ALL</SectionLink>
         </div>
 
-        <div className="ml-6 md:ml-7 border-l border-white/10 flex flex-col gap-8 md:gap-12">
-          {[
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full">
+          {(data.featuredProjects || [
             {
               title: "HeartFlow OS",
               description: "ML platform exporting trained Python models to optimized C++ for microcontrollers, with a real-time monitoring dashboard.",
@@ -128,27 +128,38 @@ export default function Home() {
               link: "/projects#heartflow"
             },
             {
-              title: "Semantic Analyzer",
+              title: "Semantic Comment Analyzer",
               description: "NLP pipeline that classifies customer feedback and support tickets using sentence embeddings and SVM.",
               tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face'],
               link: "/projects#semantic"
             }
-          ].map((project, idx) => (
-            <Link to={project.link} key={idx} className="group relative reveal block hover:bg-white/2 p-6 -ml-6 pl-12 md:pl-14 rounded-2xl transition-[color,background-color,transform] duration-300 active:scale-[0.99] active:duration-150">
-              {/* Timeline Node */}
-              <div className="absolute left-6 top-10 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-white/20 border-2 border-[#050505] group-hover:bg-white transition-colors duration-200"></div>
+          ]).map((project, idx) => (
+            <Link
+              to={project.link}
+              key={idx}
+              className="group relative reveal flex flex-col justify-between p-6 md:p-8 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300"
+              style={{ animationDelay: `${idx * 100 + 150}ms` }}
+            >
+              <div>
+                {/* Header row: Project Title on left, Arrow on right */}
+                <div className="flex items-center justify-between gap-4 mb-3">
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-200">
+                    {project.title}
+                  </h3>
+                  <ArrowUpRight
+                    size={18}
+                    className="text-white/40 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0"
+                    aria-hidden="true"
+                  />
+                </div>
 
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
-                <h3 className="font-serif text-xl md:text-2xl font-medium text-white transition-transform duration-300 group-hover:translate-x-1 flex items-center gap-2">
-                  {project.title}
-                  <svg className="opacity-30 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
-                </h3>
+                {/* Description */}
+                <p className="text-white/60 text-sm md:text-base font-light leading-relaxed mb-6">
+                  {project.description}
+                </p>
               </div>
 
-              <p className="text-base md:text-lg text-white/60 font-light mb-6 max-w-4xl">
-                {project.description}
-              </p>
-
+              {/* Tech Tags */}
               <div className="flex flex-wrap gap-2">
                 {project.tech.map(tag => (
                   <TechTag key={tag} name={tag} />
@@ -177,7 +188,7 @@ export default function Home() {
                     <CodeforcesIcon size={16} className="text-white/80 shrink-0" />
                     <span>Codeforces</span>
                     <span className="text-white/30 font-light mx-0.5">:</span>
-                    <span className="text-green-400">Pupil</span>
+                    <span className="text-[#01bdb2]">{data.ratings.codeforces.rank}</span>
                   </div>
                   <a href={data.personal.codeforces} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
                     @{data.personal.codeforcesHandle} <svg className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
@@ -185,7 +196,7 @@ export default function Home() {
                 </div>
                 <div className="text-right">
                   <span className="text-xs uppercase tracking-widest text-white/50 block mb-1">Max Rating</span>
-                  <span className="block text-emerald-400 font-medium font-mono tabular-nums">{data.ratings.codeforces.rating}</span>
+                  <span className="block text-[#01bdb2] font-medium font-mono tabular-nums">{data.ratings.codeforces.rating}</span>
                 </div>
               </li>
               <li className="flex justify-between items-center border-b border-white/5 pb-4">
@@ -208,7 +219,7 @@ export default function Home() {
               <li className="flex justify-between items-center">
                 <div>
                   <div className="flex items-center gap-2 text-white/90 font-medium mb-1">
-                    <LeetCodeIcon size={16} className="text-amber-400 shrink-0" />
+                    <LeetCodeIcon size={16} className="text-white/80 shrink-0" />
                     <span>LeetCode {data.ratings.leetcode.contest}</span>
                   </div>
                   <a href="https://leetcode.com/contest/biweekly-contest-190/" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-all duration-150 ease-out active:scale-[0.97]">
@@ -231,7 +242,7 @@ export default function Home() {
               <div>
                 <div className="flex flex-wrap items-center gap-3 mb-5">
                   <div className="flex items-center gap-2.5">
-                    <TensorFlowIcon size={22} className="text-[#FF6F00] shrink-0" />
+                    <TensorFlowIcon size={22} className="text-white/80 shrink-0" />
                     <span className="text-white/90 font-medium text-lg">{data.openSource.project}</span>
                   </div>
                   <div className="flex gap-2 mt-2 md:mt-0">
@@ -239,7 +250,7 @@ export default function Home() {
                       <Info weight="bold" size={12} />
                       Issue #{data.openSource.issueNumber}
                     </a>
-                    <a href={data.openSource.prUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold bg-purple-500/10 px-2.5 py-1 rounded-md text-purple-400 hover:bg-purple-500/20 hover:text-purple-300 transition-all duration-150 ease-out active:scale-[0.97] border border-purple-500/20 font-mono">
+                    <a href={data.openSource.prUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-bold bg-white/5 px-2.5 py-1 rounded-md text-white/70 hover:bg-white/20 hover:text-white transition-all duration-150 ease-out active:scale-[0.97] border border-white/10 font-mono">
                       <GitPullRequest weight="bold" size={12} />
                       Merged PR
                     </a>
