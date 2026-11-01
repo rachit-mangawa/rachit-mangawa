@@ -1,76 +1,64 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import { PremiumCard, MagneticButton } from '../components/UI';
 import useReveal from '../hooks/useReveal';
+import { useScrollToHash, scrollToElement } from '../hooks/useScrollToHash';
 import { PORTFOLIO_CONTENT } from '../content';
 import { TechTag } from '../components/SkillIcons';
 
 export default function Projects() {
   useReveal();
-  const location = useLocation();
+  useScrollToHash();
   const data = PORTFOLIO_CONTENT;
-
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    }
-  }, [location]);
 
   const projects = data.projects;
   return (
     <main id="main-content" className="relative z-10 w-full overflow-hidden">
-      {/* Hero Section - Centered 2-Column Split matching Dashboard */}
-      <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 w-full reveal">
+      {/* Header */}
+      <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-12 md:pb-16">
+        <div className="max-w-5xl flex flex-col justify-start">
+          <h1 className="reveal font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem] leading-[1.05] font-normal tracking-tight text-white mb-8 select-none">
+            Architecture<br />
+            <span className="italic font-normal text-white/95">& Code</span>
+            <span className="text-white/30 not-italic font-serif">.</span>
+          </h1>
 
-          {/* Left Column (Headline + Architecture Overview) */}
-          <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.92] font-normal tracking-tight text-white mb-8 pb-2">
-              Architecture
-              <span className="block mt-1.5 md:mt-2.5 italic">
-                & Code<span className="text-white/40 not-italic">.</span>
-              </span>
-            </h1>
-
-            <div className="reveal reveal-delay-1 text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left space-y-4">
-              <p>
-                Selected engineering projects spanning embedded systems, machine learning pipelines, and open-source systems work.
-              </p>
-              <p>
-                Key work includes <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">HeartFlow OS</span> (exporting trained ML models to standalone C++ for microcontrollers), an interpretable NLP classifier for customer support, and numerical autodiff fixes in <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">TensorFlow Core</span>.
-              </p>
-            </div>
+          <div className="reveal reveal-delay-1 text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3 mb-8">
+            <p>
+              Selected engineering projects across microcontroller compilers, offline NLP analyzers, and upstream core runtimes.
+            </p>
+            <p className="text-sm md:text-base text-white/50">
+              Focused on hardware-efficient compilation, low-overhead execution, and verifiable benchmarks.
+            </p>
           </div>
 
-          {/* Right Column (Architecture & Tooling Specs) */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
-            {[
-              { label: "Hardware Transpiler", value: "HeartFlow OS (C++17 / FreeRTOS)" },
-              { label: "Target Microcontroller", value: "ESP32 Bare-Metal Registers" },
-              { label: "Semantic Pipeline", value: "MiniLM Embeddings + SVM Head" },
-              { label: "Feature Attribution", value: "Custom Occlusion Algorithm" },
-              { label: "Upstream Core Patch", value: "TensorFlow Autodiff Singularity" },
-            ].map((item, idx) => (
-              <div key={idx} className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300 reveal" style={{ animationDelay: `${idx * 50 + 200}ms` }}>
-                <div className="flex flex-col">
-                  <span className="text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
-                  <span className="text-white/90 text-sm md:text-base font-medium transition-transform duration-300 group-hover:translate-x-1">{item.value}</span>
-                </div>
+          {/* Direct-Jump Buttons (Matching CV Page Style) */}
+          <div className="reveal reveal-delay-2 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollToElement('featured-architectures')}
+              className="group inline-flex items-center justify-center gap-3.5 bg-white text-black font-semibold text-xs tracking-widest uppercase px-6 py-3.5 rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            >
+              <span>Explore Projects</span>
+              <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <span className="text-xs font-bold leading-none">↓</span>
               </div>
-            ))}
-          </div>
+            </button>
 
+            <a
+              href={data.personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+            >
+              <span>GitHub Repositories</span>
+              <span className="text-white/40 text-xs">↗</span>
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Projects Container */}
-      <section className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-40">
+      <section id="featured-architectures" className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-40 scroll-mt-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
           <div className="max-w-2xl">
             <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Featured Architectures</h2>

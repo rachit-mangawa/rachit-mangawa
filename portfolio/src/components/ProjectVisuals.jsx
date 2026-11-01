@@ -74,7 +74,7 @@ const TelemetryVisualizer = ({
   return (
     <div className="relative w-full h-full min-h-100 flex flex-col bg-[#050505] rounded-2xl border border-white/10 overflow-hidden font-mono group">
       {/* Background tint */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-white/2 to-transparent pointer-events-none" />
 
       {/* Top telemetry bar */}
       <div className="relative z-10 border-b border-white/5 bg-black/50 backdrop-blur-md px-4 py-3 flex flex-wrap gap-2 justify-between items-center text-white/70 uppercase tracking-[0.2em] font-semibold text-[11px] shrink-0 rounded-t-2xl">

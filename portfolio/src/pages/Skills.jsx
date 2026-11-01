@@ -1,78 +1,84 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import useReveal from '../hooks/useReveal';
+import { useScrollToHash, scrollToElement } from '../hooks/useScrollToHash';
 import * as Icons from '../components/SkillIcons';
 import { PORTFOLIO_CONTENT } from '../content';
 
+const DISCIPLINE_APPLICATIONS = {
+  'languages': {
+    label: 'Bare-metal C++ Compilers & UIDAI Async Backends',
+    link: '/projects#heartflow'
+  },
+  'genai-nlp': {
+    label: 'Air-Gapped Hybrid RAG & OCR Grievance Pipeline',
+    link: '/experience#uidai-details'
+  },
+  'ml-vision': {
+    label: 'TensorFlow Core Autodiff Fix & Explainable AI',
+    link: '/projects#semantic'
+  },
+  'backend-web': {
+    label: '4.2M+ Telemetry Ingestion Engine & SQLite WAL',
+    link: '/experience#uidai-details'
+  },
+  'data-infra': {
+    label: 'Async Workbooks ETL & Vectorized Batch Processing',
+    link: '/experience#uidai-details'
+  }
+};
+
 export default function Skills() {
   useReveal();
-  const location = useLocation();
+  useScrollToHash();
   const categories = PORTFOLIO_CONTENT.skills;
-
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    }
-  }, [location]);
 
   return (
     <main id="main-content" className="relative z-10 w-full overflow-hidden min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 w-full reveal">
+      {/* Header */}
+      <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-12 md:pb-16">
+        <div className="max-w-5xl flex flex-col justify-start">
+          <h1 className="reveal font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem] leading-[1.05] font-normal tracking-tight text-white mb-8 select-none">
+            Skills<br />
+            <span className="italic font-normal text-white/95">& Systems</span>
+            <span className="text-white/30 not-italic font-serif">.</span>
+          </h1>
 
-          {/* Left Column */}
-          <div className="lg:col-span-8 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-[14vw] md:text-[9vw] leading-[0.92] font-normal tracking-tight text-white mb-8 pb-2">
-              Skills
-              <span className="block mt-1.5 md:mt-2.5 italic">
-                & Systems<span className="text-white/40 not-italic">.</span>
-              </span>
-            </h1>
-
-            <div className="reveal reveal-delay-1 text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left space-y-4">
-              <p>
-                The languages, frameworks, and tools I use day to day. My work centers on backend systems in Python and FastAPI, C++ for microcontrollers and compilers, and offline ML pipelines with PyTorch and local models.
-              </p>
-              <p>
-                I care about writing software that runs efficiently on constrained hardware, with clear testing and minimal dependencies.
-              </p>
-            </div>
+          <div className="reveal reveal-delay-1 text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3 mb-8">
+            <p>
+              Languages, execution runtimes, and storage engines used for backend services, bare-metal microcontrollers, and offline ML pipelines.
+            </p>
+            <p className="text-sm md:text-base text-white/50">
+              Focused on hardware-constrained execution (&lt;8GB RAM CPU nodes, ESP32 registers) and minimal dependencies.
+            </p>
           </div>
 
-          {/* Right Column (Overview Specs) */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
-            {[
-              { label: "Languages", value: "C++, Python, TypeScript, SQL, Bash" },
-              { label: "Machine Learning", value: "PyTorch, Scikit-Learn, SHAP, OpenCV" },
-              { label: "Local AI & NLP", value: "Ollama, FAISS, Sentence Transformers" },
-              { label: "Backend", value: "FastAPI, WebSockets, Next.js, Redis" },
-              { label: "Environment", value: "Linux, Docker, Git, PyTest" },
-            ].map((item, idx) => (
-              <div 
-                key={idx} 
-                className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300 reveal" 
-                style={{ animationDelay: `${idx * 50 + 200}ms` }}
-              >
-                <div className="flex flex-col">
-                  <span className="text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-1.5">{item.label}</span>
-                  <span className="text-white/90 text-sm md:text-base font-medium transition-transform duration-300 group-hover:translate-x-1">{item.value}</span>
-                </div>
+          {/* Direct-Jump Buttons (Matching CV Page Style) */}
+          <div className="reveal reveal-delay-2 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollToElement('stack-by-discipline')}
+              className="group inline-flex items-center justify-center gap-3.5 bg-white text-black font-semibold text-xs tracking-widest uppercase px-6 py-3.5 rounded-full hover:bg-white/90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            >
+              <span>Explore Stack</span>
+              <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <span className="text-xs font-bold leading-none">↓</span>
               </div>
-            ))}
-          </div>
+            </button>
 
+            <Link
+              to="/experience#uidai-details"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+            >
+              <span>Production Systems</span>
+              <span className="text-white/40 text-xs">↗</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Stack by Discipline Breakdown */}
-      <section className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-40">
+      <section id="stack-by-discipline" className="w-full max-w-7xl mx-auto px-6 md:px-12 pb-40 scroll-mt-24">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
           <div className="max-w-2xl">
             <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Stack by Discipline</h2>
@@ -155,6 +161,20 @@ export default function Skills() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Clean Discipline-to-Work Bridge (Non-cluttered interaction pattern) */}
+                  {DISCIPLINE_APPLICATIONS[category.id] && (
+                    <div className="mt-8 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-3 text-xs">
+                      <span className="font-mono text-white/30 text-[11px] uppercase tracking-wider">Production Application</span>
+                      <Link
+                        to={DISCIPLINE_APPLICATIONS[category.id].link}
+                        className="group inline-flex items-center gap-1.5 text-white/70 hover:text-emerald-400 transition-colors font-medium text-xs"
+                      >
+                        <span>{DISCIPLINE_APPLICATIONS[category.id].label}</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform text-white/40 group-hover:text-emerald-400">→</span>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             );

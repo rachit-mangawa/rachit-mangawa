@@ -142,8 +142,8 @@ export const PORTFOLIO_CONTENT = {
         <React.Fragment key="2">Developed an occlusion explainability function that measures drops in classifier confidence to highlight influential words.</React.Fragment>,
         <React.Fragment key="3">Packaged the pipeline as a lightweight FastAPI service designed to run locally within 4GB RAM.</React.Fragment>
       ],
-      repo: "https://github.com/rachit-mangawa/Semantic-Comment-Analyzer",
-      live: null,
+      repo: "https://github.com/rachit-mangawa/Semantic-Comment-Analyze",
+      live: "https://rachit-mangawa.github.io/Semantic-Comment-Analyze/",
       visualContent: <SemanticAnalyzerVisual />
     }
   ],

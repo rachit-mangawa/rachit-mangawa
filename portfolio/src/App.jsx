@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
@@ -10,7 +10,7 @@ import CommandPalette from './components/CommandPalette';
 import { SectionLink } from './components/UI';
 
 const PAGE_TITLES = {
-  '/': 'Rachit Mangawa | Systems & AI Engineer',
+  '/': 'Rachit Mangawa',
   '/skills': 'Skills & Systems | Rachit Mangawa',
   '/experience': 'Experience & Impact | Rachit Mangawa',
   '/projects': 'Architecture & Code | Rachit Mangawa',
@@ -18,7 +18,7 @@ const PAGE_TITLES = {
 };
 
 const PAGE_DESCRIPTIONS = {
-  '/': 'Systems engineer focused on high-throughput backend architecture, local AI runtimes, and low-level code generation.',
+  '/': 'Software, low-level compilers, and engineering work by Rachit Mangawa.',
   '/skills': 'Core technical competencies across systems programming, local GenAI runtimes, ML vision, real-time backend architecture, and data pipelines.',
   '/experience': 'Air-gapped document intelligence and national contact-center telemetry pipelines engineered at UIDAI (Aadhaar).',
   '/projects': 'Bare-metal C++ compilers for microcontrollers, semantic analyzers, and upstream patches in TensorFlow Core.',
@@ -74,16 +74,18 @@ class ErrorBoundary extends React.Component {
 }
 
 function PageManager() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!hash) {
+      window.scrollTo(0, 0);
+    }
     document.title = PAGE_TITLES[pathname] || 'Rachit Mangawa';
 
     const descMeta = document.querySelector('meta[name="description"]');
     if (descMeta) {
       descMeta.setAttribute('content', PAGE_DESCRIPTIONS[pathname] || PAGE_DESCRIPTIONS['/']);
     }
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -184,12 +186,19 @@ function App() {
     <ErrorBoundary>
       <HashRouter>
         <PageManager />
-        <a
-          href="#main-content"
+        <button
+          type="button"
+          onClick={() => {
+            const el = document.getElementById('main-content');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+              el.focus();
+            }
+          }}
           className="sr-only focus:not-sr-only focus:fixed focus:top-6 focus:left-6 focus:z-100 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-semibold focus:text-xs focus:uppercase focus:tracking-widest focus:rounded-full focus:shadow-2xl focus:ring-2 focus:ring-white focus:outline-none"
         >
           Skip to main content
-        </a>
+        </button>
         <div className="relative selection:bg-white/20 min-h-screen text-white overflow-x-hidden font-sans">
           <div className="fixed inset-0 radial-glow pointer-events-none z-0"></div>
           <div className="cad-grid"></div>
@@ -204,6 +213,23 @@ function App() {
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/resume" element={<Resume />} />
+
+            {/* Defensive Anchor Redirects to prevent 404s in HashRouter */}
+            <Route path="/featured-architectures" element={<Navigate to="/projects#featured-architectures" replace />} />
+            <Route path="/heartflow" element={<Navigate to="/projects#heartflow" replace />} />
+            <Route path="/semantic" element={<Navigate to="/projects#semantic" replace />} />
+            <Route path="/stack-by-discipline" element={<Navigate to="/skills#stack-by-discipline" replace />} />
+            <Route path="/languages" element={<Navigate to="/skills#languages" replace />} />
+            <Route path="/genai-nlp" element={<Navigate to="/skills#genai-nlp" replace />} />
+            <Route path="/ml-vision" element={<Navigate to="/skills#ml-vision" replace />} />
+            <Route path="/backend-web" element={<Navigate to="/skills#backend-web" replace />} />
+            <Route path="/data-infra" element={<Navigate to="/skills#data-infra" replace />} />
+            <Route path="/professional-experience" element={<Navigate to="/experience#professional-experience" replace />} />
+            <Route path="/uidai-details" element={<Navigate to="/experience#uidai-details" replace />} />
+            <Route path="/open-source" element={<Navigate to="/#open-source" replace />} />
+            <Route path="/achievements" element={<Navigate to="/#achievements" replace />} />
+            <Route path="/document-preview" element={<Navigate to="/resume#document-preview" replace />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
 
