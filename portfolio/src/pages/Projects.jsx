@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { PremiumCard, MagneticButton } from '../components/UI';
 import useReveal from '../hooks/useReveal';
 import { PORTFOLIO_CONTENT } from '../content';
+import { TechTag } from '../components/SkillIcons';
 
 export default function Projects() {
   useReveal();
@@ -23,7 +24,7 @@ export default function Projects() {
 
   const projects = data.projects;
   return (
-    <main className="relative z-10 w-full overflow-hidden">
+    <main id="main-content" className="relative z-10 w-full overflow-hidden">
       {/* Hero Section - Centered 2-Column Split matching Dashboard */}
       <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 w-full reveal">
@@ -39,10 +40,10 @@ export default function Projects() {
 
             <div className="reveal reveal-delay-1 text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left space-y-4">
               <p>
-                Bridging machine learning and hardware through <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">bare-metal compilers</span>, interpretable semantic analyzers, and upstream mathematical patches.
+                Selected engineering projects spanning embedded systems, machine learning pipelines, and open-source systems work.
               </p>
               <p>
-                From transpiling soft-voting ensemble trees into pure C++ for <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">microcontroller registers</span>, to debugging Bessel function singularities inside the <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">TensorFlow Core autodiff engine</span>.
+                Key work includes <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">HeartFlow OS</span> (exporting trained ML models to standalone C++ for microcontrollers), an interpretable NLP classifier for customer support, and numerical autodiff fixes in <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">TensorFlow Core</span>.
               </p>
             </div>
           </div>
@@ -85,9 +86,7 @@ export default function Projects() {
                     
                     <div className="flex flex-wrap gap-2 mb-8">
                       {project.tech.map(tag => (
-                        <span key={tag} className="px-3 py-1.5 text-xs tracking-widest uppercase bg-white/5 border border-white/10 rounded-full text-white/60 font-medium">
-                          {tag}
-                        </span>
+                        <TechTag key={tag} name={tag} />
                       ))}
                     </div>
                     
@@ -101,6 +100,9 @@ export default function Projects() {
                       <MagneticButton href={project.repo}>View Source Code</MagneticButton>
                       {project.live && (
                         <MagneticButton href={project.live}>View Live</MagneticButton>
+                      )}
+                      {project.hfSpace && (
+                        <MagneticButton href={project.hfSpace}>Hugging Face</MagneticButton>
                       )}
                     </div>
                   </div>

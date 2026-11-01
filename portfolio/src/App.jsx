@@ -1,17 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
-
 import Resume from './pages/Resume';
 import Footer from './components/Footer';
-
 import CommandPalette from './components/CommandPalette';
 import { SectionLink } from './components/UI';
 
 const PAGE_TITLES = {
   '/': 'Rachit Mangawa | Systems & AI Engineer',
+  '/skills': 'Skills & Systems | Rachit Mangawa',
   '/experience': 'Experience & Impact | Rachit Mangawa',
   '/projects': 'Architecture & Code | Rachit Mangawa',
   '/resume': 'Curriculum Vitae | Rachit Mangawa',
@@ -19,6 +19,7 @@ const PAGE_TITLES = {
 
 const PAGE_DESCRIPTIONS = {
   '/': 'Systems engineer focused on high-throughput backend architecture, local AI runtimes, and low-level code generation.',
+  '/skills': 'Core technical competencies across systems programming, local GenAI runtimes, ML vision, real-time backend architecture, and data pipelines.',
   '/experience': 'Air-gapped document intelligence and national contact-center telemetry pipelines engineered at UIDAI (Aadhaar).',
   '/projects': 'Bare-metal C++ compilers for microcontrollers, semantic analyzers, and upstream patches in TensorFlow Core.',
   '/resume': 'Academic foundation in CS & AI at NSUT Delhi, production government engineering, and LeetCode Knight standing.',
@@ -26,10 +27,51 @@ const PAGE_DESCRIPTIONS = {
 
 const NAV_LINKS = [
   { path: '/', label: 'Home' },
+  { path: '/skills', label: 'Skills' },
   { path: '/experience', label: 'Experience' },
   { path: '/projects', label: 'Projects' },
   { path: '/resume', label: 'Resume' },
 ];
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Unhandled UI exception:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-6 text-center font-sans">
+          <div className="max-w-md p-8 rounded-3xl bg-white/5 border border-white/10 ring-1 ring-white/10 shadow-2xl">
+            <h1 className="font-serif text-3xl font-medium text-white mb-3">Something went wrong</h1>
+            <p className="text-white/60 text-sm mb-6 leading-relaxed">
+              An unexpected error occurred while rendering this view.
+            </p>
+            <button
+              onClick={() => {
+                this.setState({ hasError: false });
+                window.location.reload();
+              }}
+              className="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-white/90 transition-all cursor-pointer"
+            >
+              Reload Page
+            </button>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 function PageManager() {
   const { pathname } = useLocation();
@@ -47,7 +89,7 @@ function PageManager() {
 
 function NotFound() {
   return (
-    <main className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-32">
+    <main id="main-content" className="min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-32">
       <h1 className="font-serif text-7xl md:text-9xl font-medium tracking-tighter text-white mb-4">404</h1>
       <p className="text-white/60 text-lg mb-8">Page not found.</p>
       <SectionLink to="/">Return Home</SectionLink>
@@ -86,8 +128,9 @@ function NavBar({ navRef, onOpenPalette }) {
       <button
         onClick={onOpenPalette}
         className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-white/50 hover:text-white ring-1 ring-white/10 text-[10px] font-mono tracking-wider transition-colors active:scale-95 cursor-pointer"
-        title="Open Command Palette (Cmd+K)"
-        aria-label="Open Command Palette"
+        title="Open Command Palette (⌘K)"
+        aria-label="⌘K Open Command Palette"
+        aria-keyshortcuts="Control+K Meta+K"
       >
         <span>⌘K</span>
       </button>
@@ -128,7 +171,7 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setIsPaletteOpen(prev => !prev);
       }
@@ -138,30 +181,37 @@ function App() {
   }, []);
 
   return (
-    <HashRouter>
-      <PageManager />
-      <div className="relative selection:bg-white/20 min-h-screen text-white overflow-x-hidden font-sans">
-        <div className="fixed inset-0 radial-glow pointer-events-none z-0"></div>
-        <div className="cad-grid"></div>
-        <div className="noise-overlay z-50"></div>
+    <ErrorBoundary>
+      <HashRouter>
+        <PageManager />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-6 focus:left-6 focus:z-100 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-semibold focus:text-xs focus:uppercase focus:tracking-widest focus:rounded-full focus:shadow-2xl focus:ring-2 focus:ring-white focus:outline-none"
+        >
+          Skip to main content
+        </a>
+        <div className="relative selection:bg-white/20 min-h-screen text-white overflow-x-hidden font-sans">
+          <div className="fixed inset-0 radial-glow pointer-events-none z-0"></div>
+          <div className="cad-grid"></div>
+          <div className="noise-overlay z-50"></div>
 
-        <NavBar navRef={navRef} onOpenPalette={() => setIsPaletteOpen(true)} />
-        <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} />
+          <NavBar navRef={navRef} onOpenPalette={() => setIsPaletteOpen(true)} />
+          <CommandPalette isOpen={isPaletteOpen} onClose={() => setIsPaletteOpen(false)} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
 
-        <Footer />
-      </div>
-    </HashRouter>
+          <Footer />
+        </div>
+      </HashRouter>
+    </ErrorBoundary>
   );
 }
 
 export default App;
-
-

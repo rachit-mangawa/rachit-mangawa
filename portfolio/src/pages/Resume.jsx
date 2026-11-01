@@ -7,7 +7,7 @@ export default function Resume() {
   const pdfUrl = `${import.meta.env.BASE_URL}resume.pdf`;
 
   return (
-    <main className="relative z-10 w-full min-h-screen overflow-hidden">
+    <main id="main-content" className="relative z-10 w-full min-h-screen overflow-hidden">
 
       {/* Hero Section - Centered 2-Column Split matching Dashboard */}
       <section className="relative min-h-dvh flex flex-col justify-center w-full max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
@@ -24,10 +24,10 @@ export default function Resume() {
 
             <div className="reveal reveal-delay-1 text-lg md:text-xl lg:text-2xl font-light text-white/70 leading-[1.6] tracking-tight text-left mb-8 space-y-4">
               <p>
-                Academic foundation in Computer Science & Artificial Intelligence at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">NSUT Delhi</span>, backed by production government engineering, calculus engine debugging, and algorithmic competition.
+                Undergraduate in Computer Science & Artificial Intelligence at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">NSUT Delhi</span>, with practical experience in backend development, embedded systems, and machine learning.
               </p>
               <p>
-                Verified curriculum covering high-concurrency backend services, embedded compiler design, and a top-0.8% <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LeetCode Knight rating (1982)</span>.
+                Includes details on my UIDAI internship, open-source work on TensorFlow, personal projects, and competitive programming (<span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LeetCode Knight, 1987 rating</span>).
               </p>
             </div>
 
@@ -37,7 +37,7 @@ export default function Resume() {
                 href={pdfUrl}
                 download="Rachit_Mangawa_Resume.pdf"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-4 bg-white text-black hover:bg-white/95 rounded-full px-8 py-4 transition-[transform,background-color] duration-300 hover:scale-[1.02] active:scale-[0.97]"
               >
                 <span className="text-sm font-bold tracking-widest uppercase">Download PDF</span>
@@ -52,10 +52,10 @@ export default function Resume() {
           <div className="lg:col-span-4 flex flex-col gap-3">
             {[
               { label: "Degree & Major", value: "B.Tech in CS & AI (NSUT)" },
-              { label: "Govt Fellowship", value: "Software Dev Intern (UIDAI)" },
-              { label: "Competitive Standing", value: "Knight (1982 / Rank 316)" },
-              { label: "Open-Source Merge", value: "TensorFlow Math Autodiff" },
-              { label: "Document Status", value: "Print-Ready Vector PDF" },
+              { label: "Internship", value: "Software Dev Intern (UIDAI)" },
+              { label: "Competitive Standing", value: "Knight (1987 / Top 0.83%)" },
+              { label: "Open Source", value: "TensorFlow Math Autodiff" },
+              { label: "Format", value: "Print-Ready PDF" },
             ].map((item, idx) => (
               <div key={idx} className="group flex items-center justify-between p-4 md:p-5 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-all duration-300 reveal" style={{ animationDelay: `${idx * 50 + 200}ms` }}>
                 <div className="flex flex-col">
@@ -77,10 +77,19 @@ export default function Resume() {
             <object
               data={pdfUrl}
               type="application/pdf"
+              title="Rachit Mangawa Resume (PDF)"
+              aria-label="Rachit Mangawa Resume (PDF)"
               className="w-full h-full"
             >
-              <div className="flex items-center justify-center h-full w-full bg-black/50 text-white/50">
-                <p>Your browser does not support embedded PDFs. Please download the file above.</p>
+              <div className="flex flex-col items-center justify-center gap-4 h-full w-full bg-black/50 text-white/70 p-6 text-center">
+                <p>Your browser does not support embedded PDFs.</p>
+                <a
+                  href={pdfUrl}
+                  download="Rachit_Mangawa_Resume.pdf"
+                  className="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-white/90 transition-colors"
+                >
+                  Download Resume PDF
+                </a>
               </div>
             </object>
           </div>
@@ -90,4 +99,3 @@ export default function Resume() {
     </main>
   );
 }
-

@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const TelemetryVisualizer = ({
   wsEndpoint,
   statusColor,
   statusBg,
-  glowColor1,
-  glowColor2,
-  glow1Duration = '4s',
-  glow2Duration = '6s',
   architectureTitle = "Architecture",
   architectureValue,
   metricTitle,
@@ -24,50 +20,68 @@ const TelemetryVisualizer = ({
   const [logs, setLogs] = useState([]);
   const [isPaused, setIsPaused] = useState(false);
   const [statusOverride, setStatusOverride] = useState(null);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
+
+    let isDocumentVisible = !document.hidden;
+    const handleVisibility = () => {
+      isDocumentVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
     const interval = setInterval(() => {
+      if (!isDocumentVisible) return;
       setData(prev => prev.map(dataUpdater));
       setLogs(prev => [logGenerator(), ...prev].slice(0, 4));
     }, updateInterval);
-    return () => clearInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [dataUpdater, logGenerator, updateInterval, isPaused]);
 
   const triggerBenchmark = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setStatusOverride('TESTING');
     setData(prev => prev.map(() => Math.min(0.96, 0.82 + Math.random() * 0.15)));
     setLogs(prev => [
       { id: Date.now(), text: `> BENCHMARK: INT8 batch 64 -> latency 1.12ms (converged)` },
       ...prev
     ].slice(0, 4));
-    setTimeout(() => setStatusOverride(null), 1200);
+    timeoutRef.current = setTimeout(() => setStatusOverride(null), 1200);
   };
 
   const triggerFault = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setStatusOverride('FAULT_SIM');
     setData(prev => prev.map(() => 0.25 + Math.random() * 0.2));
     setLogs(prev => [
       { id: Date.now(), text: `> WARN [RECOVERY]: Ingest jitter spike -> fallback handler OK` },
       ...prev
     ].slice(0, 4));
-    setTimeout(() => setStatusOverride(null), 1400);
+    timeoutRef.current = setTimeout(() => setStatusOverride(null), 1400);
   };
 
   return (
     <div className="relative w-full h-full min-h-100 flex flex-col bg-[#050505] rounded-2xl border border-white/10 overflow-hidden font-mono group">
-      {/* Animated Liquid Background */}
-      <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-1000 overflow-hidden pointer-events-none">
-        <div className={`absolute top-[-20%] left-[-10%] w-[70%] h-[70%] ${glowColor1} blur-[60px] rounded-full animate-pulse`} style={{ animationDuration: glow1Duration }} />
-        <div className={`absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] ${glowColor2} blur-[60px] rounded-full animate-pulse`} style={{ animationDuration: glow2Duration, animationDelay: '1s' }} />
-      </div>
+      {/* Background tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
       {/* Top telemetry bar */}
       <div className="relative z-10 border-b border-white/5 bg-black/50 backdrop-blur-md px-4 py-3 flex flex-wrap gap-2 justify-between items-center text-white/70 uppercase tracking-[0.2em] font-semibold text-[11px] shrink-0 rounded-t-2xl">
         <div className="flex items-center gap-3">
           <span className="font-mono text-[10px] md:text-[11px]">{wsEndpoint}</span>
           <span className={`flex items-center gap-1.5 ${statusOverride ? 'text-amber-400' : statusColor}`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${statusOverride ? 'bg-amber-400' : statusBg} shadow-[0_0_8px_currentColor] animate-pulse`}></span>
+            <span className={`w-1.5 h-1.5 rounded-full ${statusOverride ? 'bg-amber-400' : statusBg}`}></span>
             {statusOverride || 'LIVE'}
           </span>
         </div>
@@ -137,7 +151,7 @@ const TelemetryVisualizer = ({
                {logs.map((log, i) => (
                  <div 
                    key={log.id} 
-                   className={`text-[11px] leading-loose truncate transition-[opacity,transform,color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] starting:opacity-0 starting:-translate-y-2 translate-y-0 ${i === 0 ? 'text-white/90 opacity-100 font-medium' : i === 1 ? 'text-white/60 opacity-100' : 'text-white/40 opacity-100'}`}
+                   className={`text-[11px] leading-loose truncate transition-[opacity,transform,color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] starting:opacity-0 starting:-translate-y-2 translate-y-0 ${i === 0 ? 'text-white/90 opacity-100 font-medium' : i === 1 ? 'text-white/70 opacity-100' : 'text-white/50 opacity-100'}`}
                  >
                    {log.text}
                  </div>
@@ -156,8 +170,6 @@ export const TranspilerVisual = () => {
       wsEndpoint="ws://edge-inference.node"
       statusColor="text-emerald-400"
       statusBg="bg-emerald-400"
-      glowColor1="bg-emerald-500/20"
-      glowColor2="bg-cyan-500/20"
       architectureTitle="Pipeline"
       architectureValue="INT8 Quantized SVM"
       metricTitle="Footprint"
@@ -183,10 +195,6 @@ export const SemanticAnalyzerVisual = () => {
       wsEndpoint="wss://nlp-engine.cluster"
       statusColor="text-blue-400"
       statusBg="bg-blue-400"
-      glowColor1="bg-blue-500/20"
-      glowColor2="bg-purple-500/20"
-      glow1Duration="5s"
-      glow2Duration="7s"
       architectureValue="all-MiniLM + SVM"
       metricTitle="P99 Latency"
       metricValue="2.4ms"

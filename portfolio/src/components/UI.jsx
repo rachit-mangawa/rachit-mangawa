@@ -25,7 +25,6 @@ export const PremiumCard = ({ children, className = "" }) => {
   );
 };
 
-
 export const MagneticButton = ({ children, href, isInternal }) => {
   const inner = (
     <>
@@ -47,7 +46,7 @@ export const MagneticButton = ({ children, href, isInternal }) => {
   }
 
   return (
-    <a href={href} target="_blank" rel="noreferrer" className={classes}>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
       {inner}
     </a>
   );
@@ -68,7 +67,7 @@ export const SectionLink = ({ to, href, children = "View All", className = "" })
 
   if (isExternal) {
     return (
-      <a href={target} target="_blank" rel="noreferrer" className={classes}>
+      <a href={target} target="_blank" rel="noopener noreferrer" className={classes}>
         {content}
       </a>
     );
@@ -80,6 +79,3 @@ export const SectionLink = ({ to, href, children = "View All", className = "" })
     </Link>
   );
 };
-
-
-

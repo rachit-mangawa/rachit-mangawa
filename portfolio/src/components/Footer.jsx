@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10 reveal">
           <div className="max-w-xl lg:max-w-2xl">
             <h2 className="font-serif text-4xl md:text-6xl font-medium tracking-tight text-white mb-3">Let's build.</h2>
-            <p className="text-base md:text-lg text-white/40 font-light leading-relaxed">
+            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
               Open to new engineering challenges and systems collaboration.
             </p>
           </div>
@@ -48,21 +48,21 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-6 border-t border-white/10">
-          <div className="text-white/40 text-xs font-bold tracking-widest uppercase">
+          <div className="text-white/60 text-xs font-bold tracking-widest uppercase">
             © {CURRENT_YEAR} {data.personal.name}
           </div>
 
           <div className="flex flex-wrap items-center gap-5 md:gap-7">
-            <a href={data.personal.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-colors">
+            <a href={data.personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
               <GithubLogo size={15} weight="fill" /> GITHUB
             </a>
-            <a href={data.personal.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-colors">
+            <a href={data.personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
               <LinkedinLogo size={15} weight="fill" /> LINKEDIN
             </a>
-            <a href={data.personal.kaggle} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-colors">
+            <a href={data.personal.kaggle} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
               <KaggleLogo size={15} /> KAGGLE
             </a>
-            <a href={data.personal.huggingface} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/50 hover:text-white transition-colors">
+            <a href={data.personal.huggingface} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-white/60 hover:text-white transition-colors">
               <HuggingFaceLogo size={15} /> HUGGING FACE
             </a>
           </div>
@@ -71,4 +71,3 @@ export default function Footer() {
     </footer>
   );
 }
-
