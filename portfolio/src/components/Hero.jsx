@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from '@phosphor-icons/react';
+import { ArrowUpRight, DownloadSimple } from '@phosphor-icons/react';
 import { scrollToElement } from '../hooks/useScrollToHash';
 
 // Direct, unambiguous directory items linking to core systems and projects
@@ -85,6 +85,22 @@ export default function Hero() {
               />
             </Link>
 
+            <a
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
+              download="Rachit_Mangawa_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Curriculum Vitae (PDF)"
+              className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white/5 border border-white/10 hover:border-white/25 hover:bg-white/10 text-xs font-semibold uppercase tracking-widest text-white/90 hover:text-white active:scale-[0.96] transition-all duration-200 shadow-lg cursor-pointer"
+            >
+              <span>Download CV</span>
+              <DownloadSimple
+                size={14}
+                weight="bold"
+                className="text-white/60 group-hover:text-white transition-colors duration-200 group-hover:translate-y-0.5"
+              />
+            </a>
+
             <button
               type="button"
               onClick={() => scrollToElement('experience')}
@@ -151,7 +167,7 @@ export default function Hero() {
       </div>
 
       {/* Clean Bottom Section Boundary Line */}
-      <div className="hero-enter hero-delay-3 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/40">
+      <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/40">
         <span className="font-mono text-[11px] text-white/30 tracking-wider">Scroll</span>
         <button
           type="button"

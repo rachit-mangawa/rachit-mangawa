@@ -55,6 +55,9 @@ export default function Projects() {
             </a>
           </div>
         </div>
+
+        {/* Section Boundary Line */}
+        <div className="mt-14 md:mt-20 border-t border-white/10" />
       </section>
 
       {/* Projects Container */}

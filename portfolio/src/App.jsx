@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
-import Resume from './pages/Resume';
 import Footer from './components/Footer';
 import CommandPalette from './components/CommandPalette';
 import { SectionLink } from './components/UI';
@@ -14,7 +13,6 @@ const PAGE_TITLES = {
   '/skills': 'Skills & Systems | Rachit Mangawa',
   '/experience': 'Experience & Impact | Rachit Mangawa',
   '/projects': 'Architecture & Code | Rachit Mangawa',
-  '/resume': 'Curriculum Vitae | Rachit Mangawa',
 };
 
 const PAGE_DESCRIPTIONS = {
@@ -22,7 +20,6 @@ const PAGE_DESCRIPTIONS = {
   '/skills': 'Architecting low-level execution runtimes, air-gapped RAG pipelines, and concurrent database storage engines.',
   '/experience': 'Engineering air-gapped document intelligence systems and high-throughput telemetry data pipelines.',
   '/projects': 'Building zero-dependency microcontroller compilers, multi-tier AI orchestrators, and upstream TensorFlow Core engines.',
-  '/resume': 'Curriculum vitae spanning production engineering, upstream numerical patches, and competitive programming milestones.',
 };
 
 const NAV_LINKS = [
@@ -30,7 +27,6 @@ const NAV_LINKS = [
   { path: '/skills', label: 'Skills' },
   { path: '/experience', label: 'Experience' },
   { path: '/projects', label: 'Projects' },
-  { path: '/resume', label: 'Resume' },
 ];
 
 class ErrorBoundary extends React.Component {
@@ -212,7 +208,7 @@ function App() {
             <Route path="/skills" element={<Skills />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/resume" element={<Resume />} />
+            <Route path="/resume" element={<Navigate to="/" replace />} />
 
             {/* Defensive Anchor Redirects to prevent 404s in HashRouter */}
             <Route path="/featured-architectures" element={<Navigate to="/projects#featured-architectures" replace />} />
@@ -220,7 +216,8 @@ function App() {
             <Route path="/semantic" element={<Navigate to="/projects#semantic" replace />} />
             <Route path="/stack-by-discipline" element={<Navigate to="/skills#stack-by-discipline" replace />} />
             <Route path="/languages" element={<Navigate to="/skills#languages" replace />} />
-            <Route path="/genai-nlp" element={<Navigate to="/skills#genai-nlp" replace />} />
+            <Route path="/agentic-ai" element={<Navigate to="/skills#agentic-ai" replace />} />
+            <Route path="/genai-nlp" element={<Navigate to="/skills#agentic-ai" replace />} />
             <Route path="/ml-vision" element={<Navigate to="/skills#ml-vision" replace />} />
             <Route path="/backend-web" element={<Navigate to="/skills#backend-web" replace />} />
             <Route path="/data-infra" element={<Navigate to="/skills#data-infra" replace />} />
@@ -228,7 +225,7 @@ function App() {
             <Route path="/uidai-details" element={<Navigate to="/experience#uidai-details" replace />} />
             <Route path="/open-source" element={<Navigate to="/#open-source" replace />} />
             <Route path="/achievements" element={<Navigate to="/#achievements" replace />} />
-            <Route path="/document-preview" element={<Navigate to="/resume#document-preview" replace />} />
+            <Route path="/document-preview" element={<Navigate to="/" replace />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

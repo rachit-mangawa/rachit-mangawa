@@ -10,7 +10,6 @@
 [![Kaggle](https://img.shields.io/badge/kaggle-black?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/rachitmangawa)
 [![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-black?style=for-the-badge&logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/rachit-mangawa/)
 [![Email](https://img.shields.io/badge/Gmail-black?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rachit.mangawa.work@gmail.com)
-[![Hugging Face](https://img.shields.io/badge/Hugging_Face-black?style=for-the-badge&logo=hugging-face&logoColor=white)](https://huggingface.co/IDKHowToCodeFr)  
 
 <!-- </div>
 <div align = "center">

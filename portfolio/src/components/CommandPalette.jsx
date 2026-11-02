@@ -53,13 +53,6 @@ export default function CommandPalette({ isOpen, onClose }) {
       action: () => { navigate('/projects'); onClose(); }
     },
     {
-      id: 'nav-resume',
-      label: 'Curriculum Vitae',
-      category: 'Navigation',
-      icon: FileText,
-      action: () => { navigate('/resume'); onClose(); }
-    },
-    {
       id: 'action-copy-email',
       label: `Copy Email (${data.personal.email})`,
       category: 'Actions',
@@ -79,7 +72,7 @@ export default function CommandPalette({ isOpen, onClose }) {
     },
     {
       id: 'action-download-resume',
-      label: 'Download Resume (PDF)',
+      label: 'Download CV / Resume (PDF)',
       category: 'Actions',
       icon: FileText,
       action: () => {

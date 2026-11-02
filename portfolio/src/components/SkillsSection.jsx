@@ -1,49 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SectionLink } from './UI';
-import { ArrowUpRight, Cpu, Brain, HardDrives, ArrowsMerge } from '@phosphor-icons/react';
-import { TechTag } from './SkillIcons';
-
-const ARCHITECTURAL_PILLARS = [
-  {
-    id: "systems-edge",
-    title: "Low-Level & Edge Runtimes",
-    domain: "COMPILERS & EMBEDDED",
-    categoryIcon: Cpu,
-    description: "Compiling trained ML models into zero-dependency C99 headers for microcontrollers with INT8 quantization and AST analysis.",
-    skills: ["C/C++", "Python", "PlatformIO", "ESP32"],
-    link: "/skills#languages"
-  },
-  {
-    id: "airgapped-ai",
-    title: "Air-Gapped AI & Hybrid RAG",
-    domain: "LOCAL INFERENCE & RETRIEVAL",
-    categoryIcon: Brain,
-    description: "Offline multi-lingual OCR and document retrieval pipelines combining local Ollama models with dual dense-sparse vector search.",
-    skills: ["PyTorch", "Ollama", "Hugging Face", "OpenCV"],
-    link: "/skills#genai-nlp"
-  },
-  {
-    id: "backend-streaming",
-    title: "High-Throughput Backend & Streaming",
-    domain: "DISTRIBUTED & CONCURRENT APIS",
-    categoryIcon: HardDrives,
-    description: "Async API engines built for high-write concurrency, real-time bi-directional telemetry streaming, and row-level JWT claim security.",
-    skills: ["FastAPI", "WebSockets", "SQLite WAL", "Redis"],
-    link: "/skills#backend-web"
-  },
-  {
-    id: "data-verification",
-    title: "Data Engineering & Verification",
-    domain: "ETL, CI/CD & NUMERICAL CORE",
-    categoryIcon: ArrowsMerge,
-    description: "Vectorized batch processing of 100K+ row workbooks, reproducible container workflows, and upstream autodiff numerical patches.",
-    skills: ["Docker", "Linux", "PyTest", "Pandas"],
-    link: "/skills#data-infra"
-  }
-];
+import * as Icons from './SkillIcons';
+import { PORTFOLIO_CONTENT } from '../content';
 
 export default function SkillsSection() {
+  const categories = PORTFOLIO_CONTENT.skills;
+
   return (
     <section id="skills" className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
       {/* Section Header */}
@@ -56,51 +19,67 @@ export default function SkillsSection() {
         <SectionLink to="/skills">View Full Stack</SectionLink>
       </div>
 
-      {/* Overview Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {ARCHITECTURAL_PILLARS.map((pillar, idx) => {
-          const CategoryIcon = pillar.categoryIcon;
+      {/* Structured Category Rows - Clicking any row or icon jumps to that section in /skills */}
+      <div className="border-t border-white/10 reveal reveal-delay-1">
+        {categories.map((row) => {
+          const CategoryIcon = Icons[row.categoryIcon] || Icons.LanguagesCategoryIcon;
+          const targetUrl = `/skills#${row.id}`;
           return (
-            <Link
-              to={pillar.link}
-              key={pillar.id}
-              className="group relative flex flex-col justify-between p-6 md:p-7 bg-white/2 border border-white/10 rounded-2xl hover:bg-white/5 hover:border-white/20 transition-[background-color,border-color,transform] duration-200 active:scale-[0.99] reveal"
-              style={{ animationDelay: `${idx * 80 + 100}ms` }}
+            <div
+              key={row.id}
+              className="py-4 sm:py-5 border-b border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-3.5 md:gap-8 group hover:bg-white/1 transition-colors duration-200"
             >
-              <div>
-                {/* Header Row: Domain Overline + Arrow */}
-                <div className="flex items-center justify-between gap-4 mb-3">
-                  <div className="flex items-center gap-2">
-                    <CategoryIcon size={15} className="text-white/50 group-hover:text-white transition-colors" />
-                    <span className="text-xs uppercase tracking-[0.2em] font-bold text-white/50">
-                      {pillar.domain}
-                    </span>
-                  </div>
-                  <ArrowUpRight
-                    size={16}
-                    className="text-white/40 group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0"
-                    aria-hidden="true"
-                  />
-                </div>
+              {/* Left Column: Category Label linking to the specific section on /skills */}
+              <Link
+                to={targetUrl}
+                className="md:w-56 lg:w-64 shrink-0 flex items-center gap-2.5 group/label cursor-pointer text-white/50 hover:text-white transition-colors duration-200"
+                title={`Jump to ${row.category} on Skills page`}
+              >
+                <CategoryIcon
+                  size={16}
+                  className="text-white/40 group-hover/label:text-emerald-400 group-hover:text-emerald-400 transition-colors duration-200 shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="text-xs font-mono uppercase tracking-[0.2em] font-semibold group-hover/label:text-white transition-colors duration-200">
+                  {row.category}
+                </span>
+                <span className="text-xs text-white/20 group-hover/label:text-emerald-400 group-hover/label:translate-x-0.5 transition-all duration-200">
+                  →
+                </span>
+              </Link>
 
-                {/* Pillar Title */}
-                <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-white group-hover:text-emerald-400 transition-colors duration-200 mb-3">
-                  {pillar.title}
-                </h3>
+              {/* Right Column: Icon Dock with Tooltips linking to the specific section on /skills */}
+              <div className="flex-1 flex flex-wrap items-center gap-2 sm:gap-2.5">
+                {row.skills.map((skill) => (
+                  <Link
+                    key={skill.name}
+                    to={targetUrl}
+                    className="relative group/skill flex items-center justify-center cursor-pointer"
+                    aria-label={`Jump to ${skill.name} under ${row.category} on Skills page`}
+                  >
+                    <div
+                      className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/3 border border-white/10 hover:border-white/30 hover:bg-white/8 text-white/70 hover:text-white flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
+                    >
+                      <Icons.TechIcon
+                        name={skill.name}
+                        size={18}
+                        className="shrink-0 transition-transform duration-200 group-hover/skill:scale-110"
+                      />
+                      <span className="sr-only">{skill.name}</span>
+                    </div>
 
-                {/* Concise 1-sentence description */}
-                <p className="text-white/60 text-sm md:text-base font-light leading-relaxed mb-6">
-                  {pillar.description}
-                </p>
-              </div>
-
-              {/* Bottom Row: Inline Tech Tags */}
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
-                {pillar.skills.map((skill) => (
-                  <TechTag key={skill} name={skill} />
+                    {/* Floating Tooltip */}
+                    <div
+                      role="tooltip"
+                      className="absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-[#121212] border border-white/15 text-[11px] font-mono text-white whitespace-nowrap opacity-0 pointer-events-none group-hover/skill:opacity-100 transition-opacity duration-150 z-30 shadow-2xl"
+                    >
+                      {skill.name}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-[#121212]" />
+                    </div>
+                  </Link>
                 ))}
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>

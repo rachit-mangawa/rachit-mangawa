@@ -21,8 +21,6 @@ export const PORTFOLIO_CONTENT = {
     codeforcesHandle: "i_win_again",
     kaggle: "https://www.kaggle.com/rachitmangawa",
     kaggleHandle: "rachitmangawa",
-    huggingface: "https://huggingface.co/IDKHowToCodeFr",
-    huggingfaceHandle: "IDKHowToCodeFr",
     location: "NSUT, New Delhi, India"
   },
   bio: {
@@ -147,7 +145,6 @@ export const PORTFOLIO_CONTENT = {
       ],
       repo: "https://github.com/rachit-mangawa/HEARTFLOW_OS",
       live: "https://rachit-mangawa.github.io/HEARTFLOW_OS/",
-      hfSpace: "https://huggingface.co/spaces/IDKHowToCodeFr/tinyml-backend",
       visualContent: <TranspilerVisual />
     },
     {
@@ -175,7 +172,6 @@ export const PORTFOLIO_CONTENT = {
         <React.Fragment key="3">Implemented robust edge security controls including <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SecurityHeadersMiddleware (CSP frame-ancestors, HSTS, nosniff)</span>, unbuffered chunk stream byte metering, early Content-Length 413 rejections, and a live web developer console.</React.Fragment>
       ],
       repo: "https://github.com/rachit-mangawa/hf-backend",
-      hfSpace: "https://huggingface.co/spaces/IDKHowToCodeFr/tinyml-backend",
       visualContent: <HfGatewayVisual />
     },
     {
@@ -198,101 +194,78 @@ export const PORTFOLIO_CONTENT = {
       id: "languages",
       category: "Languages",
       categoryIcon: "LanguagesCategoryIcon",
-      pipelineTabs: [
-        { label: "COMPILED & TYPED", icon: "CppIcon" },
-        { label: "SHELL & SCRIPTING", icon: "BashIcon" }
-      ],
-      description: "Languages I write regularly for backend services, embedded firmware, algorithms, and systems scripting.",
+      description: "Languages I write regularly for backend microservices, embedded firmware, algorithms, and systems scripting.",
       colSpan: "lg:col-span-12",
       skills: [
-        { name: "Python", detail: "3.10 - 3.13", iconName: "PythonIcon" },
-        { name: "C/C++", detail: "C99 / C++17", iconName: "CppIcon" },
-        { name: "TypeScript", detail: "Web & Tooling", iconName: "TypeScriptIcon" },
-        { name: "SQL", detail: "Queries & Schema", iconName: "SqlIcon" },
-        { name: "Bash", detail: "Shell Scripting", iconName: "BashIcon" },
+        { name: "Python", iconName: "PythonIcon" },
+        { name: "C++", iconName: "CppIcon" },
+        { name: "TypeScript", iconName: "TypeScriptIcon" },
+        { name: "SQL", iconName: "SqlIcon" },
+        { name: "Bash", iconName: "BashIcon" },
       ]
     },
     {
-      id: "genai-nlp",
-      category: "GenAI & NLP",
+      id: "agentic-ai",
+      category: "Agentic AI & Automation",
       categoryIcon: "GenAiCategoryIcon",
-      pipelineTabs: [
-        { label: "RAG PIPELINE", icon: "RagIcon", variant: "cyan" },
-        { label: "HYBRID SEARCH", icon: "VectorSearchIcon" }
-      ],
-      description: "Local inference with Ollama, hybrid vector search (FAISS + BM25), cross-encoder reranking, and transformer embeddings.",
+      description: "Building autonomous agents, Model Context Protocol (MCP) integrations, local LLM orchestration, and workflow automation.",
       colSpan: "lg:col-span-12",
       skills: [
-        { name: "LLMs (Ollama)", detail: "Local Inference", iconName: "OllamaIcon" },
-        { name: "RAG Pipelines", detail: "Context Retrieval", iconName: "RagIcon" },
-        { name: "Vector Search (FAISS, BM25)", detail: "Dense & Sparse", iconName: "VectorSearchIcon" },
-        { name: "Cross-Encoder Reranking", detail: "Relevance Scoring", iconName: "RerankingIcon" },
-        { name: "Hugging Face Transformers", detail: "Pipelines & Models", iconName: "HuggingFaceIcon" },
-        { name: "Sentence-Transformers", detail: "MiniLM Embeddings", iconName: "SentenceTransformersIcon" },
+        { name: "Agentic AI", iconName: "AgenticAiIcon" },
+        { name: "MCP", iconName: "McpIcon" },
+        { name: "AI Automation", iconName: "AiAutomationIcon" },
+        { name: "LLMs (Ollama)", iconName: "OllamaIcon" },
+        { name: "LangChain", iconName: "LangChainIcon" },
+        { name: "RAG Pipelines", iconName: "RagIcon" },
+        { name: "Vector Search", iconName: "VectorSearchIcon" },
+        { name: "Hugging Face Transformers", iconName: "HuggingFaceIcon" },
       ]
     },
     {
       id: "ml-vision",
       category: "Machine Learning & Vision",
       categoryIcon: "MlCategoryIcon",
-      pipelineTabs: [
-        { label: "MODEL TRAINING", icon: "PyTorchIcon", variant: "purple" },
-        { label: "EXPLAINABLE AI", icon: "ShapIcon" }
-      ],
-      description: "Deep learning model training, explainability with SHAP, INT8 quantization, and document image preprocessing.",
+      description: "Model training, computer vision preprocessing, and numerical computing.",
       colSpan: "lg:col-span-12",
       skills: [
-        { name: "PyTorch", detail: "Tensors & Training", iconName: "PyTorchIcon" },
-        { name: "TensorFlow Core", detail: "Autodiff Engine", iconName: "TensorFlowIcon" },
-        { name: "Scikit-Learn", detail: "Classifiers & Ensembles", iconName: "ScikitLearnIcon" },
-        { name: "SHAP (Explainable AI)", detail: "Feature Attribution", iconName: "ShapIcon" },
-        { name: "OpenCV", detail: "Image Preprocessing", iconName: "OpenCvIcon" },
-        { name: "OCR (Tesseract)", detail: "Document Text Extraction", iconName: "OcrIcon" },
-        { name: "INT8 Quantization", detail: "Edge Model Compression", iconName: "CppIcon" },
+        { name: "PyTorch", iconName: "PyTorchIcon" },
+        { name: "TensorFlow Core", iconName: "TensorFlowIcon" },
+        { name: "Scikit-Learn", iconName: "ScikitLearnIcon" },
+        { name: "OpenCV", iconName: "OpenCvIcon" },
+        { name: "Pandas", iconName: "PandasIcon" },
+        { name: "NumPy", iconName: "NumpyIcon" },
       ]
     },
     {
       id: "backend-web",
-      category: "Backend & Web Systems",
+      category: "Backend & Systems",
       categoryIcon: "BackendCategoryIcon",
-      pipelineTabs: [
-        { label: "ASYNC APIS", icon: "FastApiIcon", variant: "emerald" },
-        { label: "WEBSOCKETS", icon: "WebSocketsIcon" }
-      ],
-      description: "FastAPI asynchronous microservices, live WebSocket telemetry feeds, Next.js, and relational SQLite WAL databases.",
+      description: "Asynchronous REST microservices, real-time WebSocket feeds, and concurrent database storage engines.",
       colSpan: "lg:col-span-12",
       skills: [
-        { name: "FastAPI", detail: "Async Services", iconName: "FastApiIcon" },
-        { name: "Next.js", detail: "React 19 Frontend", iconName: "NextjsIcon" },
-        { name: "REST APIs", detail: "HTTP Endpoints", iconName: "RestApiIcon" },
-        { name: "WebSockets", detail: "Live Data Feeds", iconName: "WebSocketsIcon" },
-        { name: "Redis", detail: "Cache & Queues", iconName: "RedisIcon" },
-        { name: "SQLAlchemy", detail: "ORM & Querying", iconName: "SqlAlchemyIcon" },
-        { name: "SQLite", detail: "WAL Mode", iconName: "SqliteIcon" },
-        { name: "JWT & Role-Based Access (RBAC)", detail: "Auth & Permissions", iconName: "JwtRbacIcon" },
-        { name: "PlatformIO", detail: "Embedded Firmware", iconName: "PlatformIoIcon" },
+        { name: "FastAPI", iconName: "FastApiIcon" },
+        { name: "Next.js", iconName: "NextjsIcon" },
+        { name: "React", iconName: "ReactIcon" },
+        { name: "Redis", iconName: "RedisIcon" },
+        { name: "SQLite WAL", iconName: "SqliteIcon" },
+        { name: "SQLAlchemy", iconName: "SqlAlchemyIcon" },
+        { name: "WebSockets", iconName: "WebSocketsIcon" },
+        { name: "PlatformIO", iconName: "PlatformIoIcon" },
       ]
     },
     {
       id: "data-infra",
-      category: "Data Engineering & Tools",
+      category: "Developer Tools & DevOps",
       categoryIcon: "DataCategoryIcon",
-      pipelineTabs: [
-        { label: "ETL PIPELINES", icon: "EtlIcon", variant: "amber" },
-        { label: "CI/CD & DOCKER", icon: "DockerIcon" }
-      ],
-      description: "Batch asynchronous data pipelines, comprehensive test suites, containerized workflows, and Linux environments.",
+      description: "Containerized environments, continuous integration, regression test suites, and Linux workflows.",
       colSpan: "lg:col-span-12",
       skills: [
-        { name: "ETL Pipelines", detail: "Batch Processing", iconName: "EtlIcon" },
-        { name: "Pandas", detail: "DataFrames & Aggregations", iconName: "PandasIcon" },
-        { name: "NumPy", detail: "Numerical Arrays", iconName: "NumpyIcon" },
-        { name: "Plotly Dash", detail: "Internal Dashboards", iconName: "PlotlyDashIcon" },
-        { name: "Docker", detail: "Container Workflows", iconName: "DockerIcon" },
-        { name: "Git", detail: "Version Control", iconName: "GitIcon" },
-        { name: "GitHub Actions", detail: "CI/CD Workflows", iconName: "GitHubActionsIcon" },
-        { name: "PyTest", detail: "Unit & Regression Tests", iconName: "PyTestIcon" },
-        { name: "Linux", detail: "Development & Shell", iconName: "LinuxIcon" },
+        { name: "Docker", iconName: "DockerIcon" },
+        { name: "Git", iconName: "GitIcon" },
+        { name: "GitHub Actions", iconName: "GitHubActionsIcon" },
+        { name: "Linux", iconName: "LinuxIcon" },
+        { name: "PyTest", iconName: "PyTestIcon" },
+        { name: "n8n", iconName: "N8nIcon" },
       ]
     }
   ]

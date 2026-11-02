@@ -12,11 +12,14 @@ import {
   ArrowsMerge,
   MagnifyingGlass,
   FileText,
-  Graph
+  Graph,
+  Robot,
+  Lightning
 } from '@phosphor-icons/react';
 import {
   siPython,
   siCplusplus,
+  siC,
   siTypescript,
   siGnubash,
   siOllama,
@@ -42,7 +45,10 @@ import {
   siLeetcode,
   siTensorflow,
   siPlatformio,
-  siRedis
+  siRedis,
+  siLangchain,
+  siN8n,
+  siModelcontextprotocol
 } from 'simple-icons';
 
 // Helper to render official Simple Icons SVG path in monochrome currentColor
@@ -64,6 +70,7 @@ function SimpleIcon({ icon, size = 18, className = "" }) {
 // 1. Languages
 export const PythonIcon = (props) => <SimpleIcon icon={siPython} {...props} />;
 export const CppIcon = (props) => <SimpleIcon icon={siCplusplus} {...props} />;
+export const CIcon = (props) => <SimpleIcon icon={siC} {...props} />;
 export const TypeScriptIcon = (props) => <SimpleIcon icon={siTypescript} {...props} />;
 export const BashIcon = (props) => <SimpleIcon icon={siGnubash} {...props} />;
 export const SqlIcon = (props) => <Database size={props.size || 18} className={props.className || ""} />;
@@ -75,6 +82,11 @@ export const RagIcon = (props) => <MagnifyingGlass size={props.size || 18} class
 export const VectorSearchIcon = (props) => <Graph size={props.size || 18} className={props.className || ""} />;
 export const RerankingIcon = (props) => <Sliders size={props.size || 18} className={props.className || ""} />;
 export const SentenceTransformersIcon = (props) => <Brain size={props.size || 18} className={props.className || ""} />;
+export const AgenticAiIcon = (props) => <Robot size={props.size || 18} className={props.className || ""} />;
+export const McpIcon = (props) => <SimpleIcon icon={siModelcontextprotocol} {...props} />;
+export const AiAutomationIcon = (props) => <Lightning size={props.size || 18} className={props.className || ""} />;
+export const LangChainIcon = (props) => <SimpleIcon icon={siLangchain} {...props} />;
+export const N8nIcon = (props) => <SimpleIcon icon={siN8n} {...props} />;
 
 // 3. Machine Learning & Vision
 export const PyTorchIcon = (props) => <SimpleIcon icon={siPytorch} {...props} />;
@@ -135,6 +147,8 @@ export function TechIcon({ name, size = 14, className = "" }) {
     case 'uv':
     case 'uvicorn':
       return <Sliders size={size} className={className} />;
+    case 'c':
+      return <CIcon size={size} className={className} />;
     case 'c++':
     case 'c/c++':
     case 'c99':
@@ -161,6 +175,7 @@ export function TechIcon({ name, size = 14, className = "" }) {
     case 'opencv':
       return <OpenCvIcon size={size} className={className} />;
     case 'tesseract':
+    case 'tesseract ocr':
     case 'ocr (tesseract)':
       return <OcrIcon size={size} className={className} />;
     case 'fastapi':
@@ -231,6 +246,21 @@ export function TechIcon({ name, size = 14, className = "" }) {
       return <SentenceTransformersIcon size={size} className={className} />;
     case 'etl pipelines':
       return <EtlIcon size={size} className={className} />;
+    case 'agentic ai':
+    case 'autonomous agents':
+    case 'ai agents':
+      return <AgenticAiIcon size={size} className={className} />;
+    case 'mcp':
+    case 'modelcontextprotocol':
+    case 'model context protocol':
+      return <McpIcon size={size} className={className} />;
+    case 'ai automation':
+    case 'automation':
+      return <AiAutomationIcon size={size} className={className} />;
+    case 'langchain':
+      return <LangChainIcon size={size} className={className} />;
+    case 'n8n':
+      return <N8nIcon size={size} className={className} />;
     default:
       return null;
   }

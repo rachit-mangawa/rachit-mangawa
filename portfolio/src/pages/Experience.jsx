@@ -62,6 +62,9 @@ export default function Experience() {
             </button>
           </div>
         </div>
+
+        {/* Section Boundary Line */}
+        <div className="mt-14 md:mt-20 border-t border-white/10" />
       </section>
 
       <section id="professional-experience" className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-32 scroll-mt-24">

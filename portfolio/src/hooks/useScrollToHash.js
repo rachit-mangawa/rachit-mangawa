@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -17,41 +17,27 @@ export const scrollToElement = (id) => {
 };
 
 /**
- * Hook to automatically handle hash scrolling on page load and location changes,
- * with polling fallbacks for lazily rendered or animating elements.
+ * Hook to automatically handle hash scrolling on page load and location changes.
  */
 export const useScrollToHash = () => {
   const location = useLocation();
 
-  const performScroll = useCallback((targetId) => {
-    if (!targetId) return;
-    
+  useEffect(() => {
+    if (!location.hash) return;
+    const targetId = location.hash.replace(/^#/, '');
+
     // Immediate attempt
     if (scrollToElement(targetId)) return;
 
-    // Retry at 100ms
-    const t1 = setTimeout(() => {
-      if (scrollToElement(targetId)) return;
-      
-      // Final retry at 300ms for lazily laid out or delayed components
-      const t2 = setTimeout(() => {
-        scrollToElement(targetId);
-      }, 200);
-      return () => clearTimeout(t2);
-    }, 100);
+    // Next-frame retry if element hasn't finished painting
+    const frameId = requestAnimationFrame(() => {
+      scrollToElement(targetId);
+    });
 
-    return () => clearTimeout(t1);
-  }, []);
-
-  useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.replace(/^#/, '');
-      performScroll(targetId);
-    }
-  }, [location.pathname, location.hash, performScroll]);
+    return () => cancelAnimationFrame(frameId);
+  }, [location.pathname, location.hash]);
 
   return { scrollToElement };
 };
 
 export default useScrollToHash;
-
