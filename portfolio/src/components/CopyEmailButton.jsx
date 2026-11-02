@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { Copy, Check } from '@phosphor-icons/react';
+import { Copy } from '@phosphor-icons/react/Copy';
+import { Check } from '@phosphor-icons/react/Check';
+import { copyToClipboard } from '../utils/clipboard';
 
 export default function CopyEmailButton({ email, className = "" }) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = (e) => {
+  const handleCopy = async (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const ok = await copyToClipboard(email);
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (

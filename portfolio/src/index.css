@@ -7,12 +7,24 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-[#050505] text-[#FAFAFA] antialiased overflow-x-hidden;
     font-family: var(--font-sans);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent code elements from inflating flex/grid parents horizontally */
+  pre, code {
+    font-variant-ligatures: none;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -52,7 +64,6 @@
 
 .reveal-delay-1 { animation-delay: 100ms; }
 .reveal-delay-2 { animation-delay: 200ms; }
-.reveal-delay-3 { animation-delay: 300ms; }
 
 @keyframes fadeUp {
   to {
@@ -66,16 +77,11 @@
   opacity: 0;
   transform: translateY(12px);
   filter: blur(4px);
-}
-
-.hero-enter.is-visible {
   animation: heroIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-delay-1 { animation-delay: 100ms; }
 .hero-delay-2 { animation-delay: 200ms; }
-.hero-delay-3 { animation-delay: 300ms; }
-.hero-delay-4 { animation-delay: 400ms; }
 
 @keyframes heroIn {
   to {
@@ -85,37 +91,10 @@
   }
 }
 
-/* Gentle scroll bounce */
-@keyframes gentle-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
-}
-
-.animate-scroll-bounce {
-  animation: gentle-bounce 2s ease-in-out infinite;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-  display: flex;
-  width: max-content;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .animate-fade-up,
-  .animate-marquee,
-  .hero-enter,
-  .animate-scroll-bounce {
+  .hero-enter {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;

@@ -2,15 +2,6 @@ import { useEffect } from 'react';
 
 export const useReveal = () => {
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      document.querySelectorAll('.reveal').forEach((el) => {
-        el.classList.add('opacity-100');
-        el.classList.remove('reveal');
-      });
-      return;
-    }
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {

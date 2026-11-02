@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  House, 
-  Briefcase, 
-  Code, 
-  FileText, 
-  Copy, 
-  Check, 
-  ArrowSquareOut, 
-  MagnifyingGlass, 
-  X,
-  Cpu
-} from '@phosphor-icons/react';
+import { House } from '@phosphor-icons/react/House';
+import { Briefcase } from '@phosphor-icons/react/Briefcase';
+import { Code } from '@phosphor-icons/react/Code';
+import { FileText } from '@phosphor-icons/react/FileText';
+import { Copy } from '@phosphor-icons/react/Copy';
+import { Check } from '@phosphor-icons/react/Check';
+import { ArrowSquareOut } from '@phosphor-icons/react/ArrowSquareOut';
+import { MagnifyingGlass } from '@phosphor-icons/react/MagnifyingGlass';
+import { X } from '@phosphor-icons/react/X';
+import { Cpu } from '@phosphor-icons/react/Cpu';
 import { PORTFOLIO_CONTENT } from '../content';
+import { copyToClipboard } from '../utils/clipboard';
 
 export default function CommandPalette({ isOpen, onClose }) {
   const [query, setQuery] = useState('');
@@ -58,16 +57,14 @@ export default function CommandPalette({ isOpen, onClose }) {
       category: 'Actions',
       icon: copied ? Check : Copy,
       action: async () => {
-        try {
-          await navigator.clipboard.writeText(data.personal.email);
-        } catch {
-          // Fallback if clipboard API blocked
+        const ok = await copyToClipboard(data.personal.email);
+        if (ok) {
+          setCopied(true);
+          setTimeout(() => {
+            setCopied(false);
+            onClose();
+          }, 1000);
         }
-        setCopied(true);
-        setTimeout(() => {
-          setCopied(false);
-          onClose();
-        }, 1000);
       }
     },
     {
@@ -126,8 +123,13 @@ export default function CommandPalette({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
       const timer = setTimeout(() => inputRef.current?.focus(), 50);
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = originalOverflow;
+      };
     }
   }, [isOpen]);
 
@@ -160,7 +162,7 @@ export default function CommandPalette({ isOpen, onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 z-500 flex items-start justify-center pt-24 md:pt-36 px-4 bg-black/60 backdrop-blur-md animate-fade-up"
+      className="fixed inset-0 z-500 flex items-start justify-center pt-16 sm:pt-24 md:pt-36 px-3 sm:px-4 bg-black/60 backdrop-blur-md animate-fade-up"
       onClick={handleClose}
       role="presentation"
     >
@@ -172,7 +174,7 @@ export default function CommandPalette({ isOpen, onClose }) {
         className="w-full max-w-xl bg-[#0A0A0A] border border-white/15 rounded-2xl shadow-2xl overflow-hidden font-sans text-white ring-1 ring-white/10"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10">
+        <div className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 border-b border-white/10">
           <MagnifyingGlass size={18} className="text-white/40 shrink-0" aria-hidden="true" />
           <input
             ref={inputRef}
@@ -186,20 +188,20 @@ export default function CommandPalette({ isOpen, onClose }) {
             }}
             placeholder="Type a command or jump to page..."
             aria-label="Search commands or pages"
-            className="w-full bg-transparent text-sm text-white placeholder-white/40 outline-none"
+            className="w-full bg-transparent text-xs sm:text-sm text-white placeholder-white/40 outline-none"
           />
           <button 
             onClick={handleClose}
-            className="text-white/40 hover:text-white p-1 rounded-md transition-colors"
+            className="text-white/40 hover:text-white p-1 rounded-md transition-colors shrink-0 cursor-pointer"
             aria-label="Close command palette"
           >
             <X size={16} />
           </button>
         </div>
 
-        <div className="max-h-80 overflow-y-auto p-2 space-y-1" role="listbox">
+        <div className="max-h-[60vh] sm:max-h-80 overflow-y-auto p-1.5 sm:p-2 space-y-1" role="listbox">
           {filtered.length === 0 ? (
-            <div className="py-8 text-center text-sm text-white/40">
+            <div className="py-8 text-center text-xs sm:text-sm text-white/40">
               No matching commands.
             </div>
           ) : (
@@ -213,15 +215,15 @@ export default function CommandPalette({ isOpen, onClose }) {
                   aria-selected={isSelected}
                   onClick={item.action}
                   onMouseEnter={() => setActiveIndex(index)}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-sm transition-colors ${
+                  className={`w-full flex items-center justify-between gap-3 px-3 sm:px-3.5 py-2.5 rounded-xl text-left text-xs sm:text-sm transition-colors cursor-pointer ${
                     isSelected ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <Icon size={16} className={isSelected ? 'text-white' : 'text-white/50'} aria-hidden="true" />
-                    <span>{item.label}</span>
+                  <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <Icon size={16} className={`shrink-0 ${isSelected ? 'text-white' : 'text-white/50'}`} aria-hidden="true" />
+                    <span className="truncate">{item.label}</span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">
+                  <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white/40 shrink-0">
                     {item.category}
                   </span>
                 </button>
@@ -230,7 +232,7 @@ export default function CommandPalette({ isOpen, onClose }) {
           )}
         </div>
 
-        <div className="flex items-center justify-between px-4 py-2.5 border-t border-white/5 bg-white/2 text-[10px] font-mono text-white/50">
+        <div className="hidden sm:flex items-center justify-between px-4 py-2.5 border-t border-white/5 bg-white/2 text-[10px] font-mono text-white/50">
           <span>Navigate <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/70">↑</kbd> <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/70">↓</kbd></span>
           <span>Select <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/70">↵</kbd></span>
           <span>Exit <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/70">esc</kbd></span>

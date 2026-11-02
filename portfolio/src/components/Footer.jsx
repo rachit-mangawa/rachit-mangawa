@@ -1,5 +1,7 @@
 import React from 'react';
-import { GithubLogo, LinkedinLogo, ArrowUpRight } from "@phosphor-icons/react";
+import { GithubLogo } from '@phosphor-icons/react/GithubLogo';
+import { LinkedinLogo } from '@phosphor-icons/react/LinkedinLogo';
+import { ArrowUpRight } from '@phosphor-icons/react/ArrowUpRight';
 import CopyEmailButton from './CopyEmailButton';
 import { PORTFOLIO_CONTENT } from '../content';
 
@@ -17,22 +19,22 @@ export default function Footer() {
   const data = PORTFOLIO_CONTENT;
   return (
     <footer className="w-full border-t border-white/5 py-12 md:py-16 bg-[#020202]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-10 md:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex flex-col gap-10 md:gap-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10 reveal">
           <div className="max-w-xl lg:max-w-2xl">
-            <h2 className="font-serif text-4xl md:text-6xl font-medium tracking-tight text-white mb-3">Let's build.</h2>
-            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl font-medium tracking-tight text-white mb-3">Let's build.</h2>
+            <p className="text-sm sm:text-base md:text-lg text-white/60 font-light leading-relaxed">
               Open to new engineering challenges and systems collaboration.
             </p>
           </div>
 
-          <div className="flex items-center justify-between w-full md:w-auto md:min-w-96 border-b border-white/20 pb-3 gap-6 group hover:border-white transition-colors">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full md:w-auto md:min-w-96 border-b border-white/20 pb-3 gap-4 sm:gap-6 group hover:border-white transition-colors">
             <a 
               href={`mailto:${data.personal.email}`} 
               className="flex items-center gap-3 text-white transition-colors"
             >
               <span className="text-xs md:text-sm font-bold tracking-[0.2em] uppercase">GET IN TOUCH</span>
-              <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform opacity-50 group-hover:opacity-100" weight="bold" size={16} />
+              <ArrowUpRight className="origin-center group-hover:scale-110 transition-transform duration-160 ease-out opacity-50 group-hover:opacity-100 shrink-0" weight="bold" size={16} />
             </a>
 
             <CopyEmailButton email={data.personal.email} />
@@ -40,19 +42,19 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-6 border-t border-white/10">
-          <div className="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">
+          <div className="text-white/50 text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase">
             © {CURRENT_YEAR} {data.personal.name}
           </div>
 
-          <div className="flex flex-wrap items-center gap-5 md:gap-7">
-            <a href={data.personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
-              <GithubLogo size={15} weight="fill" /> GITHUB
+          <div className="flex flex-wrap items-center gap-4 sm:gap-5 md:gap-7">
+            <a href={data.personal.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
+              <GithubLogo size={15} weight="fill" className="shrink-0" /> GITHUB
             </a>
-            <a href={data.personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
-              <LinkedinLogo size={15} weight="fill" /> LINKEDIN
+            <a href={data.personal.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
+              <LinkedinLogo size={15} weight="fill" className="shrink-0" /> LINKEDIN
             </a>
-            <a href={data.personal.kaggle} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
-              <KaggleLogo size={15} /> KAGGLE
+            <a href={data.personal.kaggle} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-white/50 hover:text-white transition-colors">
+              <KaggleLogo size={15} className="shrink-0" /> KAGGLE
             </a>
           </div>
         </div>

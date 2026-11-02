@@ -20,23 +20,8 @@ export const PORTFOLIO_CONTENT = {
     codeforces: "https://codeforces.com/profile/i_win_again",
     codeforcesHandle: "i_win_again",
     kaggle: "https://www.kaggle.com/rachitmangawa",
-    kaggleHandle: "rachitmangawa",
-    location: "NSUT, New Delhi, India"
+    kaggleHandle: "rachitmangawa"
   },
-  bio: {
-    content: (
-      <>
-        CS & AI at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">NSUT Delhi</span>. Engineering air-gapped document intelligence systems, high-throughput telemetry data pipelines, bare-metal C99 compilers for microcontrollers, and upstream numerical engines in TensorFlow Core.
-      </>
-    )
-  },
-  techStack: [
-    { label: "Backend", tech: "Python, FastAPI, C++", icons: ["PythonIcon", "FastApiIcon", "CppIcon"] },
-    { label: "AI & NLP", tech: "PyTorch, Ollama, Hugging Face", icons: ["PyTorchIcon", "OllamaIcon", "HuggingFaceIcon"] },
-    { label: "Data & Storage", tech: "Pandas, SQLite WAL, Vector Search", icons: ["PandasIcon", "SqliteIcon", "VectorSearchIcon"] },
-    { label: "Real-time", tech: "WebSockets, Redis", icons: ["WebSocketsIcon", "RedisIcon"] },
-    { label: "Tooling", tech: "Docker, Git, Linux, PyTest", icons: ["DockerIcon", "GitIcon", "LinuxIcon", "PyTestIcon"] }
-  ],
   ratings: {
     codeforces: {
       rank: "Specialist",
@@ -77,7 +62,7 @@ export const PORTFOLIO_CONTENT = {
         "Python", "FastAPI", "Ollama", "RAG Pipelines", "Vector Search (FAISS, BM25)", "Cross-Encoder Reranking", "OpenCV", "Tesseract", "Plotly Dash", "Pandas", "NumPy", "WebSockets", "SQLite WAL", "SQLAlchemy", "JWT & Role-Based Access (RBAC)"
       ],
       shortPoints: [
-        <React.Fragment key="sp1">Built an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">air-gapped &lt;8GB RAM OCR</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Hybrid RAG pipeline</span> (FAISS, BM25, and Cross-Encoder reranking) with a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">human-in-the-loop triage UI</span> for scanned multi-lingual document bundles across 12 languages.</React.Fragment>,
+        <React.Fragment key="sp1">Built an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">air-gapped &lt;16GB RAM OCR</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Hybrid RAG pipeline</span> (FAISS + BM25, Cross-Encoder reranking) with <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sequential quantized model execution</span> and a human-in-the-loop triage UI across 12 Indian languages.</React.Fragment>,
         <React.Fragment key="sp2">Engineered an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">async ETL pipeline</span> ingesting <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">50MB/100K+ row workbooks in 5 to 15s</span> into <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SQLite WAL</span> across <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">4.2M+ telemetry records</span>, secured with SQLAlchemy JWT row-level access for 1,000+ users.</React.Fragment>
       ],
       projects: [
@@ -89,7 +74,7 @@ export const PORTFOLIO_CONTENT = {
             <React.Fragment key="2">Used <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Ollama (gemma3:4b)</span> to dynamically detect salutations and closings, splitting multi-page PDF bundles into distinct logical documents rather than relying on brittle regex heuristics.</React.Fragment>,
             <React.Fragment key="3">Built a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">degradation-aware fallback</span> that monitors extracted character counts per page, routing low-confidence or degraded handwritten scans to <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">manual review before downstream LLM extraction</span>.</React.Fragment>,
             <React.Fragment key="4">Developed a custom <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">HTML/JS triage dashboard</span> with per-document analysis views, displaying extracted metadata, model summaries, and the original scan <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">side-by-side</span> with confidence scores and urgency filters.</React.Fragment>,
-            <React.Fragment key="5">Deployed the pipeline on <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">CPU-only 8GB air-gapped machines</span>, sequencing quantized models and streaming uploads directly to disk at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">1 to 2 minutes per document</span> under strict data isolation.</React.Fragment>
+            <React.Fragment key="5">Kept peak system memory <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">strictly under 16GB RAM</span> on CPU-only air-gapped machines by running quantized models sequentially, streaming uploads directly to disk, and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">splitting multi-letter bundles at 1 to 2 min/letter</span> on degraded scans.</React.Fragment>
           ]
         },
         {
@@ -109,7 +94,7 @@ export const PORTFOLIO_CONTENT = {
   featuredProjects: [
     {
       title: "HeartFlow OS",
-      description: <>ML platform exporting trained Python models to <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">optimized C++ for microcontrollers</span>, paired with a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">real-time monitoring dashboard</span>.</>,
+      description: <>AST transpiler compiling Scikit-Learn ensembles to <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">zero-malloc C99 (&lt;512B stack)</span> with <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">18.4µs on-device inference</span>.</>,
       tech: ['Next.js', 'React', 'FastAPI', 'Python', 'WebSockets'],
       link: "/projects#heartflow"
     },
@@ -127,7 +112,7 @@ export const PORTFOLIO_CONTENT = {
     },
     {
       title: "Semantic Comment Analyzer",
-      description: <>NLP pipeline that classifies customer feedback and support tickets using <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sentence embeddings</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SVM explainability</span>.</>,
+      description: <>Intent-driven NLP platform delivering <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">&lt;15ms CPU latency (1,000+ req/s)</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">word occlusion explainability</span> inside &lt;4GB RAM.</>,
       tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face'],
       link: "/projects#semantic"
     }
@@ -136,12 +121,12 @@ export const PORTFOLIO_CONTENT = {
     {
       id: "heartflow",
       title: "HeartFlow OS",
-      description: "An ML platform that exports trained Scikit-Learn models into zero-dependency C++ for microcontrollers, paired with a real-time WebSocket dashboard.",
+      description: "AST transpiler compiling trained Scikit-Learn ensembles into zero-malloc C99 headers (<512B stack, 8.15KB SRAM) for microcontrollers, with a 60 FPS Web Serial dashboard.",
       tech: ["Next.js 16", "React 19", "FastAPI", "Python 3.10", "PlatformIO", "WebSockets"],
       deepDive: [
-        <React.Fragment key="1">Wrote an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">AST exporter</span> that transpiles Scikit-Learn soft-voting ensembles into <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">pure, heap-free C99 headers</span> for ESP32 chips.</React.Fragment>,
-        <React.Fragment key="2">Implemented <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">INT8 quantization</span> to reduce memory footprint by <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">76% (34KB to 8KB)</span> and achieve <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sub-millisecond inference</span> on microcontrollers.</React.Fragment>,
-        <React.Fragment key="3">Built a real-time web dashboard streaming sensor packets over <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Web Serial and WebSockets</span> with automated model hot-swapping.</React.Fragment>
+        <React.Fragment key="1">Wrote an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">AST transpiler</span> that compiles Scikit-Learn soft-voting ensembles into <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">zero-malloc C99 headers (&lt;512B stack)</span> for ESP32-S3, Cortex-M4, and RP2040 microcontrollers.</React.Fragment>,
+        <React.Fragment key="2">Implemented <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">INT8 quantization</span> to cut SRAM usage by <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">76.4% (34.6KB to 8.15KB)</span> and achieve <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">18.4 &mu;s on-device inference</span> (54,340 vec/sec) vs. a 35ms cloud baseline.</React.Fragment>,
+        <React.Fragment key="3">Streamed 250 Hz ECG/PPG packets over <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Web Serial (115,200 baud)</span> to a 60 FPS Next.js canvas with <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">120 &mu;s in-browser inference</span>, verified across 58 PyTest bounds tests in Docker.</React.Fragment>
       ],
       repo: "https://github.com/rachit-mangawa/HEARTFLOW_OS",
       live: "https://rachit-mangawa.github.io/HEARTFLOW_OS/",
@@ -158,7 +143,7 @@ export const PORTFOLIO_CONTENT = {
         <React.Fragment key="3">Enforced hardware-level <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LlamaGrammar constraints</span> at the logits level for local SLM execution, guaranteeing 100% valid JSON schema compliance, paired with an intra-tier auto-repair loop for taboo and word-count policies.</React.Fragment>
       ],
       repo: "https://github.com/rachit-mangawa/vera-engine",
-      hfSpace: "https://huggingface.co/spaces/IDKHowToCodeFr/vera-engine",
+      hfSpace: "https://idkhowtocodefr-vera-engine.hf.space/docs",
       visualContent: <VeraEngineVisual />
     },
     {
@@ -177,12 +162,12 @@ export const PORTFOLIO_CONTENT = {
     {
       id: "semantic",
       title: "Semantic Comment Analyzer",
-      description: "An NLP pipeline that classifies customer feedback and support tickets using sentence embeddings, with word-level occlusion explainability.",
+      description: "High-throughput (<15ms CPU, 1,000+ req/s) local NLP platform classifying intents and entities with word-level occlusion explainability inside a strict <4GB RAM ceiling.",
       tech: ["Python", "FastAPI", "Sentence Transformers", "Hugging Face", "Scikit-Learn"],
       deepDive: [
-        <React.Fragment key="1">Used <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">all-MiniLM embeddings</span> with an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SVM classification head</span>, achieving low CPU latency (<span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sub-15ms</span>) for high-throughput ticket routing.</React.Fragment>,
-        <React.Fragment key="2">Developed an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">occlusion explainability function</span> that measures drops in classifier confidence to highlight influential words.</React.Fragment>,
-        <React.Fragment key="3">Packaged the pipeline as a lightweight <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">FastAPI service</span> designed to run locally within <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">&lt;4GB RAM</span>.</React.Fragment>
+        <React.Fragment key="1">Used <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">all-MiniLM embeddings</span> with Logistic Regression and SVM heads, achieving <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">&lt;15ms CPU latency</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">1,000+ req/sec batch throughput</span> across custom intent labels.</React.Fragment>,
+        <React.Fragment key="2">Combined a RoBERTa sentiment pipeline, 3-class NER, and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">word-level occlusion explainability</span> into a single endpoint returning 7 structured decision fields.</React.Fragment>,
+        <React.Fragment key="3">Packaged with a vectorized Pandas CSV batch handler engineered to run locally within a strict <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">&lt;4GB RAM memory ceiling</span> with zero cloud dependency.</React.Fragment>
       ],
       repo: "https://github.com/rachit-mangawa/Semantic-Comment-Analyze",
       live: "https://rachit-mangawa.github.io/Semantic-Comment-Analyze/",
@@ -195,30 +180,31 @@ export const PORTFOLIO_CONTENT = {
       category: "Languages",
       categoryIcon: "LanguagesCategoryIcon",
       description: "Languages I write regularly for backend microservices, embedded firmware, algorithms, and systems scripting.",
-      colSpan: "lg:col-span-12",
       skills: [
-        { name: "Python", iconName: "PythonIcon" },
-        { name: "C++", iconName: "CppIcon" },
-        { name: "TypeScript", iconName: "TypeScriptIcon" },
-        { name: "SQL", iconName: "SqlIcon" },
-        { name: "Bash", iconName: "BashIcon" },
+        { name: "Python" },
+        { name: "C++" },
+        { name: "TypeScript" },
+        { name: "SQL" },
+        { name: "Bash" },
       ]
     },
     {
       id: "agentic-ai",
       category: "Agentic AI & Automation",
       categoryIcon: "GenAiCategoryIcon",
-      description: "Building autonomous agents, Model Context Protocol (MCP) integrations, local LLM orchestration, and workflow automation.",
-      colSpan: "lg:col-span-12",
+      description: "Building autonomous agents, Model Context Protocol (MCP) integrations, workflow automation, custom connectors, plugins, skills, and AI-driven coding systems.",
       skills: [
-        { name: "Agentic AI", iconName: "AgenticAiIcon" },
-        { name: "MCP", iconName: "McpIcon" },
-        { name: "AI Automation", iconName: "AiAutomationIcon" },
-        { name: "LLMs (Ollama)", iconName: "OllamaIcon" },
-        { name: "LangChain", iconName: "LangChainIcon" },
-        { name: "RAG Pipelines", iconName: "RagIcon" },
-        { name: "Vector Search", iconName: "VectorSearchIcon" },
-        { name: "Hugging Face Transformers", iconName: "HuggingFaceIcon" },
+        { name: "Agentic AI" },
+        { name: "MCP" },
+        { name: "AI Coding" },
+        { name: "n8n" },
+        { name: "Connectors & Plugins" },
+        { name: "Agent Skills" },
+        { name: "LLMs (Ollama)" },
+        { name: "RAG Pipelines" },
+        { name: "LangChain" },
+        { name: "Vector Search" },
+        { name: "Hugging Face" },
       ]
     },
     {
@@ -226,14 +212,13 @@ export const PORTFOLIO_CONTENT = {
       category: "Machine Learning & Vision",
       categoryIcon: "MlCategoryIcon",
       description: "Model training, computer vision preprocessing, and numerical computing.",
-      colSpan: "lg:col-span-12",
       skills: [
-        { name: "PyTorch", iconName: "PyTorchIcon" },
-        { name: "TensorFlow Core", iconName: "TensorFlowIcon" },
-        { name: "Scikit-Learn", iconName: "ScikitLearnIcon" },
-        { name: "OpenCV", iconName: "OpenCvIcon" },
-        { name: "Pandas", iconName: "PandasIcon" },
-        { name: "NumPy", iconName: "NumpyIcon" },
+        { name: "PyTorch" },
+        { name: "TensorFlow Core" },
+        { name: "Scikit-Learn" },
+        { name: "OpenCV" },
+        { name: "Pandas" },
+        { name: "NumPy" },
       ]
     },
     {
@@ -241,16 +226,15 @@ export const PORTFOLIO_CONTENT = {
       category: "Backend & Systems",
       categoryIcon: "BackendCategoryIcon",
       description: "Asynchronous REST microservices, real-time WebSocket feeds, and concurrent database storage engines.",
-      colSpan: "lg:col-span-12",
       skills: [
-        { name: "FastAPI", iconName: "FastApiIcon" },
-        { name: "Next.js", iconName: "NextjsIcon" },
-        { name: "React", iconName: "ReactIcon" },
-        { name: "Redis", iconName: "RedisIcon" },
-        { name: "SQLite WAL", iconName: "SqliteIcon" },
-        { name: "SQLAlchemy", iconName: "SqlAlchemyIcon" },
-        { name: "WebSockets", iconName: "WebSocketsIcon" },
-        { name: "PlatformIO", iconName: "PlatformIoIcon" },
+        { name: "FastAPI" },
+        { name: "Next.js" },
+        { name: "React" },
+        { name: "Redis" },
+        { name: "SQLite WAL" },
+        { name: "SQLAlchemy" },
+        { name: "WebSockets" },
+        { name: "PlatformIO" },
       ]
     },
     {
@@ -258,14 +242,12 @@ export const PORTFOLIO_CONTENT = {
       category: "Developer Tools & DevOps",
       categoryIcon: "DataCategoryIcon",
       description: "Containerized environments, continuous integration, regression test suites, and Linux workflows.",
-      colSpan: "lg:col-span-12",
       skills: [
-        { name: "Docker", iconName: "DockerIcon" },
-        { name: "Git", iconName: "GitIcon" },
-        { name: "GitHub Actions", iconName: "GitHubActionsIcon" },
-        { name: "Linux", iconName: "LinuxIcon" },
-        { name: "PyTest", iconName: "PyTestIcon" },
-        { name: "n8n", iconName: "N8nIcon" },
+        { name: "Docker" },
+        { name: "Git" },
+        { name: "GitHub Actions" },
+        { name: "Linux" },
+        { name: "PyTest" },
       ]
     }
   ]
