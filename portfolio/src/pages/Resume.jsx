@@ -22,10 +22,10 @@ export default function Resume() {
 
           <div className="reveal reveal-delay-1 text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left mb-8 max-w-4xl space-y-3">
             <p>
-              Undergraduate at NSUT Delhi focusing on low-level systems, high-throughput backends, and offline ML pipelines.
+              Engineering air-gapped document intelligence systems, high-throughput telemetry data pipelines, and bare-metal compilers for microcontrollers.
             </p>
             <p className="text-sm md:text-base text-white/50">
-              Includes national infrastructure at UIDAI, upstream contributions in TensorFlow Core, and competitive programming standing (<span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LeetCode Knight, rating 1987</span>).
+              Grounded in upstream numerical patches for TensorFlow Core and competitive algorithmic rankings (<span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LeetCode Knight 1987, Codeforces Specialist 1422</span>).
             </p>
           </div>
 

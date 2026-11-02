@@ -32,7 +32,7 @@ export default function Experience() {
 
           <div className="reveal reveal-delay-1 text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3 mb-8">
             <p>
-              Engineering air-gapped document intelligence systems and high-throughput telemetry data pipelines at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">UIDAI (Aadhaar)</span>.
+              Engineering <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">air-gapped document intelligence systems</span> and high-throughput telemetry data pipelines.
             </p>
             <p className="text-sm md:text-base text-white/50">
               Operated under air-gapped security protocols, local CPU inference, and strict data confidentiality.
@@ -54,10 +54,10 @@ export default function Experience() {
 
             <button
               type="button"
-              onClick={() => scrollToElement('uidai-details')}
+              onClick={() => scrollToElement('subsystems-details')}
               className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
             >
-              <span>UIDAI Subsystems</span>
+              <span>Subsystems Breakdown</span>
               <span className="text-white/40 text-xs">↓</span>
             </button>
           </div>
@@ -69,7 +69,7 @@ export default function Experience() {
           <div className="max-w-2xl">
             <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Professional Experience</h2>
             <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
-              Production systems engineering and telemetry pipelines engineered for national infrastructure.
+              Engineering air-gapped document intelligence systems and high-throughput telemetry data pipelines across 4.2M+ records.
             </p>
           </div>
         </div>
@@ -82,23 +82,23 @@ export default function Experience() {
             <img src={logos[internship.logo]} alt={`${internship.company} Logo`} className="object-contain w-full h-full p-2 md:p-3" />
           </div>
           
-          {/* Clickable UIDAI Overview Entry navigating to detailed view */}
+          {/* Clickable Overview Entry navigating to detailed view */}
           <div
-            id="uidai-entry"
+            id="experience-entry"
             onClick={() => {
-              const el = document.getElementById('uidai-details');
+              const el = document.getElementById('subsystems-details');
               if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const el = document.getElementById('uidai-details');
+                const el = document.getElementById('subsystems-details');
                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             }}
             tabIndex={0}
             role="button"
-            aria-label="Navigate to detailed UIDAI system breakdown"
+            aria-label="Navigate to detailed system breakdown"
             className="group cursor-pointer p-6 md:p-8 rounded-3xl bg-white/2 hover:bg-white/5 border border-white/10 hover:border-white/25 transition-all duration-300 mb-10 block text-left"
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
@@ -133,7 +133,7 @@ export default function Experience() {
           </div>
           
           {/* Detailed View */}
-          <div id="uidai-details" className="flex flex-col gap-12 scroll-mt-28">
+          <div id="subsystems-details" className="flex flex-col gap-12 scroll-mt-28">
             <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/40 pb-2 border-b border-white/10">
               Detailed Systems Architecture
             </div>

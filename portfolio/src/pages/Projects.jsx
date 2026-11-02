@@ -24,10 +24,10 @@ export default function Projects() {
 
           <div className="reveal reveal-delay-1 text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3 mb-8">
             <p>
-              Selected engineering projects across microcontroller compilers, offline NLP analyzers, and upstream core runtimes.
+              Engineering <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">bare-metal C99 compilers</span>, multi-tier AI orchestrators, pluggable API gateways, and explainable NLP classifiers.
             </p>
             <p className="text-sm md:text-base text-white/50">
-              Focused on hardware-efficient compilation, low-overhead execution, and verifiable benchmarks.
+              Focused on hardware-constrained compilation, air-gapped inference, and verifiable sub-millisecond execution.
             </p>
           </div>
 
@@ -63,16 +63,16 @@ export default function Projects() {
           <div className="max-w-2xl">
             <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Featured Architectures</h2>
             <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
-              Deep-dive breakdowns of bare-metal compilers, explainable NLP classifiers, and real-time dashboards.
+              Engineering deep-dives into bare-metal AST exporters, 4-tier fail-fast cascades, and sub-100ms container gateways.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col gap-32 md:gap-48">
+        <div className="flex flex-col gap-20 md:gap-28">
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 1; // 0-indexed, so idx 1 is the 2nd project (even)
             return (
-            <div key={project.id} id={project.id} className="w-full reveal">
+            <div key={project.id} id={project.id} className="w-full scroll-mt-28">
               <PremiumCard className="w-full">
                 <div className={`flex flex-col ${isEven ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center`}>
                   

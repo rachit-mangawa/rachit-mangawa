@@ -24,21 +24,18 @@ export default function Home() {
       <section id="experience" className="mt-16 mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
           <div className="max-w-2xl">
-            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Experience</h2>
-            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
-              National telemetry data pipelines and offline AI systems engineered for government infrastructure.
-            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Experience</h2>
           </div>
           <SectionLink to="/experience">View All</SectionLink>
         </div>
 
         <div className="ml-6 md:ml-7 border-l border-white/10 flex flex-col gap-24">
 
-          {/* UIDAI */}
+          {/* Production Experience */}
           <div className="relative reveal reveal-delay-1 pl-8 md:pl-10">
             {/* Logo perfectly centered on the border line */}
             <div className="absolute left-0 top-0 -translate-x-1/2 w-12 h-12 md:w-14 md:h-14 rounded-2xl overflow-hidden bg-white border-4 border-[#050505] flex items-center justify-center">
-              <img src={aadhaarLogo} alt="UIDAI Aadhaar Logo" className="object-contain w-full h-full p-2" />
+              <img src={aadhaarLogo} alt={`${data.internships[0].company} Logo`} className="object-contain w-full h-full p-2" />
             </div>
 
             <div className="mb-6">
@@ -74,10 +71,7 @@ export default function Home() {
       <section id="featured" className="mb-24 md:mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
           <div className="max-w-2xl">
-            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Featured Work</h2>
-            <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
-              Embedded machine learning compilers, AST transpilations, and semantic NLP analyzers.
-            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Featured Work</h2>
           </div>
           <SectionLink to="/projects">View All</SectionLink>
         </div>
@@ -149,10 +143,7 @@ export default function Home() {
       {/* Achievements Section */}
       <section id="achievements" className="mb-32 w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-12 md:mb-16 reveal">
-          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">Achievements</h2>
-          <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
-            Competitive programming milestones, algorithmic rankings, and upstream core contributions.
-          </p>
+          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">Achievements</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 reveal reveal-delay-1">

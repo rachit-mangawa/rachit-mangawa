@@ -7,12 +7,12 @@ import { PORTFOLIO_CONTENT } from '../content';
 
 const DISCIPLINE_APPLICATIONS = {
   'languages': {
-    label: 'Bare-metal C++ Compilers & UIDAI Async Backends',
+    label: 'Bare-metal C++ Compilers & Async Telemetry Backends',
     link: '/projects#heartflow'
   },
   'genai-nlp': {
-    label: 'Air-Gapped Hybrid RAG & OCR Grievance Pipeline',
-    link: '/experience#uidai-details'
+    label: 'Air-Gapped Hybrid RAG & Document OCR Pipeline',
+    link: '/experience#subsystems-details'
   },
   'ml-vision': {
     label: 'TensorFlow Core Autodiff Fix & Explainable AI',
@@ -20,11 +20,11 @@ const DISCIPLINE_APPLICATIONS = {
   },
   'backend-web': {
     label: '4.2M+ Telemetry Ingestion Engine & SQLite WAL',
-    link: '/experience#uidai-details'
+    link: '/experience#subsystems-details'
   },
   'data-infra': {
     label: 'Async Workbooks ETL & Vectorized Batch Processing',
-    link: '/experience#uidai-details'
+    link: '/experience#subsystems-details'
   }
 };
 
@@ -46,7 +46,7 @@ export default function Skills() {
 
           <div className="reveal reveal-delay-1 text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3 mb-8">
             <p>
-              Languages, execution runtimes, and storage engines used for backend services, bare-metal microcontrollers, and offline ML pipelines.
+              Architecting <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">bare-metal microcontroller compilers</span>, air-gapped document intelligence pipelines, and high-concurrency SQLite WAL telemetry engines.
             </p>
             <p className="text-sm md:text-base text-white/50">
               Focused on hardware-constrained execution (&lt;8GB RAM CPU nodes, ESP32 registers) and minimal dependencies.
@@ -67,7 +67,7 @@ export default function Skills() {
             </button>
 
             <Link
-              to="/experience#uidai-details"
+              to="/experience#subsystems-details"
               className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
             >
               <span>Production Systems</span>

@@ -18,11 +18,11 @@ const PAGE_TITLES = {
 };
 
 const PAGE_DESCRIPTIONS = {
-  '/': 'Software, low-level compilers, and engineering work by Rachit Mangawa.',
-  '/skills': 'Core technical competencies across systems programming, local GenAI runtimes, ML vision, real-time backend architecture, and data pipelines.',
-  '/experience': 'Air-gapped document intelligence and national contact-center telemetry pipelines engineered at UIDAI (Aadhaar).',
-  '/projects': 'Bare-metal C++ compilers for microcontrollers, semantic analyzers, and upstream patches in TensorFlow Core.',
-  '/resume': 'Academic foundation in CS & AI at NSUT Delhi, production government engineering, and LeetCode Knight standing.',
+  '/': 'Engineering air-gapped document intelligence systems, bare-metal C99 compilers, and high-throughput telemetry pipelines.',
+  '/skills': 'Architecting low-level execution runtimes, air-gapped RAG pipelines, and concurrent database storage engines.',
+  '/experience': 'Engineering air-gapped document intelligence systems and high-throughput telemetry data pipelines.',
+  '/projects': 'Building zero-dependency microcontroller compilers, multi-tier AI orchestrators, and upstream TensorFlow Core engines.',
+  '/resume': 'Curriculum vitae spanning production engineering, upstream numerical patches, and competitive programming milestones.',
 };
 
 const NAV_LINKS = [

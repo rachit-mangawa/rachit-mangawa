@@ -1,5 +1,10 @@
 import React from 'react';
-import { TranspilerVisual, SemanticAnalyzerVisual } from './components/ProjectVisuals';
+import {
+  TranspilerVisual,
+  SemanticAnalyzerVisual,
+  VeraEngineVisual,
+  HfGatewayVisual
+} from './components/ProjectVisuals';
 
 export const PORTFOLIO_CONTENT = {
   personal: {
@@ -23,9 +28,7 @@ export const PORTFOLIO_CONTENT = {
   bio: {
     content: (
       <>
-        CS & AI student at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">NSUT Delhi</span>. I work mostly in Python and C++, building backend services, compilers for microcontrollers, and offline ML pipelines.
-        <br /><br />
-        Recently interned at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">UIDAI (Aadhaar)</span>, where I built an air-gapped Hybrid RAG & OCR grievance pipeline and high-throughput telemetry data backends.
+        CS & AI at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">NSUT Delhi</span>. Engineering air-gapped document intelligence systems, high-throughput telemetry data pipelines, bare-metal C99 compilers for microcontrollers, and upstream numerical engines in TensorFlow Core.
       </>
     )
   },
@@ -58,10 +61,10 @@ export const PORTFOLIO_CONTENT = {
     prNumber: "120944",
     content: (
       <>
-        Fixed a numerical bug in TensorFlow's autodiff engine.
+        Fixed a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">numerical bug</span> in TensorFlow's autodiff engine.
         The gradient for <code className="bg-black/40 px-1.5 py-0.5 rounded text-white/80 border border-white/10 font-mono text-xs">tf.math.bessel_i1</code> returned <code className="text-red-400 font-mono text-xs">1.0</code> at <code className="font-mono text-xs">x=0</code>, but mathematically the correct limit is <code className="text-emerald-400 font-mono text-xs">0.5</code>.
         <br /><br />
-        Patched the gradient calculation in <code className="font-mono text-white/70 text-xs">math_grad.py</code> and added regression tests in <code className="font-mono text-white/70 text-xs">special_math_ops_test.py</code> to prevent silent numerical errors during model training.
+        Patched the gradient calculation in <code className="font-mono text-white/70 text-xs">math_grad.py</code> and added <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">regression tests</span> in <code className="font-mono text-white/70 text-xs">special_math_ops_test.py</code> to prevent silent numerical errors during model training.
       </>
     ),
     tags: ["Python", "C++", "Calculus"]
@@ -76,27 +79,30 @@ export const PORTFOLIO_CONTENT = {
         "Python", "FastAPI", "Ollama", "RAG Pipelines", "Vector Search (FAISS, BM25)", "Cross-Encoder Reranking", "OpenCV", "Tesseract", "Plotly Dash", "Pandas", "NumPy", "WebSockets", "SQLite WAL", "SQLAlchemy", "JWT & Role-Based Access (RBAC)"
       ],
       shortPoints: [
-        "Built an air-gapped <8GB RAM OCR, local Ollama, and Hybrid RAG pipeline (FAISS + BM25 + Cross-Encoder reranker) with a human-in-the-loop triage UI for scanned grievance letters across 12 languages.",
-        "Engineered an async ETL pipeline ingesting 50MB/100K+ row workbooks in 5 to 15s into SQLite WAL across 4.2M+ telemetry records, secured with SQLAlchemy JWT row-level access for 1,000+ users."
+        <React.Fragment key="sp1">Built an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">air-gapped &lt;8GB RAM OCR</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Hybrid RAG pipeline</span> (FAISS, BM25, and Cross-Encoder reranking) with a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">human-in-the-loop triage UI</span> for scanned multi-lingual document bundles across 12 languages.</React.Fragment>,
+        <React.Fragment key="sp2">Engineered an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">async ETL pipeline</span> ingesting <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">50MB/100K+ row workbooks in 5 to 15s</span> into <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SQLite WAL</span> across <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">4.2M+ telemetry records</span>, secured with SQLAlchemy JWT row-level access for 1,000+ users.</React.Fragment>
       ],
       projects: [
         {
           color: "emerald-400",
-          title: "Offline OCR & Hybrid RAG Grievance System",
+          title: "Offline OCR & Hybrid RAG Document System",
           points: [
-            <React.Fragment key="1">Built an offline <strong className="text-white/90 font-medium">FastAPI</strong> pipeline for <strong className="text-white/90 font-medium">50MB scanned PDFs across 12 languages</strong>, chaining <strong className="text-white/90 font-medium">OpenCV</strong> image cleanup (Otsu, deskew, CLAHE) and <strong className="text-white/90 font-medium">Tesseract OCR</strong> into a local <strong className="text-white/90 font-medium">Ollama</strong> model (gemma3:4b, temp=0.0) to pull 5 entity fields into strict JSON.</React.Fragment>,
-            <React.Fragment key="2">Added a local <strong className="text-white/90 font-medium">Hybrid RAG pipeline (FAISS + BM25)</strong> with a <strong className="text-white/90 font-medium">Cross-Encoder reranker (MiniLM-L-6-v2)</strong> to match incoming complaints against internal policy circulars and past resolutions, generating grounded action summaries.</React.Fragment>,
-            <React.Fragment key="3">Kept peak memory <strong className="text-white/90 font-medium">under 8GB RAM on CPU-only air-gapped machines</strong> by running quantized models sequentially, streaming uploads directly to disk, and splitting multi-letter bundles at 1 to 2 min/letter on degraded Hindi scans.</React.Fragment>,
-            <React.Fragment key="4">Built a <strong className="text-white/90 font-medium">human-in-the-loop triage UI</strong> that pairs original scans side by side with RAG-grounded summaries, confidence scores, and urgency filters on a single screen for review operators.</React.Fragment>
+            <React.Fragment key="1">Engineered a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">3-phase pipeline</span>: PDF disk-write → <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">OpenCV</span> preprocessing (Otsu threshold, deskew, CLAHE contrast) + <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Tesseract OCR</span> → <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Ollama</span> boundary detection → strict JSON extraction at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">temp=0.0</span> with malformed outputs dumped to flat files for manual review.</React.Fragment>,
+            <React.Fragment key="2">Used <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Ollama (gemma3:4b)</span> to dynamically detect salutations and closings, splitting multi-page PDF bundles into distinct logical documents rather than relying on brittle regex heuristics.</React.Fragment>,
+            <React.Fragment key="3">Built a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">degradation-aware fallback</span> that monitors extracted character counts per page, routing low-confidence or degraded handwritten scans to <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">manual review before downstream LLM extraction</span>.</React.Fragment>,
+            <React.Fragment key="4">Developed a custom <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">HTML/JS triage dashboard</span> with per-document analysis views, displaying extracted metadata, model summaries, and the original scan <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">side-by-side</span> with confidence scores and urgency filters.</React.Fragment>,
+            <React.Fragment key="5">Deployed the pipeline on <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">CPU-only 8GB air-gapped machines</span>, sequencing quantized models and streaming uploads directly to disk at <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">1 to 2 minutes per document</span> under strict data isolation.</React.Fragment>
           ]
         },
         {
           color: "cyan-400",
           title: "High-Throughput Telemetry ETL & Analytics Backend",
           points: [
-            <React.Fragment key="1">Wrote an async ETL pipeline with vectorized <strong className="text-white/90 font-medium">NumPy/Pandas</strong> parsers and <strong className="text-white/90 font-medium">WebSocket progress tracking</strong> that ingests 50MB (100K+ row) workbooks in <strong className="text-white/90 font-medium">5 to 15s</strong> using 1,000-row batch upserts on <strong className="text-white/90 font-medium">SQLite WAL</strong> across <strong className="text-white/90 font-medium">4.2M+ call records</strong>.</React.Fragment>,
-            <React.Fragment key="2">Locked down row-level data access for <strong className="text-white/90 font-medium">1,000+ users</strong> across a unified <strong className="text-white/90 font-medium">FastAPI + Plotly Dash</strong> analytics platform by injecting JWT claims into <strong className="text-white/90 font-medium">SQLAlchemy</strong> queries, paired with bcrypt rehashing and 90-day audit log pruning.</React.Fragment>,
-            <React.Fragment key="3">Engineered interactive bidirectional cross-filtering across operational KPI cards, dynamic time-bucketing filters, and hourly call volume heatmaps, backed by client-side caching to prevent database contention.</React.Fragment>
+            <React.Fragment key="1">Architected <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">dual ingestion paths</span> combining manual UI uploads with an automated <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">APScheduler cron</span> that sweeps configured directories every 3 minutes for unindexed files, enforcing idempotency via composite unique constraints and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">ON CONFLICT DO UPDATE</span> logic.</React.Fragment>,
+            <React.Fragment key="2">Processed 50MB workbooks through <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">stateless domain parsers</span> using vectorized NumPy calculations, prefix-based source routing, and 1,000-row batch upserts, using <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">WebSocket streaming</span> to prevent UI blocking during heavy ingestion.</React.Fragment>,
+            <React.Fragment key="3">Consolidated <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">4 disparate telemetry streams (telephony logs, IVR events, call records, and agent summaries)</span> into a single relational schema with <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">dynamic time-bucketing</span> (daily/weekly/monthly) and bidirectional cross-filtering across 4.2M+ records.</React.Fragment>,
+            <React.Fragment key="4">Built <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">agent performance quadrants</span> plotting CPH × AHT × Occupancy and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">hourly volume heatmaps</span> to surface intraday bottlenecks masked by daily averages, with client-side caching to prevent DB contention.</React.Fragment>,
+            <React.Fragment key="5">Enforced <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">tenant isolation</span> by injecting JWT claims into SQLAlchemy base queries, bcrypt password rehashing, <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">X-Forwarded-For client IP capture</span> for non-repudiation audit trails, and automated <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">90-day log pruning</span>.</React.Fragment>
           ]
         }
       ]
@@ -105,13 +111,25 @@ export const PORTFOLIO_CONTENT = {
   featuredProjects: [
     {
       title: "HeartFlow OS",
-      description: "ML platform exporting trained Python models to optimized C++ for microcontrollers, with a real-time monitoring dashboard.",
+      description: <>ML platform exporting trained Python models to <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">optimized C++ for microcontrollers</span>, paired with a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">real-time monitoring dashboard</span>.</>,
       tech: ['Next.js', 'React', 'FastAPI', 'Python', 'WebSockets'],
       link: "/projects#heartflow"
     },
     {
+      title: "Vera AI Engine",
+      description: <>High-performance AI orchestrator with a <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">4-tier fail-fast cascade</span> (Nemotron to local Llama.cpp) and strict <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LlamaGrammar enforcement</span>.</>,
+      tech: ['FastAPI', 'llama.cpp', 'Docker', 'Python', 'Nemotron'],
+      link: "/projects#vera-engine"
+    },
+    {
+      title: "HF Pluggable Gateway",
+      description: <>Aggregation API gateway and container runtime with build-time weight prefetching and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sub-100ms warmups</span> on Hugging Face Spaces.</>,
+      tech: ['FastAPI', 'Docker', 'Python', 'PyTorch', 'uv'],
+      link: "/projects#hf-backend"
+    },
+    {
       title: "Semantic Comment Analyzer",
-      description: "NLP pipeline that classifies customer feedback and support tickets using sentence embeddings and SVM.",
+      description: <>NLP pipeline that classifies customer feedback and support tickets using <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sentence embeddings</span> and <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SVM explainability</span>.</>,
       tech: ['Python', 'FastAPI', 'Sentence Transformers', 'Hugging Face'],
       link: "/projects#semantic"
     }
@@ -123,9 +141,9 @@ export const PORTFOLIO_CONTENT = {
       description: "An ML platform that exports trained Scikit-Learn models into zero-dependency C++ for microcontrollers, paired with a real-time WebSocket dashboard.",
       tech: ["Next.js 16", "React 19", "FastAPI", "Python 3.10", "PlatformIO", "WebSockets"],
       deepDive: [
-        <React.Fragment key="1">Wrote an AST exporter that transpiles Scikit-Learn soft-voting ensembles into pure, heap-free C99 headers for ESP32 chips.</React.Fragment>,
-        <React.Fragment key="2">Implemented INT8 quantization to reduce memory footprint by 76% (34KB to 8KB) and achieve sub-millisecond inference on microcontrollers.</React.Fragment>,
-        <React.Fragment key="3">Built a real-time web dashboard streaming sensor packets over Web Serial and WebSockets with automated model hot-swapping.</React.Fragment>
+        <React.Fragment key="1">Wrote an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">AST exporter</span> that transpiles Scikit-Learn soft-voting ensembles into <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">pure, heap-free C99 headers</span> for ESP32 chips.</React.Fragment>,
+        <React.Fragment key="2">Implemented <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">INT8 quantization</span> to reduce memory footprint by <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">76% (34KB to 8KB)</span> and achieve <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sub-millisecond inference</span> on microcontrollers.</React.Fragment>,
+        <React.Fragment key="3">Built a real-time web dashboard streaming sensor packets over <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Web Serial and WebSockets</span> with automated model hot-swapping.</React.Fragment>
       ],
       repo: "https://github.com/rachit-mangawa/HEARTFLOW_OS",
       live: "https://rachit-mangawa.github.io/HEARTFLOW_OS/",
@@ -133,14 +151,42 @@ export const PORTFOLIO_CONTENT = {
       visualContent: <TranspilerVisual />
     },
     {
+      id: "vera-engine",
+      title: "Vera AI Engine",
+      description: "A high-performance AI orchestrator featuring a 4-tier fail-fast fallback cascade and strict grammar enforcement.",
+      tech: ["FastAPI", "Python 3.10", "Docker", "llama.cpp", "Nemotron 550B", "LlamaGrammar"],
+      deepDive: [
+        <React.Fragment key="1">Engineered a deterministic <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">4-tier fallback cascade</span> (NVIDIA NIM Nemotron-3 550B → Groq GPT OSS 20B → Gemini 2.5 Flash → Local CPU Llama.cpp Qwen2.5) with strict timeout budgets to guarantee responses in &lt;30s on 2vCPU Hugging Face Spaces.</React.Fragment>,
+        <React.Fragment key="2">Implemented the <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">Python Caveman distillation pattern</span>, compressing 500KB+ JSON raw merchant and trigger payloads into structured factual bullet points in <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">&lt;0.001s</span>, eliminating context bottlenecks and preventing metric hallucinations.</React.Fragment>,
+        <React.Fragment key="3">Enforced hardware-level <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">LlamaGrammar constraints</span> at the logits level for local SLM execution, guaranteeing 100% valid JSON schema compliance, paired with an intra-tier auto-repair loop for taboo and word-count policies.</React.Fragment>
+      ],
+      repo: "https://github.com/rachit-mangawa/vera-engine",
+      hfSpace: "https://huggingface.co/spaces/IDKHowToCodeFr/vera-engine",
+      visualContent: <VeraEngineVisual />
+    },
+    {
+      id: "hf-backend",
+      title: "HF Pluggable Gateway",
+      description: "An aggregation API gateway and container runtime that hot-mounts multiple independent Python packages into a single Hugging Face Spaces container with build-time model prefetching.",
+      tech: ["FastAPI", "Docker", "Python 3.11", "Uvicorn", "uv", "PyTorch"],
+      deepDive: [
+        <React.Fragment key="1">Architected an extensible <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">pluggable service gateway</span> that dynamically mounts isolated subproject packages under dedicated route prefixes (<code className="font-mono text-white/80 text-xs">/heartflow</code>, <code className="font-mono text-white/80 text-xs">/semantic</code>) via standard entrypoint registry mappings.</React.Fragment>,
+        <React.Fragment key="2">Baked model weights into container image layers via <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">build-time prefetching scripts (<code className="font-mono text-white/80 text-xs">prefetch.py</code>)</span> and executed startup memory warmups in background worker threads, driving first-request cold-start latency down <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">below 100ms</span>.</React.Fragment>,
+        <React.Fragment key="3">Implemented robust edge security controls including <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SecurityHeadersMiddleware (CSP frame-ancestors, HSTS, nosniff)</span>, unbuffered chunk stream byte metering, early Content-Length 413 rejections, and a live web developer console.</React.Fragment>
+      ],
+      repo: "https://github.com/rachit-mangawa/hf-backend",
+      hfSpace: "https://huggingface.co/spaces/IDKHowToCodeFr/tinyml-backend",
+      visualContent: <HfGatewayVisual />
+    },
+    {
       id: "semantic",
       title: "Semantic Comment Analyzer",
       description: "An NLP pipeline that classifies customer feedback and support tickets using sentence embeddings, with word-level occlusion explainability.",
       tech: ["Python", "FastAPI", "Sentence Transformers", "Hugging Face", "Scikit-Learn"],
       deepDive: [
-        <React.Fragment key="1">Used all-MiniLM embeddings with an SVM classification head, achieving low CPU latency (sub-15ms) for high-throughput ticket routing.</React.Fragment>,
-        <React.Fragment key="2">Developed an occlusion explainability function that measures drops in classifier confidence to highlight influential words.</React.Fragment>,
-        <React.Fragment key="3">Packaged the pipeline as a lightweight FastAPI service designed to run locally within 4GB RAM.</React.Fragment>
+        <React.Fragment key="1">Used <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">all-MiniLM embeddings</span> with an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">SVM classification head</span>, achieving low CPU latency (<span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">sub-15ms</span>) for high-throughput ticket routing.</React.Fragment>,
+        <React.Fragment key="2">Developed an <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">occlusion explainability function</span> that measures drops in classifier confidence to highlight influential words.</React.Fragment>,
+        <React.Fragment key="3">Packaged the pipeline as a lightweight <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">FastAPI service</span> designed to run locally within <span className="text-white font-medium underline decoration-white/20 underline-offset-4 decoration-1 hover:decoration-white/50 transition-colors">&lt;4GB RAM</span>.</React.Fragment>
       ],
       repo: "https://github.com/rachit-mangawa/Semantic-Comment-Analyze",
       live: "https://rachit-mangawa.github.io/Semantic-Comment-Analyze/",

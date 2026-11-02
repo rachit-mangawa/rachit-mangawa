@@ -1,216 +1,216 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { Check, Copy } from '@phosphor-icons/react';
 
-const TelemetryVisualizer = ({
-  wsEndpoint,
-  statusColor,
-  statusBg,
-  architectureTitle = "Architecture",
-  architectureValue,
-  metricTitle,
-  metricValue,
-  labels,
-  initialData,
-  dataValueFormatter,
-  logTitle,
-  updateInterval,
-  dataUpdater,
-  logGenerator
+const CodeArtifactCard = ({
+  filename,
+  tag,
+  tagColor = "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+  code,
+  benchmarks = []
 }) => {
-  const [data, setData] = useState(initialData);
-  const [logs, setLogs] = useState([]);
-  const [isPaused, setIsPaused] = useState(false);
-  const [statusOverride, setStatusOverride] = useState(null);
-  const timeoutRef = useRef(null);
+  const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isPaused) return;
-
-    let isDocumentVisible = !document.hidden;
-    const handleVisibility = () => {
-      isDocumentVisible = !document.hidden;
-    };
-    document.addEventListener('visibilitychange', handleVisibility);
-
-    const interval = setInterval(() => {
-      if (!isDocumentVisible) return;
-      setData(prev => prev.map(dataUpdater));
-      setLogs(prev => [logGenerator(), ...prev].slice(0, 4));
-    }, updateInterval);
-
-    return () => {
-      clearInterval(interval);
-      document.removeEventListener('visibilitychange', handleVisibility);
-    };
-  }, [dataUpdater, logGenerator, updateInterval, isPaused]);
-
-  const triggerBenchmark = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setStatusOverride('TESTING');
-    setData(prev => prev.map(() => Math.min(0.96, 0.82 + Math.random() * 0.15)));
-    setLogs(prev => [
-      { id: Date.now(), text: `> BENCHMARK: INT8 batch 64 -> latency 1.12ms (converged)` },
-      ...prev
-    ].slice(0, 4));
-    timeoutRef.current = setTimeout(() => setStatusOverride(null), 1200);
-  };
-
-  const triggerFault = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setStatusOverride('FAULT_SIM');
-    setData(prev => prev.map(() => 0.25 + Math.random() * 0.2));
-    setLogs(prev => [
-      { id: Date.now(), text: `> WARN [RECOVERY]: Ingest jitter spike -> fallback handler OK` },
-      ...prev
-    ].slice(0, 4));
-    timeoutRef.current = setTimeout(() => setStatusOverride(null), 1400);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="relative w-full h-full min-h-100 flex flex-col bg-[#050505] rounded-2xl border border-white/10 overflow-hidden font-mono group">
-      {/* Background tint */}
-      <div className="absolute inset-0 bg-linear-to-b from-white/2 to-transparent pointer-events-none" />
-
-      {/* Top telemetry bar */}
-      <div className="relative z-10 border-b border-white/5 bg-black/50 backdrop-blur-md px-4 py-3 flex flex-wrap gap-2 justify-between items-center text-white/70 uppercase tracking-[0.2em] font-semibold text-[11px] shrink-0 rounded-t-2xl">
+    <div className="w-full rounded-2xl bg-[#080809] border border-white/10 overflow-hidden font-mono text-xs shadow-2xl flex flex-col justify-between">
+      {/* Header Bar */}
+      <div className="flex items-center justify-between px-4 py-3 bg-white/3 border-b border-white/5">
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[10px] md:text-[11px]">{wsEndpoint}</span>
-          <span className={`flex items-center gap-1.5 ${statusOverride ? 'text-amber-400' : statusColor}`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${statusOverride ? 'bg-amber-400' : statusBg}`}></span>
-            {statusOverride || 'LIVE'}
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+          </div>
+          <span className="text-white/60 text-[11px] font-mono tracking-tight">{filename}</span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono border uppercase tracking-wider ${tagColor}`}>
+            {tag}
           </span>
-        </div>
-
-        {/* Interactive Operator Controls */}
-        <div className="flex items-center gap-1.5">
           <button
-            onClick={() => setIsPaused(p => !p)}
-            className="px-2 py-0.5 rounded text-[9px] font-mono border border-white/10 hover:border-white/30 text-white/60 hover:text-white transition-all active:scale-95 cursor-pointer"
-            title={isPaused ? "Resume stream" : "Pause stream"}
+            onClick={handleCopy}
+            className="p-1.5 rounded-md hover:bg-white/10 text-white/40 hover:text-white transition-colors cursor-pointer"
+            title="Copy snippet"
+            aria-label="Copy snippet"
           >
-            {isPaused ? "▶ RESUME" : "⏸ PAUSE"}
-          </button>
-          <button
-            onClick={triggerBenchmark}
-            className="px-2 py-0.5 rounded text-[9px] font-mono bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/30 text-white/80 hover:text-white transition-all active:scale-95 cursor-pointer"
-            title="Inject test benchmark"
-          >
-            ⚡ INFER
-          </button>
-          <button
-            onClick={triggerFault}
-            className="px-2 py-0.5 rounded text-[9px] font-mono bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 text-amber-300 transition-all active:scale-95 cursor-pointer"
-            title="Inject edge fault simulation"
-          >
-            ⚠ FAULT
+            {copied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
           </button>
         </div>
       </div>
-      
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center p-6 w-full h-full">
-        {/* Glassmorphism Panel */}
-        <div className="w-full max-w-sm border border-white/8 bg-white/2 backdrop-blur-2xl shadow-2xl rounded-xl p-6 relative overflow-hidden transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-2">
-          <div className="absolute inset-0 border border-white/10 rounded-xl pointer-events-none" style={{ maskImage: 'linear-gradient(to bottom right, black, transparent)' }}></div>
-          
-          <div className="flex justify-between items-end mb-6 border-b border-white/10 pb-4">
-             <div>
-               <div className="text-white/60 text-[10px] tracking-[0.2em] uppercase mb-1 font-mono">{architectureTitle}</div>
-               <div className="text-white text-sm font-semibold tracking-wide font-sans">{architectureValue}</div>
-             </div>
-             <div className="text-right">
-               <div className="text-white/60 text-[10px] tracking-[0.2em] uppercase mb-1 font-mono">{metricTitle}</div>
-               <div className={`${statusColor} text-sm font-semibold tracking-tighter tabular-nums font-mono`}>{metricValue}</div>
-             </div>
-          </div>
 
-          <div className="space-y-4">
-            {labels.map((label, i) => (
-              <div key={label} className="w-full">
-                <div className="flex justify-between text-[11px] mb-1.5">
-                  <span className="text-white/80 tracking-wider uppercase font-semibold">{label}</span>
-                  <span className="text-white/60 font-mono tabular-nums">{dataValueFormatter(data[i])}</span>
-                </div>
-                <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                  <div 
-                    className={`h-full ${statusBg}/80 transition-[width,background-color] duration-700 ease-[cubic-bezier(0.77,0,0.175,1)]`}
-                    style={{ width: `${data[i] * 100}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 pt-4 border-t border-white/5">
-             <div className="text-white/60 text-[10px] tracking-[0.2em] uppercase mb-2 font-mono">{logTitle}</div>
-             <div className="h-12 overflow-hidden relative flex flex-col justify-end">
-               {logs.map((log, i) => (
-                 <div 
-                   key={log.id} 
-                   className={`text-[11px] leading-loose truncate transition-[opacity,transform,color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] starting:opacity-0 starting:-translate-y-2 translate-y-0 ${i === 0 ? 'text-white/90 opacity-100 font-medium' : i === 1 ? 'text-white/70 opacity-100' : 'text-white/50 opacity-100'}`}
-                 >
-                   {log.text}
-                 </div>
-               ))}
-             </div>
-          </div>
-        </div>
+      {/* Code / Content Area */}
+      <div className="p-4 sm:p-5 overflow-x-auto text-white/80 leading-relaxed font-mono text-[11px] sm:text-[12px] bg-black/40">
+        <pre className="selection:bg-white/20 selection:text-white">
+          <code>{code}</code>
+        </pre>
       </div>
+
+      {/* Footer Metrics / Benchmarks Bar */}
+      {benchmarks.length > 0 && (
+        <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-white/3 border-t border-white/5 text-[11px] font-mono text-white/50">
+          {benchmarks.map((b, i) => (
+            <div key={i} className="flex items-center gap-1.5">
+              <span className="text-white/30 font-light">{b.label}:</span>
+              <span className="text-white/85 font-medium">{b.value}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export const TranspilerVisual = () => {
+  const code = `// Target: ESP32-WROOM | Scikit-Learn Soft-Voting -> C99
+#ifndef HEARTFLOW_MODEL_H
+#define HEARTFLOW_MODEL_H
+
+#include <stdint.h>
+
+#define NUM_TREES 24
+#define ARENA_BYTES 8192 // Zero dynamic allocation
+
+// Soft-voting quantized ensemble weights
+static const int8_t MODEL_WEIGHTS[24][5] = {
+  { -14,  52, -91, 104,  18 },
+  {  36, -68,  82, -31,  63 },
+  /* ... 22 additional tree branches omitted ... */
+};
+
+inline uint8_t heartflow_predict(const int8_t* feats) {
+  int32_t accumulator = 0;
+  for (uint8_t t = 0; t < NUM_TREES; t++) {
+    accumulator += (feats[0] * MODEL_WEIGHTS[t][0]) >> 7;
+  }
+  return accumulator > 0 ? 1 : 0; // Sub-millisecond return
+}
+#endif // HEARTFLOW_MODEL_H`;
+
   return (
-    <TelemetryVisualizer
-      wsEndpoint="ws://edge-inference.node"
-      statusColor="text-emerald-400"
-      statusBg="bg-emerald-400"
-      architectureTitle="Pipeline"
-      architectureValue="INT8 Quantized SVM"
-      metricTitle="Footprint"
-      metricValue="1.4KB Flash"
-      labels={['Heart Rate', 'Blood Pressure', 'Cholesterol', 'SpO2', 'ST Depression']}
-      initialData={[0.6, 0.7, 0.5, 0.8, 0.4]}
-      dataValueFormatter={(v) => (v * 100).toFixed(0)}
-      logTitle="Inference Log"
-      updateInterval={1200}
-      dataUpdater={(v) => Math.max(0.3, Math.min(0.95, v + (Math.random() - 0.5) * 0.15))}
-      logGenerator={() => {
-        const hr = Math.floor(60 + Math.random() * 40);
-        const bp = Math.floor(110 + Math.random() * 30);
-        return { id: Date.now(), text: `> INGEST [EDGE]: HR=${hr} BP=${bp} | STATUS: OK` };
-      }}
+    <CodeArtifactCard
+      filename="heartflow_model.h"
+      tag="C99 AST Header"
+      tagColor="text-emerald-400 bg-emerald-400/10 border-emerald-400/20"
+      code={code}
+      benchmarks={[
+        { label: 'RAM Footprint', value: '8KB (-76%)' },
+        { label: 'Latency', value: '0.84ms' },
+        { label: 'Heap Allocation', value: '0 bytes (Static)' }
+      ]}
+    />
+  );
+};
+
+export const VeraEngineVisual = () => {
+  const code = `# 4-Tier Orchestration Cascade (Hugging Face 2vCPU)
+orchestrator:
+  time_budget_seconds: 13.0
+  context_distiller:
+    raw_payload_max: 520KB
+    distill_engine: "Python Caveman (< 0.001s)"
+
+  cascade_tiers:
+    - tier: 1
+      provider: "nvidia-nim"
+      model: "nemotron-3-ultra-550b"
+      timeout_seconds: 5.0
+    - tier: 2
+      provider: "groq"
+      model: "openai/gpt-oss-20b"
+      timeout_seconds: 4.0
+    - tier: 3
+      provider: "gemini"
+      model: "gemini-2.5-flash"
+      timeout_seconds: 4.0
+    - tier: 4 # Airgapped CPU safety net
+      provider: "llama-cpp-python"
+      model: "qwen2.5-7b-instruct-q4_k_m.gguf"
+      grammar: "LlamaGrammar(strict_json_schema)"`;
+
+  return (
+    <CodeArtifactCard
+      filename="vera_orchestrator.yaml"
+      tag="Fail-Fast Cascade"
+      tagColor="text-purple-400 bg-purple-400/10 border-purple-400/20"
+      code={code}
+      benchmarks={[
+        { label: 'Worst-Case Budget', value: '< 13.0s' },
+        { label: 'Distill Latency', value: '< 0.001s' },
+        { label: 'Grammar Compliance', value: '100% JSON' }
+      ]}
+    />
+  );
+};
+
+export const HfGatewayVisual = () => {
+  const code = `# Pluggable Subproject Registry (Hugging Face Spaces)
+from fastapi import FastAPI
+from hf_gateway.middleware import SecurityHeadersMiddleware
+
+PROJECT_REGISTRY = {
+    "/heartflow": "heartflow.router:router",
+    "/semantic":  "semantic.router:router",
+}
+
+# Build-time layer baking (prefetch.py)
+def bake_container_cache():
+    for prefix, entrypoint in PROJECT_REGISTRY.items():
+        module = importlib.import_module(entrypoint.split(':')[0])
+        if hasattr(module, "warmup"):
+            module.warmup() # Bakes weights into /home/user/hf-cache
+
+# Runtime startup: warmups execute in worker thread pool
+# Stream metering: early Content-Length 413 validation`;
+
+  return (
+    <CodeArtifactCard
+      filename="hf_gateway/registry.py"
+      tag="Pluggable Gateway"
+      tagColor="text-amber-400 bg-amber-400/10 border-amber-400/20"
+      code={code}
+      benchmarks={[
+        { label: 'Cold-Start Latency', value: '< 95ms Warm' },
+        { label: 'Edge Security', value: 'HSTS + Strict CSP' },
+        { label: 'Mounted Routers', value: '2 Active' }
+      ]}
     />
   );
 };
 
 export const SemanticAnalyzerVisual = () => {
+  const code = `{
+  "predicted_intent": "BILLING_DISPUTE",
+  "confidence": 0.942,
+  "cpu_latency_ms": 11.4,
+  "occlusion_attributions": [
+    { "token": "overcharged", "delta": +0.482, "impact": "CRITICAL" },
+    { "token": "invoice",     "delta": +0.315, "impact": "HIGH" },
+    { "token": "account",     "delta": +0.094, "impact": "LOW" },
+    { "token": "hello",       "delta": -0.008, "impact": "NEUTRAL" }
+  ],
+  "routing_decision": {
+    "action": "ROUTE_TIER_1_ESCALATION",
+    "verified_without_cloud": true
+  }
+}`;
+
   return (
-    <TelemetryVisualizer
-      wsEndpoint="wss://nlp-engine.cluster"
-      statusColor="text-blue-400"
-      statusBg="bg-blue-400"
-      architectureValue="all-MiniLM + SVM"
-      metricTitle="P99 Latency"
-      metricValue="2.4ms"
-      labels={['Intent Confidence', 'Embedding Norm', 'Occlusion Delta', 'Vocab Density']}
-      initialData={[0.94, 0.88, 0.76, 0.91]}
-      dataValueFormatter={(v) => `${(v * 100).toFixed(1)}%`}
-      logTitle="Cluster Stream"
-      updateInterval={1500}
-      dataUpdater={(v) => Math.max(0.6, Math.min(0.99, v + (Math.random() - 0.5) * 0.1))}
-      logGenerator={() => {
-        const intents = ['SUPPORT', 'PRICING', 'REFUND', 'BUG_REPORT'];
-        const intent = intents[Math.floor(Math.random() * intents.length)];
-        const conf = (0.85 + Math.random() * 0.14).toFixed(3);
-        const ms = (1.2 + Math.random() * 2.5).toFixed(1);
-        return { id: Date.now(), text: `> PREDICT: intent=${intent} | conf=${conf} | time=${ms}ms` };
-      }}
+    <CodeArtifactCard
+      filename="eval_inference_result.json"
+      tag="Word Occlusion"
+      tagColor="text-blue-400 bg-blue-400/10 border-blue-400/20"
+      code={code}
+      benchmarks={[
+        { label: 'CPU Latency', value: '11.4ms' },
+        { label: 'RAM Footprint', value: '< 4GB Local' },
+        { label: 'Embedding Head', value: 'all-MiniLM + SVM' }
+      ]}
     />
   );
 };

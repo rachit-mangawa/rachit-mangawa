@@ -125,7 +125,16 @@ export function TechIcon({ name, size = 14, className = "" }) {
   switch (key) {
     case 'python':
     case 'python 3.10':
+    case 'python 3.11':
       return <PythonIcon size={size} className={className} />;
+    case 'llama.cpp':
+    case 'llamagrammar':
+    case 'nemotron':
+    case 'nemotron 550b':
+      return <Brain size={size} className={className} />;
+    case 'uv':
+    case 'uvicorn':
+      return <Sliders size={size} className={className} />;
     case 'c++':
     case 'c/c++':
     case 'c99':

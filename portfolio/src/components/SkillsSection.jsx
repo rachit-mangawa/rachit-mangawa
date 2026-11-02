@@ -19,7 +19,7 @@ const ARCHITECTURAL_PILLARS = [
     title: "Air-Gapped AI & Hybrid RAG",
     domain: "LOCAL INFERENCE & RETRIEVAL",
     categoryIcon: Brain,
-    description: "Offline multi-lingual OCR and grievance retrieval pipelines combining local Ollama models with dual dense-sparse vector search.",
+    description: "Offline multi-lingual OCR and document retrieval pipelines combining local Ollama models with dual dense-sparse vector search.",
     skills: ["PyTorch", "Ollama", "Hugging Face", "OpenCV"],
     link: "/skills#genai-nlp"
   },
@@ -49,12 +49,9 @@ export default function SkillsSection() {
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16 reveal">
         <div className="max-w-2xl">
-          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white mb-3">
+          <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight text-white">
             Skills & Systems
           </h2>
-          <p className="text-base md:text-lg text-white/60 font-light leading-relaxed">
-            Core architectural disciplines across low-level runtimes, air-gapped machine intelligence, high-concurrency backends, and data infrastructure.
-          </p>
         </div>
         <SectionLink to="/skills">View Full Stack</SectionLink>
       </div>
