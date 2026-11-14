@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+
+# Production Build & Caches
+dist/
+dist-ssr/
+build/
+out/
+.vite/
+.vite-temp/
+.vitest-cache/
+.cache/
+coverage/
+.turbo/
+
+# AI Tooling & Local Knowledge Graphs
+.superpowers/
+graphify-out/
+.agents/
+.gemini/
+GEMINI.md
+DESIGN.md
+docs/
+skills-lock.json
+
+# Environment & Secrets
+.env
+.env*
+*.env*
+*.local
+*.pem
+*.key
+*.cert
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# LaTeX temporary files
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.toc
+
+# Editor & OS files
+.playwright-mcp/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

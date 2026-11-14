@@ -1,0 +1,240 @@
+{
+  "personal": {
+    "name": "Rachit Mangawa",
+    "email": "rachit.mangawa.work@gmail.com",
+    "github": "https://github.com/rachit-mangawa",
+    "githubHandle": "rachit-mangawa",
+    "linkedin": "https://www.linkedin.com/in/rachit-mangawa/",
+    "linkedinHandle": "rachit-mangawa",
+    "leetcode": "https://leetcode.com/u/rachit-mangawa/",
+    "leetcodeHandle": "rachit-mangawa",
+    "codeforces": "https://codeforces.com/profile/i_win_again",
+    "codeforcesHandle": "i_win_again",
+    "kaggle": "https://www.kaggle.com/rachitmangawa",
+    "kaggleHandle": "rachitmangawa"
+  },
+  "ratings": {
+    "codeforces": {
+      "rank": "Specialist",
+      "rating": 1422
+    },
+    "leetcode": {
+      "rank": "Knight",
+      "rating": 1987,
+      "contest": "Biweekly 190",
+      "contestUrl": "https://leetcode.com/contest/biweekly-contest-190/",
+      "globalRank": 316,
+      "totalParticipants": 38291,
+      "topPercent": 0.83
+    }
+  },
+  "projects": [
+    {
+      "id": "heartflow",
+      "number": "01",
+      "title": "HeartFlow OS",
+      "tagline": "Bare-Metal C99 Compiler",
+      "description": "AST transpiler compiling trained Scikit-Learn ensembles into zero-malloc C99 headers (<512B stack, 8.15KB SRAM) for microcontrollers, with a 60 FPS Web Serial dashboard.",
+      "tech": ["Next.js 16", "React 19", "FastAPI", "Python 3.10", "PlatformIO", "WebSockets"],
+      "metrics": [
+        { "label": "On-Device Latency", "value": "18.4µs" },
+        { "label": "Memory Footprint", "value": "<512B Stack" },
+        { "label": "Inference Rate", "value": "54.3k vec/s" }
+      ],
+      "homeMetric": "18.4µs latency · <512B stack",
+      "deepDive": [
+        "Wrote an AST transpiler that compiles Scikit-Learn soft-voting ensembles into zero-malloc C99 headers (<512B stack) for ESP32-S3, Cortex-M4, and RP2040 microcontrollers.",
+        "Implemented INT8 quantization to cut SRAM usage by 76.4% (34.6KB to 8.15KB) and achieve 18.4 µs on-device inference (54,340 vec/sec) vs. a 35ms cloud baseline.",
+        "Streamed 250 Hz ECG/PPG packets over Web Serial (115,200 baud) to a 60 FPS Next.js canvas with 120 µs in-browser inference, verified across 58 PyTest bounds tests in Docker."
+      ],
+      "repo": "https://github.com/rachit-mangawa/HEARTFLOW_OS",
+      "live": "https://rachit-mangawa.github.io/HEARTFLOW_OS/"
+    },
+    {
+      "id": "hf-backend",
+      "number": "02",
+      "title": "HF Pluggable Gateway",
+      "tagline": "Sub-100ms Container Gateway",
+      "description": "Aggregation API gateway and container runtime dynamically mounting isolated Python subpackages into a single container with build-time weight prefetching.",
+      "tech": ["FastAPI", "Docker", "Python 3.11", "Uvicorn", "uv", "PyTorch"],
+      "metrics": [
+        { "label": "Cold-Start Budget", "value": "<100ms" },
+        { "label": "Routing Isolation", "value": "Registry Mapping" },
+        { "label": "Image Caching", "value": "Layer Prefetching" }
+      ],
+      "homeMetric": "<100ms cold start · PyTorch",
+      "deepDive": [
+        "Architected an extensible pluggable service gateway that dynamically mounts isolated subproject packages under dedicated route prefixes (/heartflow, /semantic) via standard entrypoint registry mappings.",
+        "Baked model weights into container image layers via build-time prefetching scripts (prefetch.py) and executed startup memory warmups in background worker threads, driving first-request cold-start latency down below 100ms.",
+        "Implemented robust edge security controls including SecurityHeadersMiddleware (CSP frame-ancestors, HSTS, nosniff), unbuffered chunk stream byte metering, early Content-Length 413 rejections, and a live web developer console."
+      ],
+      "repo": "https://github.com/rachit-mangawa/hf-backend",
+      "live": "https://rachit-mangawa.github.io/hf-backend/"
+    },
+    {
+      "id": "semantic",
+      "number": "03",
+      "title": "Semantic Comment Analyzer",
+      "tagline": "Sub-15ms Intent Engine",
+      "description": "High-throughput local NLP classifier delivering sub-15ms intent and entity recognition with word-level occlusion explainability inside <4GB RAM.",
+      "tech": ["Python", "FastAPI", "Sentence Transformers", "Hugging Face", "Scikit-Learn"],
+      "metrics": [
+        { "label": "CPU Latency", "value": "<15ms" },
+        { "label": "Batch Throughput", "value": "1,000+ req/s" },
+        { "label": "Memory Ceiling", "value": "<4GB Local RAM" }
+      ],
+      "homeMetric": "<15ms CPU · <4GB RAM",
+      "deepDive": [
+        "Used all-MiniLM embeddings with Logistic Regression and SVM heads, achieving <15ms CPU latency and 1,000+ req/sec batch throughput across custom intent labels.",
+        "Combined a RoBERTa sentiment pipeline, 3-class NER, and word-level occlusion explainability into a single endpoint returning 7 structured decision fields.",
+        "Packaged with a vectorized Pandas CSV batch handler engineered to run locally within a strict <4GB RAM memory ceiling with zero cloud dependency."
+      ],
+      "repo": "https://github.com/rachit-mangawa/Semantic-Comment-Analyze",
+      "live": "https://rachit-mangawa.github.io/Semantic-Comment-Analyze/"
+    },
+    {
+      "id": "vera-engine",
+      "number": "04",
+      "title": "Vera AI Engine",
+      "tagline": "4-Tier Cascade Orchestrator",
+      "description": "Deterministic multi-tier AI orchestrator featuring a 4-tier fail-fast fallback cascade and hardware-level grammar enforcement.",
+      "tech": ["FastAPI", "Python 3.10", "Docker", "llama.cpp", "Nemotron 550B", "LlamaGrammar"],
+      "metrics": [
+        { "label": "Cascade Fallback", "value": "4-Tier Fail-Fast" },
+        { "label": "Distillation Speed", "value": "<0.001s" },
+        { "label": "Output Validation", "value": "Logit LlamaGrammar" }
+      ],
+      "homeMetric": "4-tier cascade · <0.001s",
+      "deepDive": [
+        "Engineered a deterministic 4-tier fallback cascade (NVIDIA NIM Nemotron-3 550B → Groq GPT OSS 20B → Gemini 2.5 Flash → Local CPU Llama.cpp Qwen2.5) with strict timeout budgets to guarantee responses in <30s on 2vCPU Hugging Face Spaces.",
+        "Implemented the Python Caveman distillation pattern, compressing 500KB+ JSON raw merchant and trigger payloads into structured factual bullet points in <0.001s, eliminating context bottlenecks and preventing metric hallucinations.",
+        "Enforced hardware-level LlamaGrammar constraints at the logits level for local SLM execution, guaranteeing 100% valid JSON schema compliance, paired with an intra-tier auto-repair loop for taboo and word-count policies."
+      ],
+      "repo": "https://github.com/rachit-mangawa/vera-engine",
+      "hfSpace": "https://idkhowtocodefr-vera-engine.hf.space/docs"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Unique Identification Authority of India (UIDAI / Aadhaar)",
+      "role": "Software Developer Intern",
+      "date": "Jun 2026 - Sep 2026",
+      "tags": [
+        "Python", "FastAPI", "Ollama", "RAG Pipelines", "Vector Search (FAISS, BM25)", "Cross-Encoder Reranking", "OpenCV", "Tesseract", "Plotly Dash", "Pandas", "NumPy", "WebSockets", "SQLite WAL", "SQLAlchemy", "JWT & Role-Based Access (RBAC)"
+      ],
+      "shortPoints": [
+        "Built an offline OCR and hybrid search pipeline (FAISS + BM25 with cross-encoder reranking) for 12 Indian languages. Kept memory under 16GB RAM on CPU machines by running quantized models sequentially, and added a verification tool for human review.",
+        "Wrote an async ETL pipeline that loads 50MB workbooks (100k+ rows) into SQLite WAL in 5 to 15s, indexing 4.2M+ telemetry records with row-level access control for over 1,000 users."
+      ],
+      "projects": [
+        {
+          "title": "Offline OCR & Hybrid RAG Document System",
+          "points": [
+            "Engineered a 3-phase pipeline: PDF disk-write → OpenCV preprocessing (Otsu threshold, deskew, CLAHE contrast) + Tesseract OCR → Ollama boundary detection → strict JSON extraction at temp=0.0 with malformed outputs dumped to flat files for manual review.",
+            "Used Ollama (gemma3:4b) to detect salutations and closings, splitting multi-page PDF bundles into distinct logical documents.",
+            "Built a degradation-aware fallback that monitors extracted character counts per page, routing low-confidence or degraded handwritten scans to manual review before downstream LLM extraction.",
+            "Developed a custom HTML/JS triage dashboard with per-document analysis views, displaying extracted metadata, model summaries, and the original scan side-by-side with confidence scores and urgency filters.",
+            "Kept peak system memory strictly under 16GB RAM on CPU-only air-gapped machines by running quantized models sequentially, streaming uploads directly to disk, and splitting multi-letter bundles at 1 to 2 min/letter on degraded scans."
+          ]
+        },
+        {
+          "title": "High-Throughput Telemetry ETL & Analytics Backend",
+          "points": [
+            "Built dual ingestion paths combining manual UI uploads with an automated APScheduler cron that sweeps configured directories every 3 minutes for unindexed files, enforcing idempotency via composite unique constraints and ON CONFLICT DO UPDATE logic.",
+            "Processed 50MB workbooks through stateless domain parsers using vectorized NumPy calculations, prefix-based source routing, and 1,000-row batch upserts, using WebSocket streaming to prevent UI blocking during heavy ingestion.",
+            "Consolidated 4 disparate telemetry streams (telephony logs, IVR events, call records, and agent summaries) into a single relational schema with dynamic time-bucketing (daily/weekly/monthly) and bidirectional cross-filtering across 4.2M+ records.",
+            "Built agent performance quadrants plotting CPH × AHT × Occupancy and hourly volume heatmaps to surface intraday bottlenecks masked by daily averages, with client-side caching to prevent DB contention.",
+            "Enforced tenant isolation by injecting JWT claims into SQLAlchemy base queries, bcrypt password rehashing, X-Forwarded-For client IP capture for non-repudiation audit trails, and automated 90-day log pruning."
+          ]
+        }
+      ]
+    }
+  ],
+  "openSource": {
+    "project": "TensorFlow Core",
+    "issueUrl": "https://github.com/tensorflow/tensorflow/issues/120578",
+    "issueNumber": "120578",
+    "prUrl": "https://github.com/tensorflow/tensorflow/pull/120944",
+    "prNumber": "120944",
+    "tags": [
+      "Python",
+      "C++",
+      "Calculus"
+    ]
+  },
+  "skills": [
+    {
+      "id": "languages",
+      "category": "Languages",
+      "categoryIcon": "LanguagesCategoryIcon",
+      "description": "Languages I write regularly for backend microservices, embedded firmware, algorithms, and systems scripting.",
+      "skills": [
+        { "name": "Python" },
+        { "name": "C++" },
+        { "name": "C" },
+        { "name": "TypeScript" },
+        { "name": "Bash" }
+      ]
+    },
+    {
+      "id": "ai-tooling",
+      "category": "AI Tooling & Agents",
+      "categoryIcon": "AIToolingCategoryIcon",
+      "description": "Agent skills, Model Context Protocol servers, LLM orchestration frameworks, and vector search systems.",
+      "skills": [
+        { "name": "MCP" },
+        { "name": "AI Skills" },
+        { "name": "LangChain" },
+        { "name": "Ollama" },
+        { "name": "RAG Pipelines" },
+        { "name": "Vector Search" },
+        { "name": "Cross-Encoder Reranking" },
+        { "name": "Sentence Transformers" },
+        { "name": "Hugging Face" },
+        { "name": "llama.cpp" }
+      ]
+    },
+    {
+      "id": "machine-learning",
+      "category": "Machine Learning",
+      "categoryIcon": "MLCategoryIcon",
+      "description": "Statistical modeling, deep learning architectures, classical computer vision, and explainable AI.",
+      "skills": [
+        { "name": "PyTorch" },
+        { "name": "TensorFlow" },
+        { "name": "Scikit-Learn" },
+        { "name": "OpenCV" },
+        { "name": "Pandas" },
+        { "name": "NumPy" }
+      ]
+    },
+    {
+      "id": "backend-web",
+      "category": "Backend & Web",
+      "categoryIcon": "BackendCategoryIcon",
+      "description": "High-throughput asynchronous REST microservices, low-latency caching, and relational storage engines.",
+      "skills": [
+        { "name": "FastAPI" },
+        { "name": "Next.js" },
+        { "name": "React" },
+        { "name": "Redis" },
+        { "name": "SQLite WAL" },
+        { "name": "SQLAlchemy" },
+        { "name": "PlatformIO" }
+      ]
+    },
+    {
+      "id": "data-infra",
+      "category": "DevOps & CI",
+      "categoryIcon": "DataCategoryIcon",
+      "description": "Containerized environments, continuous integration, regression testing, and Linux systems.",
+      "skills": [
+        { "name": "Docker" },
+        { "name": "Git" },
+        { "name": "GitHub Actions" },
+        { "name": "Linux" },
+        { "name": "PyTest" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rachit-mangawa.github.io/rachit-mangawa/sitemap.xml
