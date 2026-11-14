@@ -51,7 +51,7 @@
 </p>
 
 <div align="center">
-  <a href="https://rachit-mangawa.github.io/rachit-mangawa/">
+  <a href="https://rachit-mangawa.github.io">
     <img src="https://readme-typing-svg.herokuapp.com?font=Geist+Pixel&size=26&duration=0.1&pause=45000&color=F7F7F7&center=true&vCenter=true&width=1000&height=50&lines=visit+my+portfolio+for+more+↗" alt="visit my portfolio for more" />
   </a>
 </div>
