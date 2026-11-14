@@ -18,7 +18,7 @@ export const VectorSpine = ({
   ...rest
 }) => {
   const containerClasses = [
-    'relative w-full h-20 sm:h-28 md:h-36 my-2 sm:my-4 pointer-events-none select-none overflow-visible',
+    'hidden pointer-events-none select-none',
     className,
   ]
     .filter(Boolean)

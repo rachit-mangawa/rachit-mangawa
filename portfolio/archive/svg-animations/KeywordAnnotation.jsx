@@ -25,7 +25,7 @@ export const KeywordAnnotation = ({
   ...rest
 }) => {
   const containerClasses = [
-    'relative inline-block align-baseline whitespace-normal',
+    'relative inline align-baseline font-medium text-white/95',
     className,
   ]
     .filter(Boolean)
@@ -105,7 +105,7 @@ export const KeywordAnnotation = ({
       preserveAspectRatio: 'none',
       fill: 'none',
       className:
-        'absolute -inset-x-1.5 -inset-y-0.5 w-[calc(100%+0.75rem)] h-[calc(100%+0.25rem)] pointer-events-none overflow-visible',
+        'hidden absolute -inset-x-1.5 -inset-y-0.5 w-[calc(100%+0.75rem)] h-[calc(100%+0.25rem)] pointer-events-none overflow-visible',
       'aria-hidden': 'true',
     },
     svgElements

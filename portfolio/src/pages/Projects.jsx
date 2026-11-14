@@ -4,7 +4,6 @@ import useReveal from '../hooks/useReveal';
 import { useScrollToHash } from '../hooks/useScrollToHash';
 import { TechTag } from '../components/SkillIcons';
 import data from '../data.json';
-import AstCompilerArt from '../components/art/AstCompilerArt';
 import {
   TranspilerVisual,
   SemanticAnalyzerVisual,
@@ -26,26 +25,20 @@ export default function Projects() {
   return (
     <main id="main-content" tabIndex="-1" className="relative z-10 w-full overflow-hidden outline-none">
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-40">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div className="lg:col-span-7 flex flex-col justify-start">
-            <h1 className="reveal font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem] leading-[1.05] font-normal tracking-tight text-white mb-6 sm:mb-8 select-none">
-              <span className="block">Featured</span>
-              <span className="italic font-normal text-white/95">Systems</span>
-              <span className="text-white/30 not-italic font-serif">.</span>
-            </h1>
+        <div className="max-w-5xl flex flex-col justify-start">
+          <h1 className="reveal font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.25rem] leading-[1.05] font-normal tracking-tight text-white mb-6 sm:mb-8 select-none">
+            <span className="block">Featured</span>
+            <span className="italic font-normal text-white/95">Systems</span>
+            <span className="text-white/45 not-italic font-serif">.</span>
+          </h1>
 
-            <div className="reveal reveal-delay-1 text-sm sm:text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3">
-              <p className="text-pretty">
-                Architectural deep dives into <span className="text-white font-medium">machine learning compilers</span>, low-latency microservices, and deterministic SLM orchestration.
-              </p>
-              <p className="text-xs sm:text-sm md:text-base text-white/55 text-pretty">
-                Zero-malloc C99 kernels, container runtimes, fail-fast fallback cascades, and explainable neural inference engines.
-              </p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 flex justify-center lg:justify-end reveal reveal-delay-2">
-            <AstCompilerArt className="w-full max-w-md lg:max-w-none" />
+          <div className="reveal reveal-delay-1 text-sm sm:text-base md:text-lg lg:text-xl font-light text-white/70 leading-[1.65] tracking-tight text-left max-w-4xl space-y-3">
+            <p className="text-pretty">
+              Architectural deep dives into <span className="text-white font-medium">machine learning compilers</span>, low-latency microservices, and deterministic SLM orchestration.
+            </p>
+            <p className="text-xs sm:text-sm md:text-base text-white/60 text-pretty">
+              Zero-malloc C99 kernels, container runtimes, fail-fast fallback cascades, and explainable neural inference engines.
+            </p>
           </div>
         </div>
       </div>

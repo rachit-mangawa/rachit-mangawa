@@ -105,7 +105,7 @@ export const HeroArtwork = ({
         fontSize: '10',
         letterSpacing: '0.15em',
       },
-      'SYSTEM.CORE // SACRED WIREFRAME'
+      'SYSTEM.CORE // ARCHITECTURE TOPOLOGY'
     ),
     React.createElement(
       'text',
@@ -120,7 +120,7 @@ export const HeroArtwork = ({
         fontSize: '10',
         letterSpacing: '0.15em',
       },
-      'REF: 400.00 / 230.00 [RAD 200]'
+      'VECTOR-UNIT: 512-BIT // SIMD-AVX2'
     ),
     React.createElement(
       'text',
@@ -134,7 +134,7 @@ export const HeroArtwork = ({
         fontSize: '9',
         letterSpacing: '0.12em',
       },
-      'FREQ: 144.00 MHZ // PHI: 1.618'
+      'SRAM-BUDGET: <512B STACK // C99'
     ),
     React.createElement(
       'text',
@@ -149,7 +149,7 @@ export const HeroArtwork = ({
         fontSize: '9',
         letterSpacing: '0.12em',
       },
-      'AXIS: STAGE-00 -> SPINE'
+      'EXEC: ZERO-MALLOC // REVERSE-MODE'
     ),
 
     // Coordinate crosshair axes
@@ -392,111 +392,40 @@ export const HeroArtwork = ({
       '∠ 45.0°'
     ),
 
-    // Downward Spine Anchor (connecting to VectorSpine)
-    // Converging lateral feeder lines
-    React.createElement('path', {
-      key: 'spine-feeder-l',
-      d: 'M 320,368.56 C 350,420 388,435 388,540',
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.25',
-      strokeWidth: '1',
-      vectorEffect: 'non-scaling-stroke',
-    }),
-    React.createElement('path', {
-      key: 'spine-feeder-r',
-      d: 'M 480,368.56 C 450,420 412,435 412,540',
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.25',
-      strokeWidth: '1',
-      vectorEffect: 'non-scaling-stroke',
-    }),
-
-    // Central spine trunk line
-    React.createElement('path', {
+    // Self-contained central axis terminal
+    React.createElement('line', {
       key: 'spine-trunk',
-      d: 'M 400,236 L 400,540',
+      x1: 400,
+      y1: 236,
+      x2: 400,
+      y2: 457,
       fill: 'none',
       stroke: 'white',
-      strokeOpacity: '0.5',
-      strokeWidth: '1.25',
-      vectorEffect: 'non-scaling-stroke',
-    }),
-
-    // Guard rails
-    React.createElement('path', {
-      key: 'spine-guard-l',
-      d: 'M 394,400 L 394,540',
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.15',
+      strokeOpacity: '0.3',
       strokeWidth: '1',
-      strokeDasharray: '4 4',
       vectorEffect: 'non-scaling-stroke',
     }),
-    React.createElement('path', {
-      key: 'spine-guard-r',
-      d: 'M 406,400 L 406,540',
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.15',
-      strokeWidth: '1',
-      strokeDasharray: '4 4',
-      vectorEffect: 'non-scaling-stroke',
-    }),
-
-    // Downward directing chevrons
-    React.createElement('path', {
-      key: 'spine-chevron-1',
-      d: 'M 392,440 L 400,448 L 408,440',
+    React.createElement('circle', {
+      key: 'spine-end-bead',
+      cx: 400,
+      cy: 460,
+      r: 3,
       fill: 'none',
       stroke: 'white',
       strokeOpacity: '0.4',
       strokeWidth: '1',
       vectorEffect: 'non-scaling-stroke',
     }),
-    React.createElement('path', {
-      key: 'spine-chevron-2',
-      d: 'M 392,475 L 400,483 L 408,475',
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.45',
-      strokeWidth: '1',
-      vectorEffect: 'non-scaling-stroke',
-    }),
-    React.createElement('path', {
-      key: 'spine-chevron-3',
-      d: 'M 392,510 L 400,518 L 408,510',
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.5',
-      strokeWidth: '1',
-      vectorEffect: 'non-scaling-stroke',
-    }),
-
-    // Terminal coupler bead and crossbar at y=540
-    React.createElement('circle', {
-      key: 'spine-end-bead',
-      cx: 400,
-      cy: 536,
-      r: 3.5,
-      fill: 'none',
-      stroke: 'white',
-      strokeOpacity: '0.7',
-      strokeWidth: '1',
-      vectorEffect: 'non-scaling-stroke',
-    }),
     React.createElement('line', {
       key: 'spine-end-cross',
-      x1: 384,
-      y1: 540,
-      x2: 416,
-      y2: 540,
+      x1: 390,
+      y1: 460,
+      x2: 410,
+      y2: 460,
       fill: 'none',
       stroke: 'white',
-      strokeOpacity: '0.5',
-      strokeWidth: '1.25',
+      strokeOpacity: '0.3',
+      strokeWidth: '1',
       vectorEffect: 'non-scaling-stroke',
     }),
   ];

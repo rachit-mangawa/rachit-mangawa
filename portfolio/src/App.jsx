@@ -107,28 +107,8 @@ function MainLayout() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const [{ showPreloader, isFastPreload }, setPreloaderState] = useState(() => {
-    if (typeof window === 'undefined') return { showPreloader: false, isFastPreload: false };
-    try {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReducedMotion) return { showPreloader: false, isFastPreload: false };
-
-      const hasVisited = sessionStorage.getItem('portfolio_visited') === 'true';
-      const navEntries = performance.getEntriesByType('navigation');
-      const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
-
-      if (hasVisited) {
-        const navEntry = navEntries[0];
-        const isHardReload = isReload && navEntry && navEntry.transferSize > 1500;
-        if (isHardReload) {
-          return { showPreloader: true, isFastPreload: true };
-        }
-        return { showPreloader: false, isFastPreload: false };
-      }
-
-      return { showPreloader: true, isFastPreload: false };
-    } catch {
-      return { showPreloader: false, isFastPreload: false };
-    }
+    // Content loads directly without forced blocking delays
+    return { showPreloader: false, isFastPreload: false };
   });
 
   const lenis = useLenis();

@@ -11,12 +11,6 @@ import { CodeforcesIcon, LeetCodeIcon } from '../components/BrandIcons';
 import { TensorFlowIcon, TechTag } from '../components/SkillIcons';
 import Hero from '../components/Hero';
 import StickyStage from '../components/StickyStage';
-import VectorSpine from '../components/art/VectorSpine';
-import AstCompilerArt from '../components/art/AstCompilerArt';
-import IngestionGraphArt from '../components/art/IngestionGraphArt';
-import AutodiffGraphArt from '../components/art/AutodiffGraphArt';
-import AlgorithmicLatticeArt from '../components/art/AlgorithmicLatticeArt';
-import KeywordAnnotation from '../components/art/KeywordAnnotation';
 
 export default function Home() {
   useReveal();
@@ -33,16 +27,11 @@ export default function Home() {
     >
       <Hero />
 
-      {/* 1. Spine: Hero to Stage 1 (Top to Right) */}
-      <VectorSpine variant="top-to-right" className="w-full my-4 sm:my-8" />
-
-      {/* 2. Section 1 (#featured): Sticky Stage (Align Right) */}
+      {/* Section 1 (#featured) */}
       <StickyStage
         id="featured"
-        align="right"
-        artwork={<AstCompilerArt />}
-        minHeight="min-h-[85vh]"
-        className="z-10 border-t border-white/10 py-20 sm:py-28 md:py-32 scroll-mt-14"
+        minHeight="min-h-0"
+        className="z-10 border-t border-white/10 py-16 sm:py-24 md:py-28 scroll-mt-14"
       >
         <div className="flex flex-col gap-6">
           <div className="reveal">
@@ -58,7 +47,7 @@ export default function Home() {
                 className="group relative flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 py-4 sm:py-5 md:py-6 px-2 sm:px-4 -mx-2 sm:-mx-4 transition-colors hover:bg-white/[0.03]"
               >
                 <div className="flex items-baseline gap-4 sm:gap-6 md:gap-8 min-w-0">
-                  <span className="font-mono text-xs sm:text-sm text-white/40 group-hover:text-white transition-colors shrink-0 tabular-nums">
+                  <span className="font-mono text-xs sm:text-sm text-white/60 group-hover:text-white transition-colors shrink-0 tabular-nums">
                     {project.number}
                   </span>
 
@@ -69,18 +58,18 @@ export default function Home() {
                     >
                       {project.title}
                     </Link>
-                    <span className="text-xs sm:text-sm text-white/40 font-mono hidden md:inline">
-                      — <KeywordAnnotation type="bracket">{project.tagline}</KeywordAnnotation>
+                    <span className="text-xs sm:text-sm text-white/60 font-mono hidden md:inline">
+                      — {project.tagline}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-baseline justify-between sm:justify-end gap-4 shrink-0 relative z-10 pl-8 sm:pl-0">
-                  <span className="font-mono text-[11px] sm:text-xs text-white/60 group-hover:text-white/90 transition-colors tabular-nums">
+                  <span className="font-mono text-[11px] sm:text-xs text-white/75 group-hover:text-white transition-colors tabular-nums">
                     {project.homeMetric}
                   </span>
 
-                  <div className="flex items-center gap-3 font-mono text-xs text-white/50">
+                  <div className="flex items-center gap-3 font-mono text-xs text-white/70">
                     {project.live && (
                       <a
                         href={project.live}
@@ -127,29 +116,24 @@ export default function Home() {
         </div>
       </StickyStage>
 
-      {/* 3. Spine: Stage 1 to Stage 2 (Right to Left) */}
-      <VectorSpine variant="right-to-left" className="w-full my-4 sm:my-8" />
-
-      {/* 4. Section 2 (#experience): Sticky Stage (Align Left) */}
+      {/* Section 2 (#experience) */}
       <StickyStage
         id="experience"
-        align="left"
-        artwork={<IngestionGraphArt />}
-        minHeight="min-h-[85vh]"
-        className="z-10 border-t border-white/10 py-20 sm:py-28 md:py-32 scroll-mt-14"
+        minHeight="min-h-0"
+        className="z-10 border-t border-white/10 py-16 sm:py-24 md:py-28 scroll-mt-14"
       >
         <div className="flex flex-col gap-8">
           <div className="reveal">
             <h2 className="font-serif text-[32px] min-[400px]:text-[40px] sm:text-[54px] md:text-[68px] lg:text-[78px] font-normal tracking-[-0.03em] leading-[1.02] sm:leading-[0.96] text-white mb-4">
               Experience &amp; Impact<span className="text-white/30 not-italic font-serif">.</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-white/60 font-light leading-relaxed max-w-2xl mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-white/70 font-light leading-relaxed max-w-2xl mb-6">
               Engineering air-gapped document intelligence systems and high-throughput telemetry data pipelines across 4.2M+ records.
             </p>
 
             <Link
               to="/experience"
-              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/60 hover:text-white transition-colors shrink-0 py-2"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white transition-colors shrink-0 py-2"
             >
               <span>View full engineering deep-dives</span>
               <ArrowUpRight
@@ -180,20 +164,17 @@ export default function Home() {
               </div>
 
               <ul className="space-y-4 mb-6">
-                <li className="text-sm sm:text-base font-light text-white/75 leading-relaxed flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0 mt-2.5" />
+                <li className="text-sm sm:text-base font-light text-white/85 leading-relaxed flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0 mt-2.5" />
                   <span>
-                    Built an <KeywordAnnotation type="loop">offline OCR and hybrid search pipeline</KeywordAnnotation>{' '}
-                    <KeywordAnnotation type="bracket">(FAISS + BM25 with cross-encoder reranking)</KeywordAnnotation> for 12 Indian languages.
+                    Built an <span className="text-white font-medium">offline OCR and hybrid search pipeline</span> (FAISS + BM25 with cross-encoder reranking) for 12 Indian languages.
                     Kept memory under 16GB RAM on CPU machines by running quantized models sequentially, and added a verification tool for human review.
                   </span>
                 </li>
-                <li className="text-sm sm:text-base font-light text-white/75 leading-relaxed flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0 mt-2.5" />
+                <li className="text-sm sm:text-base font-light text-white/85 leading-relaxed flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0 mt-2.5" />
                   <span>
-                    Wrote an async ETL pipeline that loads 50MB workbooks (100k+ rows) into{' '}
-                    <KeywordAnnotation type="bracket">SQLite WAL in 5 to 15s</KeywordAnnotation>, indexing{' '}
-                    <KeywordAnnotation type="loop">4.2M+ telemetry records</KeywordAnnotation> with row-level access control for over 1,000 users.
+                    Wrote an async ETL pipeline that loads 50MB workbooks (100k+ rows) into <span className="text-white font-medium">SQLite WAL in 5 to 15s</span>, indexing <span className="text-white font-medium">4.2M+ telemetry records</span> with row-level access control for over 1,000 users.
                   </span>
                 </li>
               </ul>
@@ -208,16 +189,11 @@ export default function Home() {
         </div>
       </StickyStage>
 
-      {/* 5. Spine: Stage 2 to Stage 3 (Left to Right) */}
-      <VectorSpine variant="left-to-right" className="w-full my-4 sm:my-8" />
-
-      {/* 6. Section 3 (#open-source): Sticky Stage (Align Right) */}
+      {/* Section 3 (#open-source) */}
       <StickyStage
         id="open-source"
-        align="right"
-        artwork={<AutodiffGraphArt />}
-        minHeight="min-h-[75vh]"
-        className="z-10 border-t border-white/10 py-20 sm:py-28 md:py-32 scroll-mt-14"
+        minHeight="min-h-0"
+        className="z-10 border-t border-white/10 py-16 sm:py-24 md:py-28 scroll-mt-14"
       >
         <div className="max-w-4xl">
           <div className="mb-8 sm:mb-12 reveal">
@@ -237,7 +213,7 @@ export default function Home() {
                   <h3 className="font-serif text-2xl font-medium text-white">
                     {data.openSource.project}
                   </h3>
-                  <span className="font-mono text-xs text-white/40 uppercase tracking-wider">
+                  <span className="font-mono text-xs text-white/60 uppercase tracking-wider">
                     Merged Pull Request #{data.openSource.prNumber}
                   </span>
                 </div>
@@ -266,9 +242,9 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="text-sm sm:text-base font-light text-white/75 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base font-light text-white/85 leading-relaxed mb-6">
               Diagnosed and resolved a mathematical{' '}
-              <KeywordAnnotation type="underline">autodiff divergence</KeywordAnnotation> in TensorFlow Core's
+              <span className="text-white font-medium">autodiff divergence</span> in TensorFlow Core's
               reverse-mode gradient computation for Bessel functions. Patched both the C++ kernel boundary and
               Python derivative definition in{' '}
               <code className="font-mono text-xs text-white/90 bg-white/5 px-1.5 py-0.5 rounded-sm">
@@ -278,11 +254,11 @@ export default function Home() {
             </p>
 
             <div className="my-6 rounded-lg border border-white/10 bg-white/[0.02] p-4 font-mono text-xs text-white/80 overflow-x-auto">
-              <div className="flex items-center justify-between text-white/40 pb-2 mb-3 border-b border-white/5 text-[11px]">
+              <div className="flex items-center justify-between text-white/60 pb-2 mb-3 border-b border-white/5 text-[11px]">
                 <span>tensorflow/python/ops/math_grad.py</span>
                 <span className="text-emerald-400/80">patch applied</span>
               </div>
-              <pre className="text-white/70 leading-relaxed font-mono">
+              <pre className="text-white/85 leading-relaxed font-mono">
                 <code>
                   <span className="text-rose-400/80">- return grad * (bessel_i1(x) / x)</span>{'\n'}
                   <span className="text-emerald-400/80">+ return grad * tf.where(x == 0.0, 0.5, bessel_i1(x) / x)</span>
@@ -299,28 +275,23 @@ export default function Home() {
         </div>
       </StickyStage>
 
-      {/* 7. Section 4 (#skills): Standard Section */}
-      <section id="skills" className="relative z-10 w-full border-t border-white/10 pt-20 sm:pt-28 md:pt-32 scroll-mt-14">
+      {/* Section 4 (#skills) */}
+      <section id="skills" className="relative z-10 w-full border-t border-white/10 pt-16 sm:pt-24 md:pt-28 scroll-mt-14">
         <SkillsSection />
       </section>
 
-      {/* 8. Spine: Section 4 to Section 5 (Straight) */}
-      <VectorSpine variant="straight" className="w-full my-4 sm:my-8" />
-
-      {/* 9. Section 5 (#achievements): Sticky Stage (Align Left) */}
+      {/* Section 5 (#achievements) */}
       <StickyStage
         id="achievements"
-        align="left"
-        artwork={<AlgorithmicLatticeArt />}
-        minHeight="min-h-[75vh]"
-        className="z-10 border-t border-white/10 py-20 sm:py-28 md:py-32 scroll-mt-14"
+        minHeight="min-h-0"
+        className="z-10 border-t border-white/10 py-16 sm:py-24 md:py-28 scroll-mt-14"
       >
         <div className="flex flex-col gap-6">
           <div className="reveal">
             <h2 className="font-serif text-[32px] min-[400px]:text-[40px] sm:text-[54px] md:text-[68px] lg:text-[78px] font-normal tracking-[-0.03em] leading-[1.02] sm:leading-[0.96] text-white mb-2">
-              Achievements<span className="text-white/30 not-italic font-serif">.</span>
+              Achievements<span className="text-white/45 not-italic font-serif">.</span>
             </h2>
-            <p className="text-sm sm:text-base text-white/60 font-light leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base text-white/70 font-light leading-relaxed max-w-xl">
               Competitive algorithmic ratings and contest benchmarks across global problem archives.
             </p>
           </div>
@@ -345,12 +316,12 @@ export default function Home() {
 
               <div className="flex items-baseline sm:justify-end gap-2.5 pl-7 sm:pl-0 font-mono">
                 <span className="text-xs sm:text-sm tracking-tight">
-                  <span className="text-white/40">[</span>
+                  <span className="text-white/50">[</span>
                   <span className="text-[#01bdb2] font-medium">{data.ratings.codeforces.rank}</span>
-                  <span className="text-white/40">]</span>
+                  <span className="text-white/50">]</span>
                 </span>
                 <span className="text-[#01bdb2] tabular-nums text-sm sm:text-base font-semibold">{data.ratings.codeforces.rating}</span>
-                <span className="text-[10px] uppercase tracking-wider text-white/40 font-mono">max</span>
+                <span className="text-[10px] uppercase tracking-wider text-white/60 font-mono">max</span>
               </div>
             </div>
 
@@ -372,12 +343,12 @@ export default function Home() {
 
               <div className="flex items-baseline sm:justify-end gap-2.5 pl-7 sm:pl-0 font-mono">
                 <span className="text-xs sm:text-sm tracking-tight">
-                  <span className="text-white/40">[</span>
+                  <span className="text-white/50">[</span>
                   <span className="text-[#ffa116] font-medium">{data.ratings.leetcode.rank}</span>
-                  <span className="text-white/40">]</span>
+                  <span className="text-white/50">]</span>
                 </span>
                 <span className="text-white/90 tabular-nums text-sm sm:text-base font-semibold">{data.ratings.leetcode.rating}</span>
-                <span className="text-[10px] uppercase tracking-wider text-white/40 font-mono">max</span>
+                <span className="text-[10px] uppercase tracking-wider text-white/60 font-mono">max</span>
               </div>
             </div>
 
@@ -399,12 +370,12 @@ export default function Home() {
 
               <div className="flex items-baseline sm:justify-end gap-2.5 pl-7 sm:pl-0 font-mono">
                 <span className="text-xs sm:text-sm tracking-tight">
-                  <span className="text-white/40">[</span>
+                  <span className="text-white/50">[</span>
                   <span className="text-[#ffa116] font-medium">Top {data.ratings.leetcode.topPercent}%</span>
-                  <span className="text-white/40">]</span>
+                  <span className="text-white/50">]</span>
                 </span>
                 <span className="text-white/90 tabular-nums text-sm sm:text-base font-semibold">{data.ratings.leetcode.globalRank}</span>
-                <span className="text-white/40 text-xs">/ {data.ratings.leetcode.totalParticipants.toLocaleString()}</span>
+                <span className="text-white/60 text-xs">/ {data.ratings.leetcode.totalParticipants.toLocaleString()}</span>
               </div>
             </div>
           </div>
